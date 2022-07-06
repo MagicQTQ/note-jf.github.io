@@ -4,9 +4,9 @@ md笔记
 ├─ docs //md 文件系统 
 │  ├─ .vuepress             // vuepress 项目 
 │  │  ├─ sidebar            // vuepress 侧边栏json数据设置 
-│  │  │ └─ xx.ts 
+│  │  │  └─ xx.ts 
 │  │  ├─ styles             // vuepress css样式配置 
-│  │  │ └─ xx.scss 
+│  │  │  └─ xx.scss 
 │  │  ├─ navbar.ts          // vuepress 导航栏配置 
 │  │  ├─ sidebar.ts         // vuepress 侧边栏配置 
 │  │  ├─ themeConfig.ts     // vuepress 主题配置 
@@ -15,9 +15,9 @@ md笔记
 │  │  ===================下面开始就是md文件，可以包含多级目录=================== 
 │  ├─ java 
 │  │  ├─ basis              // java 基础笔记 
-│  │  │ └─ basis.md 
+│  │  │  └─ basis.md 
 │  │  ├─ jvm                // jvm 
-│  │  │ └─ jvm.md 
+│  │  │  └─ jvm.md 
 │  │  └─ xx.md 
 │  ├─ mysql                 // mysql 笔记 
 │  ├─ linux                 // linux 笔记 
