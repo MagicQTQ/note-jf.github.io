@@ -42,8 +42,8 @@ md笔记
         <img src="https://img.shields.io/github/issues/cps007/JavaGuide" alt="issues" />
     </p>
     <p>
-        <a href="https://gitee.com/cps007/notemd">Github</a> |
-        <a href="https://gitee.com/cps007/JavaGuide">Gitee</a>
+        <a target="_blank" href="https://github.com/">Github</a> |
+        <a target="_blank" href="https://gitee.com/cps007/notemd">Gitee</a>
     </p>  
 </div>
 
