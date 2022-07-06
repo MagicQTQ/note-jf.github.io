@@ -14,21 +14,40 @@ md笔记
 │  │  ├─ themeConfig.ts     // vuepress 主题配置 
 │  │  └─ config.ts          // vuepress 项目配置 
 │  │   
-│  │  ===================下面开始就是md文件，可以包含多级目录=================== 
+│  │  ===================下面开始就是md文件，可以包含多级目录，是导航栏目录的添加 README.md 首页介绍=================== 
 │  ├─ java 
 │  │  ├─ basis              // java 基础笔记 
 │  │  │  └─ basis.md 
 │  │  ├─ jvm                // jvm 
 │  │  │  └─ jvm.md 
-│  │  └─ xx.md 
-│  ├─ mysql                 // mysql 笔记 
+│  │  └─ README.md              // java 首页
+│  │  
+│  ├─ database 
+│  │  ├─ mysql 
+│  │  │  └─ README.md              // mysql 首页
+│  │  ├─ redis 
+│  │  │  └─ README.md              // redis 首页
+│  │  ├─ oracle
+│  │  │  └─ README.md              // oracle 首页
+│  │  └─ README.md              // database 首页
+│  │  
 │  ├─ linux                 // linux 笔记 
+│  │  └─ README.md              // linux 首页
+│  │  
 │  ├─ web                   // 前端笔记 
-│  └─ README.md             // 首页
+│  │  └─ README.md              // 首页
+│  └─ README.md             // index 首页
+│
 ├─ .gitignore               //git 配置 
 └─ package.json             // 依赖
 
 ```
+
+![img.png](img/img.png)
+
+![img_1.png](img/img_1.png)
+
+![img_2.png](img/img_2.png)
 
 ## 技术选型
 

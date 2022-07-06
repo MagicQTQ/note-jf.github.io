@@ -1,23 +1,31 @@
 import {hopeTheme} from "vuepress-theme-hope";
 import {navbarConfig} from "./navbar";
 import {sidebarConfig} from "./sidebar";
-// @ts-ignore
-import {defineUserConfig} from "vuepress";
 
 export default hopeTheme({
-    logo: "/logo.png",
+    // logo: "/logo.png",
     hostname: "https://javajf.cn/",
     author: {
         name: "jf",
-        url: "https://javajf.cn/article/",
+        // url: "https://javajf.cn/article/",
+        url: "/article/",
     },
     repo: "https://gitee.com/cps007/notemd",
+    darkmode: "toggle",
+    fullscreen: true,
+    themeColor: {
+        blue: "#1d8be3",
+        red: "#f26d6d",
+        green: "#3eaf7c",
+        orange: "#fb9b5f",
+    },
     docsDir: "docs",
+    iconAssets: "iconfont",
     iconPrefix: "iconfont icon-",
     pure: true,
     navbar: navbarConfig,
     sidebar: sidebarConfig,
-    pageInfo: ["Author", "Category", "Tag", "Date", "Original", "Word"],
+    pageInfo: ["Author", "Category", "Tag", "Date", "Original", "Word", "PageView"],
     blog: {
         intro: "/about-the-author/",
         sidebarDisplay: "mobile",
@@ -27,99 +35,26 @@ export default hopeTheme({
             Gitee: "https://gitee.com/cps007/notemd",
         },
     },
-    footer:
-        '<a href="https://beian.miit.gov.cn/" target="_blank">黔ICP备2022xxxxxx号-1</a>',
+    footer: '<a href="https://beian.miit.gov.cn/" target="_blank">黔ICP备2022xxxxxx号-1</a>',
     displayFooter: true,
     plugins: {
+        mdEnhance: {
+            //增强语法
+            enableAll: true,
+            tasklist: true,
+            //流程图
+            flowchart: true,
+            //脚注
+            footnote: true,
+            //自定义容器:提示、注释、信息、注意、警告和详情
+            container: true,
+        },
+        photoSwipe: true,
         blog: {
             autoExcerpt: true,
-        },
-        mdEnhance: {
-            tasklist: true,
         },
         feed: {
             json: true,
         },
-        // comment: {
-        //   type: "giscus",
-        //   repo: "cps007/notemd",
-        //   repoId: "MDEwOlJlcG9zaXRvcnkxMzI0NjQzOTU=",
-        //   category: "Announcements",
-        //   categoryId: "DIC_kwDOB-U_C84COYQF",
-        // },
-        // @ts-ignore
-        search: {
-            // https://v2.vuepress.vuejs.org/zh/reference/plugin/search.html
-            // 排除首页
-            isSearchable: (page) => page.path !== "/",
-            maxSuggestions: 10,
-            hotKeys: ["s", "/"],
-            // 用于在页面的搜索索引中添加额外字段
-            getExtraFields: () => [],
-            locales: {
-                "/": {
-                    placeholder: "搜索",
-                },
-            },
-        },
-        // pwa: {
-        //   favicon: "/favicon.ico",
-        //   cachePic: true,
-        //   apple: {
-        //     icon: "/assets/icon/apple-icon-152.png",
-        //     statusBarColor: "black",
-        //   },
-        //   msTile: {
-        //     image: "/assets/icon/ms-icon-144.png",
-        //     color: "#ffffff",
-        //   },
-        //   manifest: {
-        //     icons: [
-        //       {
-        //         src: "/assets/icon/chrome-mask-512.png",
-        //         sizes: "512x512",
-        //         purpose: "maskable",
-        //         type: "image/png",
-        //       },
-        //       {
-        //         src: "/assets/icon/chrome-mask-192.png",
-        //         sizes: "192x192",
-        //         purpose: "maskable",
-        //         type: "image/png",
-        //       },
-        //       {
-        //         src: "/assets/icon/chrome-512.png",
-        //         sizes: "512x512",
-        //         type: "image/png",
-        //       },
-        //       {
-        //         src: "/assets/icon/chrome-192.png",
-        //         sizes: "192x192",
-        //         type: "image/png",
-        //       },
-        //     ],
-        //     shortcuts: [
-        //       {
-        //         name: "jf",
-        //         short_name: "jf",
-        //         url: "/guide/",
-        //         icons: [
-        //           {
-        //             src: "/assets/icon/guide-maskable.png",
-        //             sizes: "192x192",
-        //             purpose: "maskable",
-        //             type: "image/png",
-        //           },
-        //           {
-        //             src: "/assets/icon/guide-monochrome.png",
-        //             sizes: "192x192",
-        //             purpose: "monochrome",
-        //             type: "image/png",
-        //           },
-        //         ],
-        //       },
-        //     ],
-        //   },
-        // },
     },
 })

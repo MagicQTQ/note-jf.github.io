@@ -5,9 +5,9 @@
 # VS Code Config file
 .vscode/
 # Vuepress Cache
-.cache/
+docs/.vuepress/**.cache/
 # Vuepress Temp
-.temp/
+docs/.vuepress/**.temp/
 # Vuepress Output
 dist/
 # Build files

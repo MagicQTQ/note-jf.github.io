@@ -2,17 +2,20 @@
 // @ts-ignore
 import {defineUserConfig} from "vuepress";
 import themeConfig from "./themeConfig";
+import search from "./plugins/search";
 
 export default defineUserConfig({
     theme: themeConfig,
     port: "8080",
-    title: "notemd",
-    description:
-        "「Java学习指北+Java面试指南」一份涵盖大部分 Java 程序员所需要掌握的核心知识。准备 Java 面试，复习 Java 知识点，首选 notemd！  ",
-    //指定 vuepress build 的输出目录
+    title: "note-md",
+    description: "「学习笔记！",
     dest: "./dist",
     // 是否开启默认预加载 js
     shouldPrefetch: (file, type) => false,
+    plugins: [
+        //搜索
+        search,
+    ],
     head: [
         // meta
         ["meta", {name: "robots", content: "all"}],
@@ -59,5 +62,11 @@ export default defineUserConfig({
         "/": {
             lang: "zh-CN",
         },
+        // "/zh/": {
+        //     lang: "zh-TW",
+        // },
+        // "/en/": {
+        //     lang: "en-US",
+        // },
     },
 });
