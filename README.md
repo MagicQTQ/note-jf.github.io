@@ -10,7 +10,7 @@ md笔记
 │  │  ├─ styles             // vuepress css样式配置 
 │  │  │  └─ xx.scss 
 │  │  ├─ navbar.ts          // vuepress 导航栏配置 
-│  │  ├─ sidebar.ts         // vuepress 侧边栏配置 
+│  │  ├─ sidebar.ts         // vuepress 侧边栏、路由配置 
 │  │  ├─ themeConfig.ts     // vuepress 主题配置 
 │  │  └─ config.ts          // vuepress 项目配置 
 │  │   
@@ -43,8 +43,8 @@ md笔记
 | vuepress-vite | <a href="https://www.npmjs.com/package/vuepress-vite" target="_blank">2.0.0-beta.38</a>  |
 | vuepress-webpack | <a href="https://www.npmjs.com/package/vuepress-webpack" target="_blank">2.0.0-beta.38</a>  |
 
-* [项目介绍](./docs/javaguide/intro.md)
-* [常见问题](./docs/javaguide/faq.md)
+* [项目介绍](./docs/javajf/intro.md)
+* [常见问题](./docs/javajf/faq.md)
 
 ## Java
 
