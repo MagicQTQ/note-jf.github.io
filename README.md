@@ -31,7 +31,6 @@ md笔记
 * [项目介绍](./docs/javaguide/intro.md)
 * [贡献指南](./docs/javaguide/contribution-guideline.md)
 * [常见问题](./docs/javaguide/faq.md)
-* [项目代办.md](./docs/javaguide/todo)
 
 ## Java
 
