@@ -1,9 +1,5 @@
 import {sidebar} from "vuepress-theme-hope";
-import {aboutTheAuthor} from "./sidebars/about-the-author";
-import {books} from "./sidebars/books";
-import {openSources} from "./sidebars/open-source";
-import {toolsJson} from "./sidebars/tools";
-import {javaJson} from "./sidebars/java";
+import {aboutTheAuthor, books, databaseJson, javaJson, openSources, toolsJson, webJson,linuxJson} from "./sidebars";
 
 /**
  * 应该把更精确的路径放置在前边
@@ -13,9 +9,12 @@ export const sidebarConfig = sidebar({
     "/books/": books,
     // @ts-ignore
     "/about-the-author/": aboutTheAuthor,
-    "/javajf/": ["history"],
+    "/about/": ["history"],
     "/": [
         javaJson,
+        databaseJson,
+        webJson,
+        linuxJson,
         toolsJson
     ],
 });

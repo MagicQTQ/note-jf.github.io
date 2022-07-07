@@ -1,0 +1,6 @@
+target/classes
+imgfileserve.iml
+.mvn
+file/
+html/
+mdfile/

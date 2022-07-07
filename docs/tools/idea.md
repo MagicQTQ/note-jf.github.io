@@ -1,0 +1,22 @@
+---
+title: idea操作
+category: tools
+date: 2020-01-01
+tag:
+- idea
+---
+
+# 同一个启动类：多环境+多port 运行
+
+![image-20220119195308426](./idea.assets/true-image-20220119195308426.png)
+
+![image-20220119195510261](./idea.assets/true-image-20220119195510261.png)
+
+
+
+
+
+
+
+
+

@@ -9,7 +9,7 @@ export const navbarConfig = navbar([
         icon: "anonymous",
         children: [
             {text: "文章", icon: "note", link: "/article/"},
-            {text: "分类", icon: "list", link: "/category/"},
+            {text: "分类", icon: "categoryselected", link: "/category/"},
             {text: "标签", icon: "list", link: "/tag/"},
             {text: "加密文章", icon: "command", link: "/encrypted/"},
             {text: "收藏文章", icon: "like", link: "/star/"},
@@ -24,7 +24,7 @@ export const navbarConfig = navbar([
             {
                 text: "网站历史",
                 icon: "time",
-                link: "/javajf/history.md",
+                link: "/about/history.md",
             },
         ],
     },

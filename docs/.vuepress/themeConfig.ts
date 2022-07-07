@@ -49,6 +49,7 @@ export default hopeTheme({
             //自定义容器:提示、注释、信息、注意、警告和详情
             container: true,
         },
+        copyCode: {},
         photoSwipe: true,
         blog: {
             autoExcerpt: true,
