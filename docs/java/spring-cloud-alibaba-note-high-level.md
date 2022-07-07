@@ -355,12 +355,12 @@ location / {
             - Host=**.yumall.com,yumall.com
 ```
 
-http://yumall.com/api/product/category/list/tree![image-20210912164338568](./SpringCloud-Alibaba项目笔记-高级篇.assets/true-image-20210912164338568.png)
+http://yumall.com/api/product/category/list/tree
 
+![image-20210912164338568](./spring-cloud-alibaba-note-high-level.assets/true-image-20210912164338568.png)
 
 
 ![image-20210912164205853](./spring-cloud-alibaba-note-high-level.assets/true-image-20210912164205853.png)
-
 
 
 
@@ -2227,7 +2227,7 @@ public List<CartItemVo> getUserCartItems(){
 
 ### 订单中心
 
-<img src="docs/java/spring-cloud-alibaba-note-high-level.assets/true-订单中心.png" alt="订单中心" style="zoom:80%;" />
+<img src="./spring-cloud-alibaba-note-high-level.assets/true-订单中心.png" alt="订单中心" style="zoom:80%;" />
 
 ### 订单流程：
 
@@ -3202,7 +3202,7 @@ http://www.quartz-scheduler.org/documentation/quartz-2.3.0/tutorials/crontrigger
 
 ![image-20211118130031288](./spring-cloud-alibaba-note-high-level.assets/true-image-20211118130031288.png)
 
-<img src="docs/java/spring-cloud-alibaba-note-high-level.assets/true-image-20211118130142204.png" alt="image-20211118130142204" style="zoom: 95%;" />
+<img src="./spring-cloud-alibaba-note-high-level.assets/true-image-20211118130142204.png" alt="image-20211118130142204" style="zoom: 95%;" />
 
 ```java
 /**
@@ -3673,7 +3673,6 @@ public void createSeckillOrder(SeckillOrderTo orderTo) {
     orderItemService.save(orderItem);
 }
 ```
-
 
 
 ## 7、秒杀（高并发）关注问题

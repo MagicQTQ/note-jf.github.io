@@ -15,13 +15,18 @@ tag:
 > 哪些特哪些特哪些特哪些特哪些特
 > 
 > 哪些特哪些特哪些特哪些特哪些特
- 
+
 
 1. 简单易学；
 2. 面向对象（*封装*，*继承*，**多态**）；
 3. 平台无关性（ Java 虚拟机实现平台无关性）；
 
-![container.png](https://my-blog-to-use.oss-cn-beijing.aliyuncs.com/2019-7/container.png)
+
+![true-image-20220707221104478](./test.assets/image-20220707221104478.png)
+
+![true-image-20210601002120191.png](./spring-cloud-alibaba-note-basis.assets/true-image-20210601002120191.png)
+
+![](https://my-blog-to-use.oss-cn-beijing.aliyuncs.com/2019-7/container.png)
 
 ```yaml
 spring:
