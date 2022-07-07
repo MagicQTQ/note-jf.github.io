@@ -24,7 +24,7 @@ tag:
 
 ![true-image-20220707221104478](./test.assets/image-20220707221104478.png)
 
-![true-image-20210601002120191.png](./spring-cloud-alibaba-note-basis.assets/true-image-20210601002120191.png)
+![true-image-20210601002120191](./spring-cloud-alibaba-note-basis.assets/true-image-20210601002120191.png)
 
 ![](https://my-blog-to-use.oss-cn-beijing.aliyuncs.com/2019-7/container.png)
 
