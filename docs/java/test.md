@@ -4,40 +4,35 @@ category: Java
 date: 2020-01-01
 tag:
   - Java
+  - 测试
 ---
 
-## 基础概念与常识
-
+# 基础概念与常识
+## 基础概
 ### Java 语言有哪些特点?
+#### 有哪些特
+
+> 哪些特哪些特哪些特哪些特哪些特
+> 
+> 哪些特哪些特哪些特哪些特哪些特
+ 
 
 1. 简单易学；
 2. 面向对象（*封装*，*继承*，**多态**）；
 3. 平台无关性（ Java 虚拟机实现平台无关性）；
 
 ![container.png](https://my-blog-to-use.oss-cn-beijing.aliyuncs.com/2019-7/container.png)
-![](https://img-blog.csdnimg.cn/20210412220015698.png)
 
 ```yaml
-server:
-  port: 9210
 spring:
-  main:
-    allow-circular-references: true
   profiles:
     # prod、 dev、test
     active: dev
   cloud:
     nacos:
-      discovery:
-        server-addr: 127.0.0.1:8848
-        group: ${spring.profiles.active}
       config:
-        server-addr: 127.0.0.1:8848
-        namespace: 76155597-f540-4a28-99b5-3980c50f69db
-        file-extension: yml
-        # 共享配置
         shared-configs:
-          - data-id: application-${spring.profiles.active}.${spring.cloud.nacos.config.file-extension}
+          - data-id: application-${spring.profiles.active}
             group: ${spring.profiles.active}
             refresh: true
 ```

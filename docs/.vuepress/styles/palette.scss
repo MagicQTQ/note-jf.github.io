@@ -8,37 +8,22 @@ $border-color: (
 //字体颜色
 $text-color: (
         light: #2c3e50,
-        dark: #9e9e9e,
+        dark: #aaa9a9,
 );
-//背景色
-$bg-color: (
-        light: #fff,
-        dark: #363b47,
-);
-//用于模糊元素的背景色
+//背景色:（模糊元素）导航栏navbar、侧边栏sidebar 背景
 $bg-color-blur: (
         light: rgba(255, 255, 255, 0.9),
-        dark: #3d4352,
+        dark: rgb(38, 38, 38),
 );
-//用于浮动模糊元素的背景色
-$bg-color-float-blur: (
-        light: rgba(255, 255, 255, 0.9),
-        dark: rgba(53, 59, 77, 0.9),
+//内容背景色：main-content
+$bg-color: (
+        light: #fff,
+        dark: rgb(36, 36, 36),
 );
 //边框颜色
 $border-color: (
         light: #eaecef,
-        dark: #ab8e37,
-);
-//元素阴影色
-$box-shadow: (
-        light: #f0f1f2,
-        dark: #282a32,
-);
-//卡片阴影色
-$card-shadow: (
-        light: rgba(0, 0, 0, 0.15),
-        dark: rgba(0, 0, 0, 0.3),
+        dark: #866e2b,
 );
 
 /* layout */
