@@ -504,7 +504,7 @@ public void revieveMessage03(OrderEntity content){
 
 ## 3、投递消息-安全到达
 
-<img src="docs/java/mq.assets/true-image-20211003221447339.png" alt="image-20211003221447339" style="zoom: 80%;" />
+<img src="./mq.assets/true-image-20211003221447339.png" alt="image-20211003221447339" style="zoom: 80%;" />
 
 https://www.rabbitmq.com/reliability.html
 
@@ -528,7 +528,7 @@ https://www.rabbitmq.com/reliability.html
 ---- 签收了货物 channel.basicAck(deliveryTag, false);拒绝签收货物channel.basicNack(deliveryTag, false, false);
 ```
 
-<img src="docs/java/mq.assets/true-image-20211003233121163.png" alt="image-20211003233121163" style="zoom:90%;" />
+<img src="./mq.assets/true-image-20211003233121163.png" alt="image-20211003233121163" style="zoom:90%;" />
 
 ```java
 @RabbitHandler
@@ -603,7 +603,7 @@ public void revieveMessage02(Message message, OrderReturnReasonEntity content, C
 
 ![image-20211011213947643](./mq.assets/true-image-20211011213947643.png)
 
-<img src="docs/java/mq.assets/true-image-20211108204644677.png" alt="image-20211108204644677" style="zoom:100%;" />
+<img src="./mq.assets/true-image-20211108204644677.png" alt="image-20211108204644677" style="zoom:100%;" />
 
 ```java
 /**

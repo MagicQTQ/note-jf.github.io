@@ -8,6 +8,24 @@ export const javaJson =
         prefix: "java/",
         collapsable: true,
         children: [
+            {
+                text: "基础",
+                icon: "java",
+                prefix: "basis/",
+                collapsable: true,
+                children: [
+                    "arraylist",
+                    "basic-grammar",
+                    "data-structure",
+                    "exception",
+                    "io-note",
+                    "mysql-setting",
+                    "oop",
+                    "spring-cloud-core-components",
+                    "string",
+                    "web-servlet-jsp",
+                ]
+            },
             "test",
             "java-log",
             "java-jsr303",

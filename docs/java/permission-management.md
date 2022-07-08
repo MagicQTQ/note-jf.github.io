@@ -280,7 +280,7 @@ public Map<String, Object> login(SysLoginForm form) {
 
 # 基于JWT
 
-<img src="docs/java/permission-management.assets/true-image-20210726171709098.png" alt="image-20210726171709098" style="zoom:80%;" />
+<img src="./permission-management.assets/true-image-20210726171709098.png" alt="image-20210726171709098" style="zoom:80%;" />
 
 ```xml
 <dependency>

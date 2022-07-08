@@ -71,8 +71,8 @@ md笔记
 
 **知识点/面试题总结** : (必看:+1: )：
 
-1. [Java 基础常见知识点&面试题总结(上)](docs/java/basis/java-basic-questions-01.md)
+1. [Java 基础常见知识点&面试题总结(上)](./basis/java-basic-questions-01.md)
 
 **重要知识点详解** ：
 
-* [为什么 Java 中只有值传递？](docs/java/basis/why-there-only-value-passing-in-java.md)
+* [为什么 Java 中只有值传递？](./basis/why-there-only-value-passing-in-java.md)

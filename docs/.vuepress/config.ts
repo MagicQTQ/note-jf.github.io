@@ -6,6 +6,7 @@ import search from "./plugins/search";
 
 export default defineUserConfig({
     theme: themeConfig,
+    // @ts-ignore
     port: "8080",
     title: "note-md",
     description: "「学习笔记！",

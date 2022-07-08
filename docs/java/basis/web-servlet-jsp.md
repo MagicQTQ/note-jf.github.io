@@ -1,4 +1,13 @@
-# 配置tomcat到eclipse中
+---
+title: servlet基础
+category: Java
+date: 2020-01-01
+tag:
+- JavaWeb
+- Servlet
+---
+
+## 配置tomcat到eclipse中
 
 a) 
 
@@ -60,7 +69,7 @@ n)  Servlet是sun用来开发动态web资源的技术，在开发的api中提供
 
 ​        ii.     把开发好的java类部署到web服务器中
 
-## o)   缓缓开发过程
+### o)   缓缓开发过程
 
 ​        i. ![image-20220530164827987](./web-servlet-jsp.assets/true-image-20220530164827987.png)
 
@@ -82,7 +91,7 @@ n)  Servlet是sun用来开发动态web资源的技术，在开发的api中提供
 
 ![image-20220530164949422](./web-servlet-jsp.assets/true-image-20220530164949422.png)
 
-## p) 速速开发过程
+### p) 速速开发过程
 
 ​        v. ![image-20220530165129275](./web-servlet-jsp.assets/true-image-20220530165129275.png)
 
@@ -98,13 +107,13 @@ n)  Servlet是sun用来开发动态web资源的技术，在开发的api中提供
 
 
 
-# 资源路径详解（URL统一资源定位符）
+## 资源路径详解（URL统一资源定位符）
 
-## 1、url 进入服务器后，先进web.xml进行匹配，没有匹配时进入webapp 目录进行页面名称匹配，如果都没有，返回 404。
+### 1、url 进入服务器后，先进web.xml进行匹配，没有匹配时进入webapp 目录进行页面名称匹配，如果都没有，返回 404。
 
-## 2、WEB-INF目录下，无法通过浏览器直接输入资源定位访问，这里是绝对安全的，只能是服务器内部访问该WEB-INF目录下的资源。
+### 2、WEB-INF目录下，无法通过浏览器直接输入资源定位访问，这里是绝对安全的，只能是服务器内部访问该WEB-INF目录下的资源。
 
-## 3、浏览器访问服务器资源
+### 3、浏览器访问服务器资源
 
 ​        i.     / 代表服务器
 
@@ -141,19 +150,19 @@ n)  Servlet是sun用来开发动态web资源的技术，在开发的api中提供
 
 2. 原则，谁像选谁
 
-## 4、 服务器内部访问服务器资源
+### 4、 服务器内部访问服务器资源
 
 ​        i.     / 代表项目名称
 
-# Servlet的生命周期（单线程）
+## Servlet的生命周期（单线程）
 
-## 线程问题
+### 线程问题
 
 servlet只会被初始化一次，没有特别处理的情况下，不应该在成员变量处放置可以被改变值的成员变量，线程处理方式有两种，加锁，交给框架
 
 ![image-20220530165438573](./web-servlet-jsp.assets/true-image-20220530165438573.png)
 
-## 描述流程：
+### 描述流程：
 
 web服务器接收到客户端的servlet访问请求
 
@@ -169,7 +178,7 @@ web服务器接收到客户端的servlet访问请求
 
 > 运用forward方法只能重定向到同一个Web应用程序中的一个资源。而sendRedirect方法可以让你重定向到任何URL。 
 
-# Servletconfig
+## Servletconfig
 
 在 servlet 的配置文件 web.xml 中，可以使用多个 \<init-param> 标签，作为 servlet 初始化的参数，是写在 \<servlet> 标签里面
 
@@ -185,7 +194,7 @@ web服务器接收到客户端的servlet访问请求
 
 ![image-20220530170327503](./web-servlet-jsp.assets/true-image-20220530170327503.png)
 
-# Servletcontext 
+## Servletcontext 
 
 1、Servletcontext代表当前应用，web容器在启动的时候，会给每个应用都创建一个servletcontext对象，context的引用被config持有（维护），可以通过config.getContext的方式获取context对象，由于所有servlet都使用同一个context，通常用来做通讯使用，可称为context域
 
@@ -269,7 +278,7 @@ web服务器接收到客户端的servlet访问请求
 
 ![image-20220530170610912](./web-servlet-jsp.assets/image-20220530170610912.png)
 
-# Request与response
+## Request与response
 
 ![image-20220530170618525](./web-servlet-jsp.assets/image-20220530170618525.png)
 
@@ -283,7 +292,7 @@ web服务器接收到客户端的servlet访问请求
 
  
 
-## Response
+### Response
 
 https://www.cnblogs.com/zhangyinhua/p/7629221.html
 
@@ -297,7 +306,7 @@ https://www.cnblogs.com/zhangyinhua/p/7629221.html
 
 　getQueryString() ;  返回请求行中的参数部分。
 
-## Response案例
+### Response案例
 
 ​       iv.     字节字符流输出数据
 
@@ -323,9 +332,9 @@ r)   Request案例
 
  
 
-## Request
+### Request
 
-### RequestDemo01
+#### RequestDemo01
 
 ```java
 package com.j2ee.servlet.request;
@@ -408,7 +417,7 @@ public class RequestDemo01 extends HttpServlet {
 
 ```
 
-### RequestDemo02
+#### RequestDemo02
 
 ```java
 package com.j2ee.servlet.request;
@@ -473,7 +482,7 @@ public class RequestDemo02 extends HttpServlet {
 
 ```
 
-### RequestDemo03
+#### RequestDemo03
 
 ```java
 package com.j2ee.servlet.request;
@@ -616,7 +625,7 @@ public class RequestDemo03 extends HttpServlet {
 
 ```
 
-### RequestDemo04
+#### RequestDemo04
 
 ```java
 package com.j2ee.servlet.request;
@@ -645,7 +654,7 @@ public class RequestDemo04 extends CharcaterServlet {
 
 ```
 
-### RequestDemo05
+#### RequestDemo05
 
 ```java
 package com.j2ee.servlet.request;
@@ -669,7 +678,7 @@ public class RequestDemo05 extends HttpServlet {
 
 ```
 
-### CharcaterServlet
+#### CharcaterServlet
 
 ```java
 package com.j2ee.servlet.request;
@@ -780,7 +789,7 @@ public class CharcaterServlet extends HttpServlet {
 
 
 
-# Cookie-response层面
+## Cookie-response层面
 
 https://www.cnblogs.com/muzongyan/archive/2010/08/30/1812552.html
 
@@ -832,7 +841,7 @@ bb) 执行流程
 
 ![image-20220530171411614](./web-servlet-jsp.assets/image-20220530171411614.png)
 
-# Session
+## Session
 
 ![image-20220530171505787](./web-servlet-jsp.assets/image-20220530171505787.png)
 
@@ -843,7 +852,7 @@ bb) 执行流程
 
 上传、下载、拦截
 
-# Filter过滤、拦截
+## Filter过滤、拦截
 
  ![image-20220530171513941](./web-servlet-jsp.assets/image-20220530171513941.png)
 
@@ -873,18 +882,18 @@ Filter开发步骤：
 >
 > 在 web.xml 文件中使用\<filter>和\<filter-mapping>元素对编写的filter类进行注册，并设置它所能拦截的资源
 
-# Jsp
+## Jsp
 
 动态页面，就是服务器向浏览器写html文件，里面的变量可以根据实际应用场景进行改变
 
-## Jsp 9大内置对象
+### Jsp 9大内置对象
 
 request、response、session、application、out、pageContext、config、page和exception；
 
-## jsp 7大动作
+### jsp 7大动作
 
 include、useBean、getProperty、setProperty、param、forward、plugin
 
-## jsp跟servlet的关系：
+### jsp跟servlet的关系：
 
 jsp经编译后就变成了servlet，所以说jsp本质就是servlet，jvm只能识别java的类，不能识别jsp代码，web容器将jsp的代码编译成jvm能够识别的java类。

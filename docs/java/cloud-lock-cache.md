@@ -206,11 +206,11 @@ synchronized---查询了数据库
 ..........无缓存，..........无缓存，..........无缓存，... ...
 ```
 
-<img src="docs/java/cloud-lock-cache.assets/true-image-20210914112220313.png" alt="image-20210914112220313" style="zoom: 80%;" />
+<img src="./cloud-lock-cache.assets/true-image-20210914112220313.png" alt="image-20210914112220313" style="zoom: 80%;" />
 
 解决：
 
-<img src="docs/java/cloud-lock-cache.assets/true-image-20210914112316601.png" alt="image-20210914112316601" style="zoom:80%;" />
+<img src="./cloud-lock-cache.assets/true-image-20210914112316601.png" alt="image-20210914112316601" style="zoom:80%;" />
 
 ```java
 return getCataLogJsonFromDB之前加入缓存：
@@ -276,7 +276,7 @@ set lock haha XX
 
 ![image-20210916165158731](./cloud-lock-cache.assets/true-image-20210916165158731.png)
 
-<img src="docs/java/cloud-lock-cache.assets/true-image-20210914143530694.png" alt="image-20210914143530694" style="zoom:100%;" />
+<img src="./cloud-lock-cache.assets/true-image-20210914143530694.png" alt="image-20210914143530694" style="zoom:100%;" />
 
 ##### - - 解决: 设置锁的自动过期，即使没有删除，会自动删除
 

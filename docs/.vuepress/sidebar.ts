@@ -1,11 +1,22 @@
 import {sidebar} from "vuepress-theme-hope";
-import {aboutTheAuthor, books, databaseJson, javaJson, openSources, toolsJson, webJson,linuxJson} from "./sidebars";
+import {
+    aboutTheAuthor,
+    architectures,
+    books,
+    databaseJson,
+    javaJson,
+    linuxJson,
+    openSources,
+    toolsJson,
+    webJson
+} from "./sidebars";
 
 /**
  * 应该把更精确的路径放置在前边
  */
 export const sidebarConfig = sidebar({
     "/open-source/": openSources,
+    "/architecture/": architectures,
     "/books/": books,
     // @ts-ignore
     "/about-the-author/": aboutTheAuthor,

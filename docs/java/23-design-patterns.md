@@ -1003,7 +1003,7 @@ CatalogDAOFactory 是典型的 *工厂方法*，catDao 是通过动态类装入�
 
 演变1
 
-<img src="docs/java/23-design-patterns.assets/true-image-20220418161441822.png" alt="image-20220418161441822" style="zoom:90%;" />
+<img src="./23-design-patterns.assets/true-image-20220418161441822.png" alt="image-20220418161441822" style="zoom:90%;" />
 
 演变2![image-20220418165116122](./23-design-patterns.assets/true-image-20220418165116122.png)
 
@@ -1011,7 +1011,7 @@ CatalogDAOFactory 是典型的 *工厂方法*，catDao 是通过动态类装入�
 
 ![image-20220418165046397](./23-design-patterns.assets/true-image-20220418165046397.png)
 
-<img src="docs/java/23-design-patterns.assets/true-image-20220418174020582.png" alt="image-20220418174020582" style="zoom:50%;" />
+<img src="./23-design-patterns.assets/true-image-20220418174020582.png" alt="image-20220418174020582" style="zoom:50%;" />
 
 
 

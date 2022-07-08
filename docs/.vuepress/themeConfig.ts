@@ -11,7 +11,7 @@ export default hopeTheme({
         url: "/article/",
     },
     repo: "https://gitee.com/cps007/notemd",
-    darkmode: "toggle",
+    darkmode: "toggle",/*toggle,auto*/
     fullscreen: true,
     themeColor: {
         blue: "#1d8be3",
@@ -56,6 +56,7 @@ export default hopeTheme({
         copyCode: {
             showInMobile: true
         },
+        // @ts-ignore
         photoSwipe: true,
         blog: {
             autoExcerpt: true,

@@ -1,0 +1,17 @@
+/*
+md内容体
+*/
+//斜体字体
+.theme-hope-content em {
+  color: rgb(216, 14, 248);
+}
+
+//加粗字体
+.theme-hope-content strong {
+  color: rgba(3, 157, 251, 0.85);
+}
+
+.theme-hope-content ol li::marker {
+  color: rgb(33, 230, 193);
+}
+
