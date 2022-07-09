@@ -1,5 +1,20 @@
 md笔记
 
+添加新文件步骤：<br/>
+1、newFile `./docs/java/demo.md`<br/>
+2、添加路由 `.vuepress/sidebar.ts` 或 `.vuepress/sidebars/java.ts`<br/>
+```json
+{
+  text: "Java",
+  icon: "java",
+  prefix: "java/",
+  collapsable: true,
+  children: [
+    "demo",
+  ]
+}
+```
+
 ## 目录结构
 
 ```text

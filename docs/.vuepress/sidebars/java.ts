@@ -48,6 +48,7 @@ export const javaJson =
             "asynchronous",
             "mybatis-plus",
             "permission-management",
+            "jmeter",
             "template-engine-thymeleaf",
             "elastic-search",
             {

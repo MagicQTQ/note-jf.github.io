@@ -25,7 +25,7 @@ export default hopeTheme({
     pure: true,
     navbar: navbarConfig,
     sidebar: sidebarConfig,
-    pageInfo: ["Author", "Category", "Tag", "Date", "Original", "Word", "PageView"],
+    pageInfo: ["Author", "Category", "Tag", "Date", "Original", "Word", "PageView", "ReadingTime"],
     blog: {
         intro: "/about-the-author/",
         sidebarDisplay: "mobile",
@@ -41,7 +41,8 @@ export default hopeTheme({
         mdEnhance: {
             //增强语法
             enableAll: true,
-            tasklist: true,
+            // @ts-ignore
+            include: true,
             //流程图
             flowchart: true,
             //脚注
@@ -64,5 +65,11 @@ export default hopeTheme({
         feed: {
             json: true,
         },
+        pwa: {
+            maxSize: 1024 * 6,
+            cachePic: true,
+            maxPicSize: 1024 * 4,
+            cacheHTML: true,
+        },
     },
-})
+});

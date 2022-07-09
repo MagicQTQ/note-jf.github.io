@@ -1,3 +1,4 @@
+// @ts-ignore
 import {sidebar} from "vuepress-theme-hope";
 import {
     aboutTheAuthor,

@@ -320,9 +320,9 @@ export function myMsgAuto(message, type, duration = 1.5) {
 </body>
 ```
 
-![image-20210512174537729](web-vue.assets/true-image-20210512174537729.png)
+![image-20210512174537729](./web-vue.assets/true-image-20210512174537729.png)
 
-![image-20210512174602224](web-vue.assets/true-image-20210512174602224.png)
+![image-20210512174602224](./web-vue.assets/true-image-20210512174602224.png)
 
 
 
@@ -350,9 +350,9 @@ export function myMsgAuto(message, type, duration = 1.5) {
 </body>
 ```
 
-![image-20210512173521558](web-vue.assets/true-image-20210512173521558.png)
+![image-20210512173521558](./web-vue.assets/true-image-20210512173521558.png)
 
-![image-20210512174921957](web-vue.assets/true-image-20210512174921957.png)
+![image-20210512174921957](./web-vue.assets/true-image-20210512174921957.png)
 
 ## 指令：v-no、v-for、v-if、v-show
 
@@ -404,7 +404,7 @@ v-no：用来绑定事件
 </script>
 ~~~
 
-![image-20210512175906550](web-vue.assets/true-image-20210512175906550.png)
+![image-20210512175906550](./web-vue.assets/true-image-20210512175906550.png)
 
 ### v-for
 
@@ -445,7 +445,7 @@ v-no：用来绑定事件
 </script>
 ```
 
-![image-20210512180050258](web-vue.assets/true-image-20210512180050258.png)
+![image-20210512180050258](./web-vue.assets/true-image-20210512180050258.png)
 
 ### v-if、v-show
 
@@ -474,7 +474,7 @@ v-no：用来绑定事件
 </script>
 ```
 
-![image-20210512180358008](web-vue.assets/true-image-20210512180358008.png)
+![image-20210512180358008](./web-vue.assets/true-image-20210512180358008.png)
 
 ## 计算属性
 
@@ -521,7 +521,7 @@ v-no：用来绑定事件
 </script>
 ~~~
 
-![image-20210512180908376](web-vue.assets/true-image-20210512180908376.png)
+![image-20210512180908376](./web-vue.assets/true-image-20210512180908376.png)
 
 ### 过滤器filter
 
@@ -550,7 +550,7 @@ v-no：用来绑定事件
 </script>
 ```
 
-![image-20210512181738935](web-vue.assets/true-image-20210512181738935.png)
+![image-20210512181738935](./web-vue.assets/true-image-20210512181738935.png)
 
 ## 组件化
 
@@ -598,11 +598,11 @@ v-no：用来绑定事件
 </script>
 ~~~
 
-![image-20210512182142594](web-vue.assets/true-image-20210512182142594.png)
+![image-20210512182142594](./web-vue.assets/true-image-20210512182142594.png)
 
 ## 生命周期
 
-<img src="web-vue.assets/lifecycle-16413781838673.svg" alt="实例的生命周期"  />
+<img src="./web-vue.assets/lifecycle-16413781838673.svg" alt="实例的生命周期"  />
 
 ~~~html
 <div id="app">
@@ -661,13 +661,13 @@ v-no：用来绑定事件
 </script>
 ~~~
 
-![image-20210512182402196](web-vue.assets/true-image-20210512182402196.png)
+![image-20210512182402196](./web-vue.assets/true-image-20210512182402196.png)
 
-<img src="web-vue.assets/true-image-20210512182509172.png" alt="image-20210512182509172"  />
+<img src="./web-vue.assets/true-image-20210512182509172.png" alt="image-20210512182509172"  />
 
 ## 脚手架
 
-<img src="web-vue.assets/true-image-20210512183142153.png" alt="image-20210512183142153" style="zoom: 67%;" />
+<img src="./web-vue.assets/true-image-20210512183142153.png" alt="image-20210512183142153" style="zoom: 67%;" />
 
 
 
@@ -675,7 +675,7 @@ v-no：用来绑定事件
 
 
 
-![](web-vue.assets/bcf79d052c0f44bab8fe40c4f059340ftplv-k3u1fbpfcp-zoom-crop-mark130413041304734.image)
+![](./web-vue.assets/true-01.png)
 
 ## 变化
 
@@ -1220,9 +1220,9 @@ const upTheme = () => {
 </script>
 ```
 
-![image-20220330185438315](web-vue.assets/true-image-20220330185438315.png)
+![image-20220330185438315](./web-vue.assets/true-image-20220330185438315.png)
 
-![image-20220330185452637](web-vue.assets/true-image-20220330185452637.png)
+![image-20220330185452637](./web-vue.assets/true-image-20220330185452637.png)
 
 
 
@@ -1621,7 +1621,7 @@ const increment = () => {
 
 ## 问题
 
-![image-20220124164859102](web-vue.assets/true-image-20220124164859102.png)
+![image-20220124164859102](./web-vue.assets/true-image-20220124164859102.png)
 
 
 
@@ -1759,7 +1759,7 @@ app.use(Button);
 
 ```
 
-![image-20220330011947826](web-vue.assets/true-image-20220330011947826.png)
+![image-20220330011947826](./web-vue.assets/true-image-20220330011947826.png)
 
 
 
