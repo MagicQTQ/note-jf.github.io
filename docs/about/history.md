@@ -9,7 +9,7 @@ icon: time
 ## [2.1.0]() (2022-07-6)
 
 发布 2.1.0 版本 
-访问地址：<a target="_blank" herf="https://topsjf.github.io/">topsjf.github.io</a>
+访问地址：<a href="https://topsjf.github.io/" target="_blank">topsjf.github.io</a>
 
 ![img.png](./img.png)
 
