@@ -1119,7 +1119,7 @@ String与StringBuffer的性能区别?
 
 提示: 使用System.currentTimeMillis() 获取当前时间(毫秒)
 
-![image-20220530174442708](./string.assets/image-20220530174442708.png)
+![image-20220530174442708](./string.assets/true-image-20220530174442708.png)
 
 ### 练习
 

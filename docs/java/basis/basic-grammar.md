@@ -139,8 +139,6 @@ Right-装备
  
  ```
 
-
-
 ### 1、类和对象
 
 类：class  对象模型，模板
@@ -700,7 +698,7 @@ String str;
 
 #### 局部变量
 
-![img](./basic-grammar.assets/clip_image046.jpg)
+![img](./basic-grammar.assets/true-clip_image046.jpg)
 
 定义在方法内的变量就叫做局部变量
 

@@ -357,8 +357,6 @@ location / {
 
 http://yumall.com/api/product/category/list/tree
 
-![image-20210912164338568](./spring-cloud-alibaba-note-high-level.assets/true-image-20210912164338568.png)
-
 
 ![image-20210912164205853](./spring-cloud-alibaba-note-high-level.assets/true-image-20210912164205853.png)
 

@@ -276,11 +276,11 @@ web服务器接收到客户端的servlet访问请求
 
 ![image-20220530170557822](./web-servlet-jsp.assets/true-image-20220530170557822.png)
 
-![image-20220530170610912](./web-servlet-jsp.assets/image-20220530170610912.png)
+![image-20220530170610912](./web-servlet-jsp.assets/true-image-20220530170610912.png)
 
 ## Request与response
 
-![image-20220530170618525](./web-servlet-jsp.assets/image-20220530170618525.png)
+![image-20220530170618525](./web-servlet-jsp.assets/true-image-20220530170618525.png)
 
 分析项目案例核心：
 
@@ -803,35 +803,35 @@ t)   如何向客户端写Cookie：  CookieDemo01
 
 u)   服务器如何得到客户端传来的Cookie  CookieDemo02  Cookie[] getCookies() 获取浏览器发来的信息（name=value）
 
-![image-20220530171258924](./web-servlet-jsp.assets/image-20220530171258924.png)
+![image-20220530171258924](./web-servlet-jsp.assets/true-image-20220530171258924.png)
 
 设置生命周期：以秒为单位 
 
-![image-20220530171307834](./web-servlet-jsp.assets/image-20220530171307834.png)
+![image-20220530171307834](./web-servlet-jsp.assets/true-image-20220530171307834.png)
 
-![image-20220530171314647](./web-servlet-jsp.assets/image-20220530171314647.png)
+![image-20220530171314647](./web-servlet-jsp.assets/true-image-20220530171314647.png)
 
 v)   读取cookie
 
- ![image-20220530171327620](./web-servlet-jsp.assets/image-20220530171327620.png)
+ ![image-20220530171327620](./web-servlet-jsp.assets/true-image-20220530171327620.png)
 
 使用cookie记录用户上一次访问的时间：CookieDemo01
 
 w)  删除cookie
 
- ![image-20220530171339635](./web-servlet-jsp.assets/image-20220530171339635.png)
+ ![image-20220530171339635](./web-servlet-jsp.assets/true-image-20220530171339635.png)
 
 x)   cookie中存取中文
 
- ![image-20220530171345587](./web-servlet-jsp.assets/image-20220530171345587.png)
+ ![image-20220530171345587](./web-servlet-jsp.assets/true-image-20220530171345587.png)
 
 y)   api
 
- ![image-20220530171353030](./web-servlet-jsp.assets/image-20220530171353030.png)
+ ![image-20220530171353030](./web-servlet-jsp.assets/true-image-20220530171353030.png)
 
 z)   中文存储使用 
 
-![image-20220530171400805](./web-servlet-jsp.assets/image-20220530171400805.png)
+![image-20220530171400805](./web-servlet-jsp.assets/true-image-20220530171400805.png)
 
 aa)  使用场景
 
@@ -839,11 +839,11 @@ aa)  使用场景
 
 bb) 执行流程
 
-![image-20220530171411614](./web-servlet-jsp.assets/image-20220530171411614.png)
+![image-20220530171411614](./web-servlet-jsp.assets/true-image-20220530171411614.png)
 
 ## Session
 
-![image-20220530171505787](./web-servlet-jsp.assets/image-20220530171505787.png)
+![image-20220530171505787](./web-servlet-jsp.assets/true-image-20220530171505787.png)
 
 总结：
 
@@ -854,7 +854,7 @@ bb) 执行流程
 
 ## Filter过滤、拦截
 
- ![image-20220530171513941](./web-servlet-jsp.assets/image-20220530171513941.png)
+ ![image-20220530171513941](./web-servlet-jsp.assets/true-image-20220530171513941.png)
 
 对web服务器管理的所有web资源：例如Jsp, Servlet,
 

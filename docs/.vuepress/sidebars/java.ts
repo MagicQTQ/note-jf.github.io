@@ -21,7 +21,6 @@ export const javaJson =
                     "io-note",
                     "mysql-setting",
                     "oop",
-                    "spring-cloud-core-components",
                     "string",
                     "web-servlet-jsp",
                 ]
@@ -40,6 +39,7 @@ export const javaJson =
             "spring-cloud-alibaba-note-high-level",
             "spring-cloud-alibaba-note-cluster",
             "swagger",
+            "spring-cloud-core-components",
             "cloud-session",
             "cloud-lock-cache",
             "local-cloud-affairs-seata",

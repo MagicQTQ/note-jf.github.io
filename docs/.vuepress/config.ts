@@ -1,12 +1,13 @@
 // .vuepress/config.ts
 import themeConfig from "./themeConfig";
 import search from "./plugins/search";
-import {defineUserConfig} from "vuepress-vite";
+import {defineUserConfig, viteBundler} from "vuepress-vite";
 
 export default defineUserConfig({
     theme: themeConfig,
     // @ts-ignore
     port: "8080",
+    base: "/",
     title: "note-md",
     description: "「学习笔记！",
     dest: "./dist",
@@ -16,6 +17,15 @@ export default defineUserConfig({
         //搜索
         search,
     ],
+    // bundler: viteBundler({
+    //     viteOptions: {},
+    //     vuePluginOptions: {},
+    // }),
+    markdown: {
+        toc: {
+            level: [2, 3, 4],
+        },
+    },
     head: [
         // meta
         ["meta", {name: "robots", content: "all"}],

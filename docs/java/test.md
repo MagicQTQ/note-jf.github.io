@@ -16,6 +16,11 @@ star: true
 ### Java 语言有哪些特点?
 #### 有哪些特
 
+::: details 点击查看代码
+```js
+console.log('你好，VuePress！')
+```
+:::
 
 <PDF url="./pdf/日期.pdf" />
 

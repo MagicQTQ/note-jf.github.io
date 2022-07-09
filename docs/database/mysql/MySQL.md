@@ -3077,7 +3077,7 @@ UPDATE emp SET e_sal=e_sal*1.2 WHERE (TO_DAYS(NOW())-TO_DAYS(HIREDATE))/365>15;
 SELECT * FROM emp;
 ```
 
-![](./MySQL%E5%86%85%E5%AE%B9%E6%95%B4%E7%90%86.assets/image-20220620170637207.png)
+![](./MySQL.assets/true-image-20220620170637207.png)
 
 
 

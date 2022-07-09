@@ -6,7 +6,7 @@ export default hopeTheme({
     // logo: "/logo.png",
     hostname: "https://javajf.cn/",
     author: {
-        name: "jf",
+        name: "j    f",
         // url: "https://javajf.cn/article/",
         url: "/article/",
     },
@@ -40,7 +40,7 @@ export default hopeTheme({
     plugins: {
         mdEnhance: {
             //增强语法
-            enableAll: true,
+            enableAll: false,
             // @ts-ignore
             include: true,
             //流程图
