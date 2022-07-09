@@ -6,7 +6,7 @@ export default hopeTheme({
     // logo: "/logo.png",
     hostname: "https://javajf.cn/",
     author: {
-        name: "j    f",
+        name: "jf",
         // url: "https://javajf.cn/article/",
         url: "/article/",
     },

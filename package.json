@@ -12,7 +12,7 @@
     "webpack-clean-serve": "vuepress-webpack dev docs --clean-cache",
     "build:vite": "vuepress-vite build docs",
     "build:webpack": "vuepress-webpack build docs",
-    "deploy": "bash ./build/deploy.sh"
+    "deploy": "bash build/deploy-github.sh"
   },
   "devDependencies": {
     "@vuepress/bundler-vite": "^2.0.0-beta.48",
