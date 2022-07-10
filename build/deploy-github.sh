@@ -3,8 +3,7 @@
 npm vuepress-vite build docs
 
 cd ./dist
-git init
-git add -A
+git init && git add -A
 git commit -m 'deploy 2.1.0'
 git branch -M main
 git remote add origin https://github.com/topsjf/topsjf.github.io.git
