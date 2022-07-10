@@ -58,16 +58,30 @@ allprojects {
     repositories {
         maven { url 'file:///D:/rj-win/gradle-7.4.2/repositorys'}
         mavenLocal()
-        maven { name "Alibaba" ; url "https://maven.aliyun.com/repository/public" }
-        maven { name "Bstek" ; url "http://nexus.bsdn.org/content/groups/public/" }
+        maven { url 'https://maven.aliyun.com/repository/public' }
+        maven { url 'https://maven.aliyun.com/repository/jcenter' }
+        maven { url 'https://maven.aliyun.com/repository/spring' }
+        maven { url 'https://maven.aliyun.com/repository/spring-plugin' }       
+        maven { url 'https://maven.aliyun.com/repository/gradle-plugin' }      
+        maven { url 'https://maven.aliyun.com/repository/google' }
+        maven { url 'https://maven.aliyun.com/repository/grails-core' }       
+        maven { url 'https://maven.aliyun.com/repository/apache-snapshots' }
+        maven { url 'http://nexus.bsdn.org/content/groups/public/' }
         mavenCentral()
     }
 
     buildscript { 
         repositories { 
-            maven { name "Alibaba" ; url 'https://maven.aliyun.com/repository/public' }
-            maven { name "Bstek" ; url 'http://nexus.bsdn.org/content/groups/public/' }
-            maven { name "M2" ; url 'https://plugins.gradle.org/m2/' }
+			maven { url 'https://maven.aliyun.com/repository/public' }
+			maven { url 'https://maven.aliyun.com/repository/jcenter' }
+			maven { url 'https://maven.aliyun.com/repository/spring' }
+			maven { url 'https://maven.aliyun.com/repository/spring-plugin' }       
+			maven { url 'https://maven.aliyun.com/repository/gradle-plugin' }      
+			maven { url 'https://maven.aliyun.com/repository/google' }
+			maven { url 'https://maven.aliyun.com/repository/grails-core' }       
+			maven { url 'https://maven.aliyun.com/repository/apache-snapshots' }
+			maven { url 'http://nexus.bsdn.org/content/groups/public/' }
+            maven { url 'https://plugins.gradle.org/m2/' }
         }
     }
 }
@@ -79,6 +93,10 @@ allprojects {
 
 
 ## 与maven比较
+
+![图片](./gradle.assets/640.png)
+
+`图中是大型多模块项目Maven和Gradle编译时间的对比，来自gradle官网`
 
 Gradle是：
 
@@ -238,6 +256,7 @@ version=1.0.0
 org.gradle.caching=true
 org.gradle.parallel=true
 org.gradle.jvmargs=-Xmx2g -Dfile.encoding=UTF-8
+#org.gradle.jvmargs=-Xmx4g -XX:MaxPermSize=512m -XX:+HeapDumpOnOutOfMemoryError -Dfile.encoding=UTF-8systemProp.http.proxyHost=127.0.0.1systemProp.http.proxyPort=10800systemProp.https.proxyHost=127.0.0.1systemProp.https.proxyPort=10800systemProp.file.encoding=UTF-8org.gradle.warning.mode=all
 
 #groovyVersion=xxx
 kotlinVersion=xxx
