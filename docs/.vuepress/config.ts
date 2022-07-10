@@ -10,7 +10,7 @@ export default defineUserConfig({
     base: "/",
     title: "note-md",
     description: "「学习笔记！",
-    dest: "./build/dist",
+    dest: "./dist",
     // 是否开启默认预加载 js
     shouldPrefetch: (file, type) => false,
     plugins: [

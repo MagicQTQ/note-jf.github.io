@@ -9,8 +9,6 @@ docs/.vuepress/**.cache/
 # Vuepress Temp
 docs/.vuepress/**.temp/
 # Vuepress Output
-!build/deploy-github.sh
-build/dist.zip
-build/dist/
+dist/
 # Build files
 packages/*/lib/
