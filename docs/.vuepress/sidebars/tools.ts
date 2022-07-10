@@ -9,6 +9,7 @@ export const toolsJson =
         collapsable: true,
         children: [
             "maven",
+            "gradle",
             "idea",
             "nodejs-setting",
             "vagrant-vmware",
