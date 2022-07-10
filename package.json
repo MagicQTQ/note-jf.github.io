@@ -6,13 +6,13 @@
   "license": "MIT",
   "author": "jf",
   "scripts": {
-    "vite-serve": "vuepress-vite dev docs",
-    "vite-clean-serve": "vuepress-vite dev docs --clean-cache",
-    "webpack-serve": "vuepress-webpack dev docs",
-    "webpack-clean-serve": "vuepress-webpack dev docs --clean-cache",
+    "dev:vite": "vuepress-vite dev docs",
+    "dev:vite-clean": "vuepress-vite dev docs --clean-cache",
+    "dev:webpack": "vuepress-webpack dev docs",
+    "dev:webpack-clean": "vuepress-webpack dev docs --clean-cache",
     "build:vite": "vuepress-vite build docs",
     "build:webpack": "vuepress-webpack build docs",
-    "deploy": "bash build/deploy-github.sh"
+    "build:deploy": "bash ./build/deploy-github.sh"
   },
   "devDependencies": {
     "@vuepress/bundler-vite": "^2.0.0-beta.48",
