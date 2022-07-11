@@ -114,7 +114,7 @@ Gradle是：
 
 简要介绍一下Groovy。Groovy是一种JVM语言，它可以编译为与Java相同的字节码，并且可以与Java类无缝地互操作。Groovy是Java的向后兼容超集，这意味着Groovy可以透明地与Java库和代码交互。但是，它还增加了许多新功能：可选的键入，函数式编程，运行时灵活性以及许多元编程内容。它还极大地清理了Java中许多冗长的代码格式。Groovy尚未成为主流的开发语言，但是它已经在测试（由于其简化的语法和元编程功能）和构建系统中占据了一席之地。
 
-## 创建项目 Gradle
+## 创建项目 Gradle+Java
 
 ![image-20220710144146973](./gradle.assets/image-20220710144146973.png)
 
@@ -153,6 +153,16 @@ distributionUrl=https\://services.gradle.org/distributions/gradle-7.4.2-bin.zip
 
 
 
+## 创建项目 Gradle+Groovy
+
+### 为什么使用 Groovy?
+
+答案在于 Gradle 内部的运行环境。 虽然 Gradle 核心目的是作为通用构建工具，但它还是主要面向 Java 项目。 这些项目的团队成员显然熟悉 Java。我们认为一个构建工具应该尽可能地对所有团队成员透明。
+
+
+
+
+
 ## 创建项目 Gradle+Kotlin
 
 
@@ -171,14 +181,19 @@ plugins {
 
 group 'org.jf'
 version '1.0.0'
-sourceCompatibility = 17
 
 //项目依赖关系的仓库地址
 repositories {
-    maven { url 'file:///D:/rj-win/gradle-7.4.2/repositorys'}
+    maven { url 'file:///D:/rj-win/gradle-7.4.2/repositorys' }
     mavenLocal()
-    maven { name "Alibaba" ; url "https://maven.aliyun.com/repository/public" }
-    maven { name "Bstek" ; url "http://nexus.bsdn.org/content/groups/public/" }
+    maven { url('https://maven.aliyun.com/repository/public') }
+    maven { url 'https://maven.aliyun.com/repository/jcenter' }
+    maven { url 'https://maven.aliyun.com/repository/spring' }
+    maven { url 'https://maven.aliyun.com/repository/spring-plugin' }
+    maven { url 'https://maven.aliyun.com/repository/gradle-plugin' }
+    maven { url 'https://maven.aliyun.com/repository/google' }
+    maven { url 'https://maven.aliyun.com/repository/grails-core' }
+    maven { url 'https://maven.aliyun.com/repository/apache-snapshots' }
     mavenCentral()
 }
 
@@ -192,33 +207,6 @@ dependencies {
 test {
     useJUnitPlatform()
 }
-
-//指定jdk版本
-java {
-    toolchain {
-        languageVersion = JavaLanguageVersion.of(17)
-    }
-}
-
-// 配置运行构建脚本的要求
-buildscript { 
-    // 设置自定义属性
-    ext {  
-       springBootVersion = '2.6.6' 
-    }  
-    // 解决buildscript块中的依赖项时，检查Maven Central中的依赖项
-    repositories {  
-        maven { url 'file:///D:/rj-win/gradle-7.4.2/repositorys'}
-        mavenLocal()
-        maven { name "Alibaba" ; url "https://maven.aliyun.com/repository/public" }
-        maven { name "Bstek" ; url "http://nexus.bsdn.org/content/groups/public/" }
-        mavenCentral()
-    }  
-    // 我们需要spring boot插件来运行构建脚本
-    dependencies {  
-       classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")  
-    }  
-} 
 ```
 
 ### settings.gradle
@@ -274,7 +262,7 @@ kotlin.stdlib.default.dependency=false
 Groovy 
 
 ```properties
-implementation 'xxx'
+implementation 'org.codehaus.groovy:groovy-all:2.4.15'
 ```
 
 Kotlin
@@ -298,9 +286,26 @@ gradle依赖的粒度控制相较于Maven也更加精细，maven只有compile、
 
 5、testCompileOnly和testRuntimeOnly，这两种类似于compileOnly和runtimeOnly，但是作用于测试编译时和运行时。
 
-
 通过简短精悍的依赖配置和多种多样的作用与选择，Gradle可以为我们提供比Maven更加优秀的依赖管理功能。
 
+
+
+
+
+
+
+## 发布到 Maven 仓库
+
+```
+plugin: 'maven'
+uploadArchives {
+    repositories {
+        mavenDeployer {
+            repository(url: "file://localhost/tmp/myRepo/")
+        }
+    }
+}
+```
 
 
 

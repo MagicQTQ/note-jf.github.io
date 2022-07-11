@@ -40,7 +40,7 @@ export default hopeTheme({
     plugins: {
         mdEnhance: {
             //增强语法
-            enableAll: false,
+            enableAll: true,
             // @ts-ignore
             include: true,
             //流程图

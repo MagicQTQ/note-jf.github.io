@@ -1,12 +1,14 @@
 //内容块引用
 blockquote {
   border-radius: 7px;
+  border-left-width: 4px;
   background: rgba(178, 193, 220, 0.13);
   border-color: #00fe00;
   color: rgba(111, 111, 111, 0.5);
 }
 
 html[data-theme="dark"] blockquote {
+  border-left-width: 4px;
   border-radius: 5px;
   background: #3b3d3d;
   border-color: #418a41;

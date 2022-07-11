@@ -67,7 +67,7 @@ docker pull kibana:7.14.0 可视化数据
 
 教程：https://blog.csdn.net/qq_42476834/article/details/112675953
 
-<a href="/tools/docker/docker-install-mysql-redis-nginx-nacos-mq-es.html#elasticsearch-kibana" target="_blank">具体DOcker安装配置</a>
+<a href="/tools/docker/docker-install-mysql-redis-nginx-nacos-mq-es.html#elasticsearch-kibana" >具体DOcker安装配置</a>
 
 
 ### -- 配置
