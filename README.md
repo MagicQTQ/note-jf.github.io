@@ -74,10 +74,10 @@ md笔记
 
 | 技术 | 版本 |
 | ----- | ----- |
-| @vuepress/plugin-search  | <a href="https://www.npmjs.com/package/@vuepress/plugin-search" target="_blank">^2.0.0-beta.38</a>  |
-| vuepress-theme-hope | <a href="https://www.npmjs.com/package/vuepress-theme-hope" target="_blank">^2.0.0-beta.36</a>  |
-| vuepress-vite | <a href="https://www.npmjs.com/package/vuepress-vite" target="_blank">2.0.0-beta.38</a>  |
-| vuepress-webpack | <a href="https://www.npmjs.com/package/vuepress-webpack" target="_blank">2.0.0-beta.38</a>  |
+| @vuepress/plugin-search  | <a href="https://www.npmjs.com/package/@vuepress/plugin-search" target="_blank">^2.0.0-beta.48</a>  |
+| vuepress-theme-hope | <a href="https://www.npmjs.com/package/vuepress-theme-hope" target="_blank">^2.0.0-beta.84</a>  |
+| vuepress-vite | <a href="https://www.npmjs.com/package/vuepress-vite" target="_blank">2.0.0-beta.48</a>  |
+| vuepress-webpack | <a href="https://www.npmjs.com/package/vuepress-webpack" target="_blank">2.0.0-beta.48</a>  |
 
 * [项目介绍](docs/about/intro.md)
 * [常见问题](docs/about/faq.md)
