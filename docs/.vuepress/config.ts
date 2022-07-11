@@ -8,7 +8,7 @@ export default defineUserConfig({
     // @ts-ignore
     port: "8080",
     base: "/",
-    title: "note-md",
+    title: "note-jf",
     description: "「学习笔记！",
     dest: "./dist",
     // 是否开启默认预加载 js

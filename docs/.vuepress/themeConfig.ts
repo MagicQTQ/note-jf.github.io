@@ -4,11 +4,11 @@ import {sidebarConfig} from "./sidebar";
 
 export default hopeTheme({
     // logo: "/logo.png",
-    hostname: "https://javajf.cn/",
+    hostname: "https://note-jf.cn/",
     author: {
         name: "jf",
-        // url: "https://javajf.cn/article/",
-        url: "/article/",
+        // url: "https://note-jf.cn/article/",
+        url: "/article",
     },
     repo: "https://gitee.com/cps007/notemd",
     darkmode: "toggle",/*toggle,auto*/
@@ -31,7 +31,7 @@ export default hopeTheme({
         sidebarDisplay: "mobile",
         medias: {
             Zhihu: "https://www.zhihu.com/people/tops6",
-            Github: "https://github.com/",
+            Github: "https://github.com/note-jf",
             Gitee: "https://gitee.com/cps007/notemd",
         },
     },

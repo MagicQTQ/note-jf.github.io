@@ -1,8 +1,8 @@
 {
-  "name": "javajf",
+  "name": "note-jf",
   "version": "2.1.0",
   "private": true,
-  "description": "javajf",
+  "description": "note-jf",
   "license": "MIT",
   "author": "jf",
   "scripts": {
