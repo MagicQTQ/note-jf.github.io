@@ -1,7 +1,7 @@
 // .vuepress/config.ts
 import themeConfig from "./themeConfig";
 import search from "./plugins/search";
-import {defineUserConfig, viteBundler} from "vuepress-vite";
+import {defineUserConfig} from "vuepress-vite";
 
 export default defineUserConfig({
     theme: themeConfig,

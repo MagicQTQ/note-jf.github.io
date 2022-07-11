@@ -27,7 +27,7 @@ export default hopeTheme({
     sidebar: sidebarConfig,
     pageInfo: ["Author", "Category", "Tag", "Date", "Original", "Word", "PageView", "ReadingTime"],
     blog: {
-        intro: "/about-the-author/",
+        intro: "/about-the-author",
         sidebarDisplay: "mobile",
         medias: {
             Zhihu: "https://www.zhihu.com/people/tops6",

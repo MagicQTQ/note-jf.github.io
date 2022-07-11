@@ -12,10 +12,10 @@ export default searchPlugin({
     getExtraFields: () => [],
     locales: {
         "/": {
-            placeholder: "搜索",
+            placeholder: "搜索文档",
         },
         "/zh/": {
-            placeholder: "搜索",
+            placeholder: "搜索文档",
         },
     },
 })
