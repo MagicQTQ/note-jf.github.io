@@ -1,6 +1,6 @@
 ---
-title: ElasticSearch
-category: 全文检索
+title: ElasticSearch 全文检索
+category: ElasticSearch
 date: 2020-01-01
 tag:
 - ElasticSearch
@@ -76,6 +76,9 @@ docker pull kibana:7.14.0 可视化数据
 #### 2,kibana
 
 ![image-20210908134637817](./elastic-search.assets/true-image-20210908134637817.png)
+
+
+<a href="tools/docker/docker-install-mysql-redis-nginx-nacos-mq-es.html#elasticsearch-kibana" target="_blank">具体DOcker安装配置</a>
 
 
 
