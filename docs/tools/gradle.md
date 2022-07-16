@@ -42,15 +42,15 @@ tag:
 
 选择 `7.4.2` 版本
 
-![image-20220710150404550](./gradle.assets/image-20220710150404550.png)
+![image-20220710150404550](./gradle.assets/true-image-20220710150404550.png)
 
 window配置
 
 新建`系统环境变量`
 
-![image-20220710150516799](./gradle.assets/image-20220710150516799.png)
+![image-20220710150516799](./gradle.assets/true-image-20220710150516799.png)
 
-![image-20220710140953152](./gradle.assets/image-20220710140953152.png)
+![image-20220710140953152](./gradle.assets/true-image-20220710140953152.png)
 
 配置gradle本地仓库：`D:\rj-win\gradle-7.4.2\init.d\init.gradle`
 
@@ -89,13 +89,13 @@ allprojects {
 ```
 重启系统并校验 CMD：gradle -v
 
-![image-20220710154305711](./gradle.assets/image-20220710154305711.png)
+![image-20220710154305711](./gradle.assets/true-image-20220710154305711.png)
 
 
 
 ## 与maven比较
 
-![图片](./gradle.assets/640.png)
+![图片](./gradle.assets/true-640.png)
 
 `图中是大型多模块项目Maven和Gradle编译时间的对比，来自gradle官网`
 
@@ -117,15 +117,15 @@ Gradle是：
 
 ## 创建项目 Gradle+Java
 
-![image-20220710144146973](./gradle.assets/image-20220710144146973.png)
+![image-20220710144146973](./gradle.assets/true-image-20220710144146973.png)
 
-![image-20220710143607023](./gradle.assets/image-20220710143607023.png)
+![image-20220710143607023](./gradle.assets/true-image-20220710143607023.png)
 
 选择 `是`
 
 下一步，设置 `组`、`工件`、`版本`
 
-![image-20220710143759660](./gradle.assets/image-20220710143759660.png)
+![image-20220710143759660](./gradle.assets/true-image-20220710143759660.png)
 
 ### 报错：
 

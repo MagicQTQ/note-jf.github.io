@@ -1,5 +1,7 @@
 package com.cps007.imgfileserve;
 
+import lombok.extern.slf4j.Slf4j;
+
 import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -23,60 +25,72 @@ import java.util.Objects;
  * @version 1.0
  * @date 2022/4/26 16:35
  */
+@Slf4j
 public class ImageUtil {
+    /**
+     * 获取当前项目的目录：notemd
+     */
     private final static String PROJECT_PATH = System.getProperty("user.dir");
-    private final static String prefix = ".";
-    private final static String START_FALSE = "false-";
-    private final static String START_TRUE = "true-";
-    private final static String MD = "md";
-    private final static String PNG = "png";
-    private final static String JPG = "jpg";
-    private final static String JPEG = "jpeg";
-    private static File TEMP_FILE = null;
-    private static File NEW_FILE = null;
+    private final static String PROJECT_NAME = "\\imgfileserve";
+    private final static String MD_PATH = "\\docs";
+    private final static String TEST_MD_PATH = "\\md";
+    private final static String SPLICING = "\\";
+    /**
+     * 开头
+     */
+    private final static String PREFIX = ".";
+    private final static String PREFIX_FALSE = "false-";
+    private final static String PREFIX_TRUE = "true-";
+    /**
+     * 结尾
+     */
+    private final static String SUFFIX_ASSETS = "assets";
+    private final static String SUFFIX_MD = "md";
+    private final static String SUFFIX_PNG = "png";
+    private final static String SUFFIX_JPG = "jpg";
+    private final static String SUFFIX_JPEG = "jpeg";
+    private static File OLD_IMG_FILE = null;
+    private static File NEW_IMG_FILE = null;
+    /**
+     * Image_ParentFileName = xxx.assets
+     */
+    private static String Image_ParentFileName = null;
 
     public static void main(String[] args) throws Exception {
         //获取当前md-notes项目的window路径 getCanonicalPath\\
         // targetFile=（E:\java高级项目学习资料\md-notes）
-        File folder = new File(PROJECT_PATH);
-        File test = new File(PROJECT_PATH + "\\imgfileserve\\src\\main\\java\\com\\cps007\\imgfileserve");
-        file(folder);
-    }
-
-    private static void size(File folder) {
-        if (folder.isDirectory()) {
-            for (File f : Objects.requireNonNull(folder.listFiles())) {
-                if (f.isDirectory() && !f.getName().equals(".git") && !f.getName().equals(".idea")) {
-                    System.out.println("this-文件夹：：：" + f.getName() + "::" + f.length());
-                    if (!"imgfileserve".equals(folder.getName())) {
-                        size(f);
-                    }
-                }
-            }
-        }
+        File formal = new File(PROJECT_PATH + MD_PATH);
+        File bate = new File(PROJECT_PATH + PROJECT_NAME + TEST_MD_PATH);
+        log.info("bate-Path = {}", formal.toString());
+        file(formal);
     }
 
     /**
-     * 遍历目录
+     * 遍历 file 目录
+     *
+     * @param file 需要处理的目录[E:\java高级项目学习资料\notemd\imgfileserve\md]
+     * @throws Exception
      */
     public static void file(File file) throws Exception {
+        //处理当前目录下的文件
         if (file.isFile()) {
-            File tempFile = null;
+            File old_File = null;
             //是png、jpg文件
-            if (getFileType(file)) {
+            if (isPNG_JPG(file)) {
                 //true开头的图片不需要处理
-                if (!file.getName().toLowerCase().startsWith(START_TRUE)) {
-                    tempFile = file;
+                if (!file.getName().toLowerCase().startsWith(PREFIX_TRUE)) {
+                    log.info("--- file = {}", file);
+                    old_File = file;
                     //把所有还没有处理的图片文件重命名为 false- 开头
                     file = upImageNameToFalse(file);
                     //处理false开头的图片
-                    if (file.getName().toLowerCase().startsWith(START_FALSE)) {
-                        //1、压缩
+                    if (file.getName().toLowerCase().startsWith(PREFIX_FALSE)) {
+                        //1、压缩图片，并替换原来文件
                         imgCompression(file);
-                        //2、文件重命名为true-开头
+                        //2、将压缩的img文件重命名为true-开头
                         file = upImageNameToTrue(file);
-                        TEMP_FILE = tempFile;
-                        NEW_FILE = file;
+                        OLD_IMG_FILE = old_File;
+                        NEW_IMG_FILE = file;
                         upMdFIle();
                     }
                 }
@@ -85,10 +99,9 @@ public class ImageUtil {
 
         //是目录,继续遍历
         if (file.isDirectory()) {
-            //保存当前目录的所有png、jpg文件
+            //列出当前：目录或文件
             for (File f : Objects.requireNonNull(file.listFiles())) {
-                //排除 imgfileserve imgs 项目
-                if (!"imgfileserve".equals(file.getName()) || !".vuepress".equals(file.getName())) {
+                if (!".vuepress".equals(f.getName())) {
                     file(f);
                 }
             }
@@ -100,17 +113,27 @@ public class ImageUtil {
      * 根据当前处理的图片进行更新md文件内容
      */
     private static void upMdFIle() throws IOException {
-        //根据当前png的上级命令名称来确定具体的md文件
-        String mdName = NEW_FILE.getParentFile().getName().replace(".assets", "");
-        //PROJECT_PATH = E:\java高级项目学习资料\md-notes
-        String path = PROJECT_PATH;
-//        String path = NEW_FILE.getParentFile().getParent();
+        // Image_ParentFileName = xxx.assets
+        Image_ParentFileName = NEW_IMG_FILE.getParentFile().getName();
+        // 如果png的上级目录不是以 assets 结尾时，说明当前png与md文件是同级目录
+        if (Image_ParentFileName.endsWith(SUFFIX_ASSETS)) {
+            // 根据当前png的上级目录名称来确定具体的md文件
+            // mq-rocket.assets 的md文件为 mq-rocket.md
+            String mdName = Image_ParentFileName.replace(PREFIX + SUFFIX_ASSETS, "") + PREFIX + SUFFIX_MD;
+            // 拼接 xxx\notemd\imgfileserve\md + \{mdName}
+            String path = NEW_IMG_FILE.getParentFile().getParent() + SPLICING + mdName;
+            File mdFile = new File(path);
+            if (mdFile.exists() && isMD(mdFile)) {
+                setMD(mdFile, false);
+            }
 
-        // E:\java高级项目学习资料\md-notes\idea操作.md
-        File mdFile = new File(path + "\\" + mdName + ".md");
-        System.out.printf("mdFile\t%s\n", mdFile);
-        if (mdFile.exists() && isMD(mdFile)) {
-            setMD(mdFile);
+        } else {
+            // 拼接 xxx\notemd\imgfileserve\java\java.md
+            String path = NEW_IMG_FILE.getParentFile() + SPLICING + Image_ParentFileName + PREFIX + SUFFIX_MD;
+            File mdFile = new File(path);
+            if (mdFile.exists() && isMD(mdFile)) {
+                setMD(mdFile, true);
+            }
         }
     }
 
@@ -121,25 +144,35 @@ public class ImageUtil {
      *
      * @param mdFile
      */
-    private static void setMD(File mdFile) throws IOException {
+    private static void setMD(File mdFile, boolean sameLevel) throws IOException {
         if (mdFile.isFile()) {
-            //Docker使用笔记.assets
-            String parentFileName = NEW_FILE.getParentFile().getName();
+            log.info("--- 处理mdFile\t{}\n", mdFile);
             //image-20220119195308426.png
-            String oldName = TEMP_FILE.getName();
+            String oldName = OLD_IMG_FILE.getName();
             //true-image-20220119195308426.png
-            String newName = NEW_FILE.getName();
+            String newName = NEW_IMG_FILE.getName();
 
             //把md名称[Docker使用笔记.md]与新图片父级目录[Docker使用笔记.assets]比较，ok替换
-            String mdFileName = mdFile.getName().replaceAll(".md", "");
-            String imageParentName = parentFileName.replaceAll(".assets", "");
+            String mdFileName = mdFile.getName().replaceAll(PREFIX + SUFFIX_MD, "");
+            String imageParentName = Image_ParentFileName.replaceAll(PREFIX + SUFFIX_ASSETS, "");
             if (mdFileName.equals(imageParentName)) {
-                //获取 Docker使用笔记.md
+                //读取 md 文件内容
                 String mdContent = readFileConentToMd(mdFile);
-                String oldImgName = parentFileName + "/" + oldName;
-                String oldImgNametoFlase = parentFileName + "/false-" + oldName;
-                String newImgName = parentFileName + "/" + newName;
-                //idea操作.assets/image-20220119195308426.png
+                String oldImgName = "";
+                String oldImgNametoFlase = "";
+                String newImgName = "";
+                if (sameLevel) {
+                    oldImgName = oldName;
+                    oldImgNametoFlase = PREFIX_FALSE + oldName;
+                    newImgName = newName;
+                } else {
+                    oldImgName = Image_ParentFileName + "/" + oldName;
+                    oldImgNametoFlase = Image_ParentFileName + "/" + PREFIX_FALSE + oldName;
+                    newImgName = Image_ParentFileName + "/" + newName;
+                }
+
+                //img跟md是非同级：idea操作.assets/image-20220119195308426.png
+                //img跟md是同级：image-20220119195308426.png
                 if (mdContent.contains(oldImgName) || mdContent.contains(oldImgNametoFlase)) {
                     mdContent = mdContent.replaceAll(oldImgName, newImgName)
                             .replaceAll(oldImgNametoFlase, newImgName);
@@ -153,8 +186,6 @@ public class ImageUtil {
                     } finally {
                         fileOutputStream.close();
                     }
-
-
                 }
             }
         }
@@ -167,8 +198,8 @@ public class ImageUtil {
      * @return
      */
     private static boolean isMD(File mdFile) {
-        String mdType = mdFile.getName().substring(mdFile.getName().lastIndexOf(".")).replaceAll("\\.", "");
-        return MD.equals(mdType);
+        String mdType = mdFile.getName().substring(mdFile.getName().lastIndexOf(PREFIX)).replaceAll("\\.", "");
+        return SUFFIX_MD.equals(mdType);
     }
 
     /**
@@ -185,7 +216,7 @@ public class ImageUtil {
             inputStream.close();
             return new String(all, StandardCharsets.UTF_8);
         } catch (IOException e) {
-            System.err.printf("ImageUtil.readFileConentToMd:\t读取md文件内容异常\t%s\n", e.getMessage());
+            log.error("ImageUtil.readFileConentToMd:\t读取md文件内容异常\t{}\n", e.getMessage());
         }
         return null;
     }
@@ -204,20 +235,30 @@ public class ImageUtil {
         int width = results[0];
         int height = results[1];
         String imageType = getImageType(file);
-        String imgPath = file.getPath();
+        String outputImgPath = file.getPath();
 
         //imageType就是对应着Java内不的同格式的压缩方法:1-13
-        // TYPE_INT_RGB:24位，压缩比例小（130kb->94kb）、
-        // TYPE_INT_ARGB_PRE：32位，压缩比例中（130kb->96kb）效果跟原图无异、
-        // TYPE_USHORT_555_RGB:24位，压缩比例中（130kb->45.9kb）、
+        // TYPE_INT_RGB:24位，压缩比例小（130kb->94kb）
+        // TYPE_INT_ARGB_PRE：32位，压缩比例中（130kb->96kb）效果跟原图无异
+        // TYPE_USHORT_555_RGB:24位，压缩比例中（130kb->45.9kb）
         BufferedImage bufferedImage = new BufferedImage(width, height, BufferedImage.TYPE_USHORT_555_RGB);
         bufferedImage.getGraphics().drawImage(image.getScaledInstance(width, height, Image.SCALE_SMOOTH), 0, 0, null);
         //创建文件输出流
-        FileOutputStream outputStream = new FileOutputStream(imgPath);
+        FileOutputStream outputStream = new FileOutputStream(outputImgPath);
         //转换编码格式JPEG，保存到out中
-        ImageIO.write(bufferedImage, imageType.equals(JPG) ? JPEG : PNG, outputStream);
+        ImageIO.write(bufferedImage, imageType.equals(SUFFIX_JPG) ? SUFFIX_JPEG : SUFFIX_PNG, outputStream);
         //关闭文件输出流
         outputStream.close();
+    }
+
+    /**
+     * 判断文件后缀：png，jpg，jpeg
+     *
+     * @param file
+     * @return boolean
+     */
+    private static boolean isPNG_JPG(File file) {
+        return file.getName().toLowerCase().endsWith(SUFFIX_PNG) || file.getName().toLowerCase().endsWith(SUFFIX_JPG) || file.getName().toLowerCase().endsWith(SUFFIX_JPEG);
     }
 
     /**
@@ -227,8 +268,9 @@ public class ImageUtil {
      * @return
      */
     private static String getImageType(File file) {
-        return file.getName().substring(file.getName().lastIndexOf(".")).replaceAll("\\.", "");
+        return file.getName().substring(file.getName().lastIndexOf(PREFIX)).replaceAll("\\.", "");
     }
+
 
     /**
      * 把所有还没有处理的图片文件名称设置为：false-xxx.png|false-xxx.jpg
@@ -239,9 +281,9 @@ public class ImageUtil {
      */
     private static File upImageNameToFalse(File file) {
         //图片名称没有true-&&false-的文件
-        if (!file.getName().contains(START_TRUE) && !file.getName().contains(START_FALSE)) {
+        if (!file.getName().contains(PREFIX_TRUE) && !file.getName().contains(PREFIX_FALSE)) {
             String thisFileParentPath = file.getParent();
-            File newFileName = new File(thisFileParentPath + "\\" + START_FALSE + file.getName());
+            File newFileName = new File(thisFileParentPath + SPLICING + PREFIX_FALSE + file.getName());
             if (file.renameTo(newFileName)) {
                 return newFileName;
             }
@@ -256,26 +298,16 @@ public class ImageUtil {
      */
     private static File upImageNameToTrue(File file) {
         //false 开头的文件
-        if (file.getName().contains(START_FALSE)) {
+        if (file.getName().startsWith(PREFIX_FALSE) || file.getName().contains(PREFIX_FALSE)) {
             //当前目录：xxx.assets
-            String newFileName = file.getName().replace("false-", "true-");
+            String newFileName = file.getName().replace(PREFIX_FALSE, PREFIX_TRUE);
             String thisFileParentPath = file.getParent();
-            File newFile = new File(thisFileParentPath + "\\" + newFileName);
+            File newFile = new File(thisFileParentPath + SPLICING + newFileName);
             if (file.renameTo(newFile)) {
                 return newFile;
             }
         }
         return file;
-    }
-
-    /**
-     * 判断文件后缀：png，jpg
-     *
-     * @param file
-     * @return boolean
-     */
-    private static boolean getFileType(File file) {
-        return file.getName().toLowerCase().endsWith(PNG) || file.getName().toLowerCase().endsWith(JPG);
     }
 
     /**
@@ -299,7 +331,7 @@ public class ImageUtil {
             result[1] = bufferedImage.getHeight(null);
             inputStream.close();  //关闭输入流
         } catch (Exception exception) {
-            System.out.printf("ImageUtil.getImgWidthHeight-File-:\t%s\n" + "获取图片宽度高度");
+            log.error("getImgWidthHeight 获取图片宽度高度异常：{}", exception.getMessage());
         }
 
         return result;
@@ -319,7 +351,7 @@ public class ImageUtil {
             // 得到源图片高
             result[1] = image.getHeight(null);
         } catch (Exception exception) {
-            System.out.printf("ImageUtil.getImgWidthHeight-Image-:\t%s\n" + "获取图片宽度高度");
+            log.error("ImageUtil.getImgWidthHeight-获取图片宽度高度-:\t{}\n", exception.getMessage());
         }
         return result;
     }

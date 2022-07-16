@@ -1313,7 +1313,7 @@ select e.e_name, e.e_sal, d.d_name from dept  d left join emp e on e.d_no=d.d_no
 
 > 表1 inner join 表2 on 关联条件，做连接查询的时候一定要写上关联条件；inner 可以省略。
 
-![image-20220705101830024](./MySQL.assets/image-20220705101830024.png)
+![image-20220705101830024](./MySQL.assets/true-image-20220705101830024.png)
 
 ### 外连接 left join 、right join 
 
@@ -1321,13 +1321,13 @@ select e.e_name, e.e_sal, d.d_name from dept  d left join emp e on e.d_no=d.d_no
 >
 > > 表1 left outer join 表2 on 关联条件，做连接查询的时候一定要写上关联条件；outer 可以省略。
 >
-> ![image-20220705101852038](./MySQL.assets/image-20220705101852038.png)
+> ![image-20220705101852038](./MySQL.assets/true-image-20220705101852038.png)
 >
 > 右外连接
 >
 > > 表1 right outer join 表2 on 关联条件，做连接查询的时候一定要写上关联条件；outer 可以省略。
 >
-> ![image-20220705101907499](./MySQL.assets/image-20220705101907499.png)
+> ![image-20220705101907499](./MySQL.assets/true-image-20220705101907499.png)
 
 ### 左外连接（左连接）和右外连接（右连接）的区别？
 

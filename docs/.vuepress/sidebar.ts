@@ -17,7 +17,7 @@ import {
  * 应该把更精确的路径放置在前边
  */
 export const sidebarConfig = sidebar({
-    "/about/": ["history"],
+    "/history/": ["history"],
     // @ts-ignore
     "/about-the-author/": aboutTheAuthor,
     "/architecture/": architectures,

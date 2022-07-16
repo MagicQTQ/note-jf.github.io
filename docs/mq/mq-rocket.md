@@ -166,9 +166,9 @@ https://rocketmq.apache.org/release_notes/release-notes-4.9.4/
 
 ROCKETMQ_HOME="D:\rocketmq"、NAMESRV_ADDR="localhost:9876"
 
-![image-20220713143224748](./mq-rocket.assets/image-20220713143224748.png)
+![image-20220713143224748](./mq-rocket.assets/true-image-20220713143224748.png)
 
-![image-20220713151738323](./mq-rocket.assets/image-20220713151738323.png)
+![image-20220713151738323](./mq-rocket.assets/true-image-20220713151738323.png)
 
 ### port 端口说明
 
@@ -240,11 +240,11 @@ ROCKETMQ_HOME="D:\rocketmq"、NAMESRV_ADDR="localhost:9876"
 
 `（mqadmin:管理工具、mqnamesrv：名称服务、mqbroker:消息代理服务器）`
 
-![image-20220713164803431](./mq-rocket.assets/image-20220713164803431.png)
+![image-20220713164803431](./mq-rocket.assets/true-image-20220713164803431.png)
 
-![image-20220713164815150](./mq-rocket.assets/image-20220713164815150.png)
+![image-20220713164815150](./mq-rocket.assets/true-image-20220713164815150.png)
 
-![image-20220714105719209](./mq-rocket.assets/image-20220714105719209.png)
+![image-20220714105719209](./mq-rocket.assets/true-image-20220714105719209.png)
 
 ### 启动时jvm参数报错，修改文件
 
@@ -376,9 +376,9 @@ docker run -d --name rocketmq-dashboard -e "JAVA_OPTS=-Drocketmq.namesrv.addr=19
 
 http://127.0.0.1:8080
 
-![image-20220714102811856](./mq-rocket.assets/image-20220714102811856.png)
+![image-20220714102811856](./mq-rocket.assets/true-image-20220714102811856.png)
 
-![image-20220714102824828](./mq-rocket.assets/image-20220714102824828.png)
+![image-20220714102824828](./mq-rocket.assets/true-image-20220714102824828.png)
 
 
 
@@ -388,7 +388,7 @@ http://127.0.0.1:8080
 
 **技术架构**
 
-![image-20220716132334903](./mq-rocket.assets/image-20220716132334903.png)
+![image-20220716132334903](./mq-rocket.assets/true-image-20220716132334903.png)
 
 RocketMQ架构上主要分为四部分，如上图所示:
 
@@ -430,7 +430,7 @@ https://github.com/apache/rocketmq/blob/master/docs/cn/design.md
 
 ### 基本路由规则
 
-![image-20220716134814483](./mq-rocket.assets/image-20220716134814483.png)
+![image-20220716134814483](./mq-rocket.assets/true-image-20220716134814483.png)
 
 Broker 在启动时向 Nameserver 注册存储在该服务器上的路由信息，并每隔 30s 向Nameserver 发送心跳包，并更新路由信息。Nameserver 每隔 10s 扫描路由表，如果检测到 Broker 服务宕机，则移除对应的路由信息。
 
@@ -440,7 +440,7 @@ Broker 在启动时向 Nameserver 注册存储在该服务器上的路由信息�
 
 ### 自动创建主题机制
 
-![image-20220716135827145](./mq-rocket.assets/image-20220716135827145.png)
+![image-20220716135827145](./mq-rocket.assets/true-image-20220716135827145.png)
 
 
 

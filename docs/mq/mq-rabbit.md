@@ -883,11 +883,11 @@ public class StockListener {
 
 查看初始化交换机
 
-![image-20220716144723052](./mq-rabbit.assets/image-20220716144723052.png)
+![image-20220716144723052](./mq-rabbit.assets/true-image-20220716144723052.png)
 
 查看初始化队列
 
-![image-20220716145127272](./mq-rabbit.assets/image-20220716145127272.png)
+![image-20220716145127272](./mq-rabbit.assets/true-image-20220716145127272.png)
 
 --------------
 
@@ -895,15 +895,15 @@ public class StockListener {
 
 查看订单消息投递到订单延迟队列情况
 
-![image-20220716145117155](./mq-rabbit.assets/image-20220716145117155.png)
+![image-20220716145117155](./mq-rabbit.assets/true-image-20220716145117155.png)
 
-![image-20220716144913398](./mq-rabbit.assets/image-20220716144913398.png)
+![image-20220716144913398](./mq-rabbit.assets/true-image-20220716144913398.png)
 
 1分钟后，查看处理结果
 
-![image-20220716144848045](./mq-rabbit.assets/image-20220716144848045.png)
+![image-20220716144848045](./mq-rabbit.assets/true-image-20220716144848045.png)
 
-![image-20220716144856335](./mq-rabbit.assets/image-20220716144856335.png)
+![image-20220716144856335](./mq-rabbit.assets/true-image-20220716144856335.png)
 
 
 

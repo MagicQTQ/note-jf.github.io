@@ -79,8 +79,8 @@ md笔记
 | vuepress-vite | <a href="https://www.npmjs.com/package/vuepress-vite" target="_blank">2.0.0-beta.48</a>  |
 | vuepress-webpack | <a href="https://www.npmjs.com/package/vuepress-webpack" target="_blank">2.0.0-beta.48</a>  |
 
-* [项目介绍](docs/about/intro.md)
-* [常见问题](docs/about/faq.md)
+* [项目介绍](docs/history/intro.md)
+* [常见问题](docs/history/faq.md)
 
 ## Java
 

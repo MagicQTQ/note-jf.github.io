@@ -222,7 +222,7 @@ Nacos数据（如配置和服务）描述信息，如服务版本、权重、容
 
 #### 基本架构及概念
 
-![nacos_arch.jpg](./nacos-note.assets/1561217892717-1418fb9b-7faa-4324-87b9-f1740329f564.jpeg)
+![nacos_arch.jpg](./nacos-note.assets/true-1561217892717-1418fb9b-7faa-4324-87b9-f1740329f564.jpeg)
 
 #### 服务 (Service)
 
@@ -300,17 +300,17 @@ Nacos数据（如配置和服务）描述信息，如服务版本、权重、容
 
 Nacos 数据模型 Key 由三元组唯一确定, Namespace默认是空串，公共命名空间（public），分组默认是 DEFAULT_GROUP。
 
-![nacos_data_model](./nacos-note.assets/1561217857314-95ab332c-acfb-40b2-957a-aae26c2b5d71.jpeg)
+![nacos_data_model](./nacos-note.assets/true-1561217857314-95ab332c-acfb-40b2-957a-aae26c2b5d71.jpeg)
 
 ##### 服务领域模型
 
-![nacos_naming_data_model](./nacos-note.assets/1561217924697-ba504a35-129f-4fc6-b0df-1130b995375a.jpeg)
+![nacos_naming_data_model](./nacos-note.assets/true-1561217924697-ba504a35-129f-4fc6-b0df-1130b995375a.jpeg)
 
 ##### 配置领域模型
 
 围绕配置，主要有两个关联的实体，一个是配置变更历史，一个是服务标签（用于打标分类，方便索引），由 ID 关联。
 
-![nacos_config_er](./nacos-note.assets/1561217958896-4465757f-f588-4797-9c90-a76e604fabb4.jpeg)
+![nacos_config_er](./nacos-note.assets/true-1561217958896-4465757f-f588-4797-9c90-a76e604fabb4.jpeg)
 
 #### 类视图
 
@@ -318,7 +318,7 @@ Nacos 数据模型 Key 由三元组唯一确定, Namespace默认是空串，公�
 
 服务部分待续
 
-![nacos_sdk_class_relation](./nacos-note.assets/1561218077514-bfa98d03-88a1-43b9-b014-1491406e3db7.jpeg)
+![nacos_sdk_class_relation](./nacos-note.assets/true-1561218077514-bfa98d03-88a1-43b9-b014-1491406e3db7.jpeg)
 
 ##### 构建物、部署及启动模式
 
