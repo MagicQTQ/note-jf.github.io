@@ -1,4 +1,5 @@
 ---
+icon: edit
 title: 批量处理vagrant_vmware
 category: tools
 date: 2020-01-01

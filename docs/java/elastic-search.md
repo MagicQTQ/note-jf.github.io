@@ -1,4 +1,5 @@
 ---
+icon: edit
 title: ElasticSearch 全文检索
 category: ElasticSearch
 date: 2020-01-01

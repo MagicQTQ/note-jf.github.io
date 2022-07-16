@@ -31,7 +31,6 @@ export const javaJson =
             "java-exception",
             "23-design-patterns",
             "jvm",
-            "mq",
             "nacos-gateway-sentinel-sleuth",
             "nacos-note",
             "oss",

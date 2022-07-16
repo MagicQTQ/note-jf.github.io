@@ -1,4 +1,5 @@
 ---
+icon: edit
 title: nodejs配置
 category: tools
 date: 2020-01-01

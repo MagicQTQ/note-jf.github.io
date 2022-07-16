@@ -1,4 +1,5 @@
 ---
+icon: edit
 title: docker安装mysql-redis-nginx-nacos-mq-es
 category: tools
 date: 2020-01-01

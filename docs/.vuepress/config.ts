@@ -6,7 +6,7 @@ import {defineUserConfig} from "vuepress-vite";
 export default defineUserConfig({
     theme: themeConfig,
     // @ts-ignore
-    port: "8080",
+    port: "8888",
     base: "/",
     title: "note-jf",
     description: "「学习笔记！",

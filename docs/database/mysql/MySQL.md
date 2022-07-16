@@ -1,4 +1,5 @@
 ---
+icon: edit
 title: MySQL内容整理
 category: database
 date: 2022-05-12

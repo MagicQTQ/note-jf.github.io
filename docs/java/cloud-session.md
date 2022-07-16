@@ -1,4 +1,5 @@
 ---
+icon: edit
 title: 分布式session
 category: 
 - Java

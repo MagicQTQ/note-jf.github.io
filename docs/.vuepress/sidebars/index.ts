@@ -6,4 +6,5 @@ export * from "./tools";
 export * from "./java";
 export * from "./database";
 export * from "./web";
+export * from "./mq";
 export * from "./linux";

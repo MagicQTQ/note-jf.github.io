@@ -6,6 +6,7 @@ import {
     books,
     databaseJson,
     javaJson,
+    mqJson,
     linuxJson,
     openSources,
     toolsJson,
@@ -16,16 +17,17 @@ import {
  * 应该把更精确的路径放置在前边
  */
 export const sidebarConfig = sidebar({
-    "/open-source/": openSources,
-    "/architecture/": architectures,
-    "/books/": books,
+    "/about/": ["history"],
     // @ts-ignore
     "/about-the-author/": aboutTheAuthor,
-    "/about/": ["history"],
+    "/architecture/": architectures,
+    "/books/": books,
+    "/open-source/": openSources,
     "/": [
         javaJson,
         databaseJson,
         webJson,
+        mqJson,
         linuxJson,
         toolsJson
     ],

@@ -1,4 +1,5 @@
 ---
+icon: edit
 title: maven管理
 category: tools
 date: 2020-01-01

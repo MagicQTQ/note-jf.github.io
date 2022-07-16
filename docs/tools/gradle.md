@@ -1,4 +1,5 @@
 ---
+icon: edit
 title: gradle管理
 category: tools
 date: 2022-07-10

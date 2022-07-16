@@ -1,4 +1,5 @@
 ---
+icon: edit
 title: swagger
 category: Java
 date: 2020-01-01

@@ -1,4 +1,5 @@
 ---
+icon: edit
 title: 整合mybatis-plus
 category: mybatis
 date: 2020-01-01

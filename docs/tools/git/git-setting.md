@@ -1,4 +1,5 @@
 ---
+icon: edit
 title: git配置
 category: tools
 date: 2020-01-01

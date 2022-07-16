@@ -1,5 +1,5 @@
 /**
- * Java 侧边栏json数据
+ * Linux 侧边栏json数据
  */
 export const linuxJson =
     {
@@ -8,7 +8,7 @@ export const linuxJson =
         prefix: "linux/",
         collapsable: true,
         children: [
-
+            "basis",
         ],
     }
 

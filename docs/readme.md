@@ -10,7 +10,7 @@ actions:
     link: /home
     type: primary
   - text: 关于作者
-    link: /about-the-author
+    link: /about-the-author/about-the-author.md
     type: default
 ---
 

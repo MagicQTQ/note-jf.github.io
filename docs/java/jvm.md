@@ -1,4 +1,5 @@
 ---
+icon: edit
 title: jvm
 category: Java
 date: 2020-01-01

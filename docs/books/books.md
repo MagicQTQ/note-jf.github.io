@@ -1,4 +1,5 @@
 ---
+icon: edit
 title: 技术书籍精选
 category: 计算机书籍
 ---

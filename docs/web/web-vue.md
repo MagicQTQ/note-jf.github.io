@@ -1,4 +1,5 @@
 ---
+icon: edit
 title: vue
 category: web
 date: 2020-01-01
@@ -217,7 +218,8 @@ import router from "../router";
  */
 export function myMsgBox(title, message, type, viewPathName, showClose = false, closeOnClickModal = false, showCancelButton = false, closeOnPressEscape = false) {
   Vue.prototype.$msgbox({
-    title: title,
+    icon: edit
+title: title,
     message: message,
     showClose: showClose,
     closeOnClickModal: closeOnClickModal,

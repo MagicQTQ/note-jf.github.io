@@ -1,4 +1,5 @@
 ---
+icon: edit
 title: Java日志框架
 category: Java
 date: 2020-01-01

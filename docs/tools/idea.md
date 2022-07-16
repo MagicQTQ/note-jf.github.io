@@ -1,4 +1,5 @@
 ---
+icon: edit
 title: idea操作
 category: tools
 date: 2020-01-01

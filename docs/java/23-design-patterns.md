@@ -1,4 +1,5 @@
 ---
+icon: edit
 title: 23种设计模式整理
 category: 设计模式
 date: 2020-01-01
