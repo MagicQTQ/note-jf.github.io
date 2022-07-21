@@ -3,14 +3,14 @@ import {navbarConfig} from "./navbar";
 import {sidebarConfig} from "./sidebar";
 
 export default hopeTheme({
-    // logo: "/logo.png",
+    // logo: "/log.png",
     hostname: "https://note-jf.cn/",
     author: {
         name: "jf",
         // url: "https://note-jf.cn/article/",
         url: "/article",
     },
-    repo: "https://gitee.com/cps007/notemd",
+    repo: "https://gitee.com/cps007/note-jf",
     darkmode: "toggle",/*toggle,auto*/
     fullscreen: true,
     themeColor: {
@@ -32,7 +32,7 @@ export default hopeTheme({
         medias: {
             Zhihu: "https://www.zhihu.com/people/tops6",
             Github: "https://github.com/note-jf",
-            Gitee: "https://gitee.com/cps007/notemd",
+            Gitee: "https://gitee.com/cps007/note-jf",
         },
     },
     footer: '<a href="https://beian.miit.gov.cn/" target="_blank">黔ICP备2022xxxxxx号-1</a>',

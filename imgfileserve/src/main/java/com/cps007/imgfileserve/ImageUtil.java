@@ -28,7 +28,7 @@ import java.util.Objects;
 @Slf4j
 public class ImageUtil {
     /**
-     * 获取当前项目的目录：notemd
+     * 获取当前项目的目录：note-jf
      */
     private final static String PROJECT_PATH = System.getProperty("user.dir");
     private final static String PROJECT_NAME = "\\imgfileserve";
@@ -68,7 +68,7 @@ public class ImageUtil {
     /**
      * 遍历 file 目录
      *
-     * @param file 需要处理的目录[E:\java高级项目学习资料\notemd\imgfileserve\md]
+     * @param file 需要处理的目录[E:\java高级项目学习资料\note-jf\imgfileserve\md]
      * @throws Exception
      */
     public static void file(File file) throws Exception {
@@ -120,7 +120,7 @@ public class ImageUtil {
             // 根据当前png的上级目录名称来确定具体的md文件
             // mq-rocket.assets 的md文件为 mq-rocket.md
             String mdName = Image_ParentFileName.replace(PREFIX + SUFFIX_ASSETS, "") + PREFIX + SUFFIX_MD;
-            // 拼接 xxx\notemd\imgfileserve\md + \{mdName}
+            // 拼接 xxx\note-jf\imgfileserve\md + \{mdName}
             String path = NEW_IMG_FILE.getParentFile().getParent() + SPLICING + mdName;
             File mdFile = new File(path);
             if (mdFile.exists() && isMD(mdFile)) {
@@ -128,7 +128,7 @@ public class ImageUtil {
             }
 
         } else {
-            // 拼接 xxx\notemd\imgfileserve\java\java.md
+            // 拼接 xxx\note-jf\imgfileserve\java\java.md
             String path = NEW_IMG_FILE.getParentFile() + SPLICING + Image_ParentFileName + PREFIX + SUFFIX_MD;
             File mdFile = new File(path);
             if (mdFile.exists() && isMD(mdFile)) {
