@@ -12,7 +12,7 @@ icon: time
 
 添加面试宝典
 
-![img.png](img-2.png)
+![img.png](./img-2.png)
 
 ## [2.1.1]() (2022-07-16)
 
