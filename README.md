@@ -2,6 +2,9 @@ md笔记
 
 访问地址：<a href="https://note-jf.github.io/" target="_blank">note-jf.github.io</a>
 
+<a href="https://github.com/note-jf/note-jf.github.io" target="_blank">github发布仓库</a>
+<a href="https://gitee.com/cps007/note-jf/" target="_blank">gitee仓库</a>
+
 添加新文件步骤：<br/>
 1、newFile `./docs/java/demo.md`<br/>
 2、添加路由 `.vuepress/sidebar.ts` 或 `.vuepress/sidebars/java.ts`<br/>
