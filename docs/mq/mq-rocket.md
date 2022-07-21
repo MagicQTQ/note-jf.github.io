@@ -444,7 +444,9 @@ Broker 在启动时向 Nameserver 注册存储在该服务器上的路由信息�
 
 
 
-## 6、基本样例
+## 6、样例
+
+### 6.1、基本样例
 
 样例：
 
@@ -458,7 +460,7 @@ https://github.com/apache/rocketmq/blob/master/docs/cn/RocketMQ_Example.md
 * 使用RocketMQ发送三种类型的消息：同步消息、异步消息和单向消息。其中前两种消息是可靠的，因为会有发送是否成功的应答。
 * 使用RocketMQ来消费接收到的消息。
 
-### 6.1 加入依赖
+#### 6.1.1 加入依赖
 
 `maven`
 
@@ -474,9 +476,9 @@ https://github.com/apache/rocketmq/blob/master/docs/cn/RocketMQ_Example.md
 ```properties
 compile 'org.apache.rocketmq:rocketmq-client:4.9.4'
 ```
-### 6.2 消息发送
+#### 6.1.2 消息发送
 
-#### 1、Producer端发送同步消息
+##### 6.1.2.1、发送同步消息
 
 这种可靠性同步地发送方式使用的比较广泛，比如：重要的消息通知，短信通知。
 ```java
@@ -497,7 +499,7 @@ private static void sendSyncProducer() throws Exception {
         producer.shutdown();
     }
 ```
-#### 2、发送异步消息
+##### 6.1.2.2、发送异步消息
 
 异步消息通常用在对响应时间敏感的业务场景，即发送端不能容忍长时间地等待Broker的响应。
 
@@ -542,7 +544,7 @@ private static void sendAsyncProducer() throws Exception {
     }
 ```
 
-#### 3、单向发送消息
+##### 6.1.2.3、单向发送消息
 
 这种方式主要用在不特别关心发送结果的场景，例如日志发送。
 
@@ -569,7 +571,7 @@ private static void onewayProducer() throws Exception {
     }
 ```
 
-### 6.3 消费消息
+#### 6.1.3 消费消息 - PushConsumer
 
 ```java
 private static void consumer() throws MQClientException {
@@ -594,7 +596,7 @@ private static void consumer() throws MQClientException {
     }
 ```
 
-## 7 顺序消息样例
+### 6.2 顺序消息样例
 
 消息有序指的是可以按照消息的发送顺序来消费(FIFO)。RocketMQ可以严格的保证消息有序，可以分为分区有序或者全局有序。
 
@@ -602,7 +604,7 @@ private static void consumer() throws MQClientException {
 
 下面用订单进行分区有序的示例。一个订单的顺序流程是：创建、付款、推送、完成。订单号相同的消息会被先后发送到同一个队列中，消费时，同一个OrderId获取到的肯定是同一个队列。
 
-### 7.1 顺序消息生产
+#### 6.2.1 顺序消息生产
 
 ```java
 package cn.jf.system.example.order;
@@ -723,7 +725,7 @@ public class Producer {
 
 ```
 
-### 7.2 顺序消费消息
+#### 6.2.2 顺序消费消息
 
 ```java
 package cn.jf.system.example.order;
@@ -784,10 +786,9 @@ public class ConsumerInOrder {
 
 ```
 
-8 延时消息样例
-----------
+### 6.3 延时消息样例
 
-### 8.1 启动消费者等待传入订阅消息
+#### 6.3.1 启动消费者等待传入订阅消息
 
 ```java
 package cn.jf.system.example.delayedmessage;
@@ -833,7 +834,7 @@ public class ScheduledMessageConsumer {
 
 ```
 
-### 8.2 发送延时消息
+#### 6.3.2 发送延时消息
 
 ```java
 package cn.jf.system.example.delayedmessage;
@@ -878,14 +879,11 @@ public class ScheduledMessageProducer {
 
 ```
 
-### 8.3 验证
+#### 6.3.3 延时消息的使用场景
 
-您将会看到消息的消费比存储时间晚10秒。
-
-### 8.4 延时消息的使用场景
 比如电商里，提交了一个订单就可以发送一个延时消息，1h后去检查这个订单的状态，如果还是未付款就取消订单释放库存。
 
-### 8.5 延时消息的使用限制
+#### 6.3.4 延时消息的使用限制
 
 ```java
 // org/apache/rocketmq/store/config/MessageStoreConfig.java
@@ -895,13 +893,11 @@ private String messageDelayLevel = "1s 5s 10s 30s 1m 2m 3m 4m 5m 6m 7m 8m 9m 10m
 现在RocketMq并不支持任意时间的延时，需要设置几个固定的延时等级，从1s到2h分别对应着等级1到18
 消息消费失败会进入延时消息队列，消息发送时间与设置的延时等级和重试次数有关，详见代码`SendMessageProcessor.java`
 
-
-9 批量消息样例
-----------
+### 6.4 批量消息样例
 
 批量发送消息能显著提高传递小消息的性能。限制是这些批量消息应该有相同的topic，相同的waitStoreMsgOK，而且不能是延时消息。此外，这一批消息的总大小不应超过4MB。
 
-### 9.1 发送批量消息
+#### 6.4.1 发送批量消息
 
 如果您每次只发送不超过4MB的消息，则很容易使用批处理，样例如下：
 
@@ -977,7 +973,7 @@ public class BulkProducer {
 
 ```
 
-### 9.2 消息列表分割
+#### 6.4.2 消息列表分割
 
 复杂度只有当你发送大批量时才会增长，你可能不确定它是否超过了大小限制（4MB）。这时候你最好把你的消息列表分割一下：
 
@@ -1055,8 +1051,7 @@ public class ListSplitter implements Iterator<List<Message>> {
 }
 ```
 
-10 过滤消息样例
-----------
+### 6.5 过滤消息样例
 
 在大多数情况下，TAG是一个简单而有用的设计，其可以来选择您想要的消息。例如：
 
@@ -1082,7 +1077,7 @@ consumer.subscribe("TOPIC", "TAGA || TAGB || TAGC");
 | c = true |
 ------------
 ```
-### 10.1 基本语法
+#### 6.5.1 基本语法
 
 RocketMQ只定义了一些基本语法来支持这个特性。你也可以很容易地扩展它。
 
@@ -1103,9 +1098,9 @@ RocketMQ只定义了一些基本语法来支持这个特性。你也可以很容
 public void subscribe(finalString topic, final MessageSelector messageSelector)
 ```
 
-### 10.2 使用样例
+#### 6.5.2 使用样例
 
-#### 1、生产者样例
+##### 6.5.2.1、生产者样例
 
 发送消息时，你能通过`putUserProperty`来设置消息的属性
 
@@ -1119,8 +1114,7 @@ import org.apache.rocketmq.common.message.Message;
 import org.apache.rocketmq.remoting.common.RemotingHelper;
 
 /**
- * 启动消费者等待传入订阅消息
- *
+ *  
  * @author jf
  * @version 1.0
  * @date 2022/07/14 13:58
@@ -1143,7 +1137,7 @@ public class FillterMessageProducer {
 
 ```
 
-#### 2、消费者样例
+##### 6.5.2.2、消费者样例
 
 用MessageSelector.bySql来使用sql筛选消息
 
@@ -1191,8 +1185,7 @@ public class FillterMessageConsumer {
 }
 ```
 
-11 消息事务样例
-----------
+### 6.6 消息事务样例
 
 事务消息共有三种状态，提交状态、回滚状态、中间状态：
 
@@ -1200,9 +1193,9 @@ public class FillterMessageConsumer {
 - TransactionStatus.RollbackTransaction: 回滚事务，它代表该消息将被删除，不允许被消费。
 - TransactionStatus.Unknown: 中间状态，它代表需要检查消息队列来确定状态。
 
-### 11.1 发送事务消息样例
+#### 6.6.1 发送事务消息样例
 
-#### 1、创建事务性生产者
+###### 6.6.1.1、创建事务性生产者
 
 使用 `TransactionMQProducer`类创建生产者，并指定唯一的 `ProducerGroup`，就可以设置自定义线程池来处理这些检查请求。执行本地事务后、需要根据执行结果对消息队列进行回复。回传的事务状态在请参考前一节。
 
@@ -1268,7 +1261,7 @@ public class TransactionMessageProducer {
 }
 
 ```
-#### 2、实现事务的监听接口
+###### 6.6.1.2、实现事务的监听接口
 
 当发送半消息成功时，我们使用 `executeLocalTransaction` 方法来执行本地事务。它返回前一节中提到的三个事务状态之一。`checkLocalTransaction` 方法用于检查本地事务状态，并回应消息队列的检查请求。它也是返回前一节中提到的三个事务状态之一。
 
@@ -1321,7 +1314,7 @@ public class TransactionListenerImpl implements TransactionListener {
 }
 ```
 
-### 11.2 事务消息使用上的限制
+#### 6.2.2 事务消息使用上的限制
 
 1. 事务消息不支持延时消息和批量消息。
 2. 为了避免单个消息被检查太多次而导致半队列消息累积，我们默认将单个消息的检查次数限制为 15 次，但是用户可以通过 Broker 配置文件的 `transactionCheckMax`参数来修改此限制。如果已经检查某条消息超过 N 次的话（ N = `transactionCheckMax` ） 则 Broker 将丢弃此消息，并在默认情况下同时打印错误日志。用户可以通过重写 `AbstractTransactionalMessageCheckListener` 类来修改这个行为。
@@ -1330,12 +1323,11 @@ public class TransactionListenerImpl implements TransactionListener {
 5. 提交给用户的目标主题消息可能会失败，目前这依日志的记录而定。它的高可用性通过 RocketMQ 本身的高可用性机制来保证，如果希望确保事务消息不丢失、并且事务完整性得到保证，建议使用同步的双重写入机制。
 6. 事务消息的生产者 ID 不能与其他类型消息的生产者 ID 共享。与其他类型的消息不同，事务消息允许反向查询、MQ服务器能通过它们的生产者 ID 查询到消费者。
 
-12 Logappender样例
------------------
+### 6.7 Logappender 样例
 
 RocketMQ日志提供log4j、log4j2和logback日志框架作为业务应用，下面是配置样例
 
-### 12.1 log4j样例
+#### 6.7.1 log4j样例
 
 按下面样例使用log4j属性配置
 ```properties
@@ -1364,7 +1356,7 @@ log4j.appender.mq.layout.ConversionPattern=%d{yyyy-MM-dd HH:mm:ss} %-4r [%t] (%F
   <appender-ref ref="mqAppender1"/>
 </appender>
 ```
-### 12.2 log4j2样例
+#### 6.7.2 log4j2样例
 
 用log4j2时，配置如下，如果想要非阻塞，只需要使用异步添加引用即可
 ```xml
@@ -1373,7 +1365,8 @@ log4j.appender.mq.layout.ConversionPattern=%d{yyyy-MM-dd HH:mm:ss} %-4r [%t] (%F
   <PatternLayout pattern="%d [%p] hahahah %c %m%n"/>
 </RocketMQ>
 ```
-### 12.3 logback样例
+#### 6.7.3 logback样例
+
 ```xml
 <appender name="mqAppender1"class="org.apache.rocketmq.logappender.logback.RocketmqLogbackAppender">
   <tag>yourTag</tag>
@@ -1393,12 +1386,11 @@ log4j.appender.mq.layout.ConversionPattern=%d{yyyy-MM-dd HH:mm:ss} %-4r [%t] (%F
 </appender>
 ```
 
-13 OpenMessaging样例
----------------
+### 6.8 OpenMessaging 样例
 
  [OpenMessaging](https://www.google.com/url?q=http://openmessaging.cloud/&sa=D&ust=1546524111089000)旨在建立消息和流处理规范，以为金融、电子商务、物联网和大数据领域提供通用框架及工业级指导方案。在分布式异构环境中，设计原则是面向云、简单、灵活和独立于语言。符合这些规范将帮助企业方便的开发跨平台和操作系统的异构消息传递应用程序。提供了openmessaging-api 0.3.0-alpha的部分实现，下面的示例演示如何基于OpenMessaging访问RocketMQ。
 
-### 13.1 OMSProducer样例
+#### 6.8.1 OMSProducer样例
 
 下面的示例演示如何在同步、异步或单向传输中向RocketMQ代理发送消息。
 
@@ -1459,7 +1451,7 @@ public class SimpleProducer {
 }
 ```
 
-### 13.2 OMSPullConsumer
+#### 6.8.2 OMSPullConsumer
 
 用OMS PullConsumer 来从指定的队列中拉取消息
 
@@ -1512,7 +1504,7 @@ public class SimplePullConsumer {
 }
 ```
 
-### 13.3 OMSPushConsumer
+#### 6.8.3 OMSPushConsumer
 
 以下示范如何将 OMS PushConsumer 添加到指定的队列，并通过 MessageListener 消费这些消息。
 
@@ -1552,3 +1544,525 @@ public class SimplePushConsumer {
 }
 ```
 
+## 7、整合 springboot
+
+https://github.com/apache/rocketmq-spring
+
+https://gitee.com/MFork/rocketmq-spring
+
+### 7.1 依赖
+
+```xml
+<!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter -->
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter</artifactId>
+    <version>2.6.8</version>
+</dependency>
+```
+
+```xml
+	<!-- RocketMQ -->
+        <!-- https://mvnrepository.com/artifact/org.apache.rocketmq/rocketmq-spring-boot-starter -->
+        <dependency>
+            <groupId>org.apache.rocketmq</groupId>
+            <artifactId>rocketmq-spring-boot-starter</artifactId>
+            <version>2.2.2</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.apache.rocketmq</groupId>
+                    <artifactId>rocketmq-client</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.apache.rocketmq</groupId>
+                    <artifactId>rocketmq-acl</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.rocketmq</groupId>
+            <artifactId>rocketmq-client</artifactId>
+            <version>4.9.4</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.rocketmq</groupId>
+            <artifactId>rocketmq-acl</artifactId>
+            <version>4.9.4</version>
+        </dependency>
+```
+
+rocketmq-spring-boot-starter:2.2.2 包含的 rocketmq-client & rocketmq-client 版本为 4.9.3
+
+
+
+### 7.2 配置
+
+```java
+package cn.jf.system.config;
+
+import cn.jf.system.constant.RocketMQConstants;
+import lombok.extern.slf4j.Slf4j;
+import org.apache.rocketmq.client.producer.DefaultMQProducer;
+import org.apache.rocketmq.spring.core.RocketMQTemplate;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+
+/**
+ * RocketMQ 配置类
+ *
+ * @author jf
+ * @version 1.0
+ * @date 2022/07/05 15:47
+ */
+@Slf4j
+@Configuration
+public class MyRocketMQConfig {
+
+    @Bean(name = "rocketMQTemplate")
+    public RocketMQTemplate rocketMQTemplate() {
+        return new RocketMQTemplate();
+    }
+
+    @Bean(name = "defaultMQProducer", initMethod = "start", destroyMethod = "shutdown")
+    public DefaultMQProducer defaultMQProducer() {
+        RocketMQTemplate rocketMQTemplate = rocketMQTemplate();
+        DefaultMQProducer defaultMQProducer = rocketMQTemplate.getProducer() == null
+                ? new DefaultMQProducer(RocketMQConstants.PRODUCER_GROUP_TEST)
+                : rocketMQTemplate.getProducer();
+        rocketMQTemplate.setProducer(defaultMQProducer);
+        return defaultMQProducer;
+    }
+}
+
+```
+
+### 7.3 消息生产者工具
+
+```java
+package cn.jf.system.example.rocketmq.producer;
+
+import cn.jf.common.core.exception.GlobalException;
+import cn.jf.system.constant.RocketMQConstants;
+import lombok.extern.slf4j.Slf4j;
+import org.apache.rocketmq.client.exception.MQBrokerException;
+import org.apache.rocketmq.client.exception.MQClientException;
+import org.apache.rocketmq.client.producer.DefaultMQProducer;
+import org.apache.rocketmq.client.producer.SendCallback;
+import org.apache.rocketmq.client.producer.SendResult;
+import org.apache.rocketmq.common.message.Message;
+import org.apache.rocketmq.remoting.exception.RemotingException;
+import org.apache.rocketmq.spring.core.RocketMQTemplate;
+import org.springframework.messaging.support.MessageBuilder;
+import org.springframework.stereotype.Component;
+
+import javax.annotation.Resource;
+
+/**
+ * 发送 [单向、同步、异步] 消息
+ *
+ * @author jf
+ * @version 1.0
+ * @date 2022/07/14 11:29
+ */
+@Component
+@Slf4j
+public class SendProducer {
+    @Resource
+    private RocketMQTemplate rocketMQTemplate;
+
+    public void sendOnewayProducer(String messageBody) {
+        sendOnewayProducer(RocketMQConstants.TOPIC_EXAMPLE, messageBody);
+    }
+
+    public void sendOnewayProducer(String topic, String messageBody) {
+        sendOnewayProducer(topic, "", messageBody);
+    }
+
+    public void sendOnewayProducer(String topic, String tags, String messageBody) {
+        sendOnewayProducer(topic, tags, "", messageBody);
+    }
+
+    /**
+     * 单向发送消息，没有任何返回结果
+     *
+     * @param topic       主题
+     * @param tags        标签
+     * @param keys        消息key值，建议设置全局唯一，比如订单号，用户id这种，可不传，不影响消息投递
+     * @param messageBody json消息
+     */
+    public void sendOnewayProducer(String topic, String tags, String keys, String messageBody) {
+        this.rocketMQTemplate.sendOneWay(topic + ":" + tags, messageBody);
+    }
+
+    public void sendDelayedProducer(String messageBody) {
+        sendDelayedProducer(RocketMQConstants.TOPIC_DELAY, "", "", messageBody, 3);
+    }
+
+    public void sendDelayedProducer(String messageBody, int delayTimeLevel) {
+        sendDelayedProducer(RocketMQConstants.TOPIC_DELAY, "", "", messageBody, delayTimeLevel);
+    }
+
+    public void sendDelayedProducer(String topic, String messageBody) {
+        sendDelayedProducer(topic, "", "", messageBody, 3);
+    }
+
+    public void sendDelayedProducer(String topic, String messageBody, int delayTimeLevel) {
+        sendDelayedProducer(topic, "", "", messageBody, delayTimeLevel);
+    }
+
+    public void sendDelayedProducer(String topic, String tags, String messageBody) {
+        sendDelayedProducer(topic, tags, "", messageBody, 3);
+    }
+
+    public void sendDelayedProducer(String topic, String tags, String messageBody, int delayTimeLevel) {
+        sendDelayedProducer(topic, tags, "", messageBody, delayTimeLevel);
+    }
+
+    /**
+     * 异步发送延迟消息，测试默认以 3（10s） 为例。
+     * <p>
+     * messageDelayLevel = "1s 5s 10s 30s 1m 2m 3m 4m 5m 6m 7m 8m 9m 10m 20m 30m 1h 2h";<br/>
+     *
+     * @param topic          主题
+     * @param tags           标签
+     * @param keys           消息key值，建议设置全局唯一，比如订单号，用户id这种，可不传，不影响消息投递
+     * @param messageBody    json消息
+     * @param delayTimeLevel 设置延时等级3,从1s到2h分别对应着等级1到18
+     */
+    public void sendDelayedProducer(String topic, String tags, String keys, String messageBody, int delayTimeLevel) {
+        this.rocketMQTemplate.asyncSend(topic + ":" + tags,
+                MessageBuilder.withPayload(messageBody).build(), new SendCallback() {
+                    @Override
+                    public void onSuccess(SendResult sendResult) {
+                        log.info("-- 发送[延迟]消息成功：{}", sendResult.getMsgId());
+                    }
+
+                    @Override
+                    public void onException(Throwable e) {
+                        log.error("-- 发送[延迟]消息失败：{}", e.getMessage());
+                        throw new GlobalException("发送[延迟]消息失败");
+                    }
+                }, 1000, delayTimeLevel);
+    }
+
+    public void sendAsyncProducer(String messageBody) {
+        sendAsyncProducer(RocketMQConstants.TOPIC_EXAMPLE, messageBody);
+    }
+
+    public void sendAsyncProducer(String topic, String messageBody) {
+        sendAsyncProducer(topic, "", messageBody);
+    }
+
+    public void sendAsyncProducer(String topic, String tags, String messageBody) {
+        sendAsyncProducer(topic, tags, "", messageBody);
+    }
+
+    /**
+     * 发送异步消息
+     *
+     * @param topic       主题
+     * @param tags        标签
+     * @param keys        消息key值，建议设置全局唯一，比如订单号，用户id这种，可不传，不影响消息投递
+     * @param messageBody 消息
+     */
+    public void sendAsyncProducer(String topic, String tags, String keys, String messageBody) {
+        //设置发送异步失败时的重试次数
+        this.getProducer().setRetryTimesWhenSendAsyncFailed(RocketMQConstants.RETRY_TIMES_WHEN_SEND_ASYNC_FAILED);
+        // 创建消息，并指定Topic，Tag和消息体
+        Message msg = new Message(topic, tags, keys, messageBody.getBytes());
+        // SendCallback 接收异步返回结果的回调
+        try {
+            this.getProducer().send(msg, new SendCallback() {
+                @Override
+                public void onSuccess(SendResult sendResult) {
+                    log.info("-- 发送[异步]消息成功：{}", sendResult.getMsgId());
+                }
+
+                @Override
+                public void onException(Throwable e) {
+                    log.error("-- 发送[异步]消息失败：{}", e.getMessage());
+                    throw new GlobalException("发送[异步]消息失败");
+                }
+            });
+        } catch (MQClientException | RemotingException | InterruptedException e) {
+            log.error("-- 发送[异步]消息失败:{}", e.getMessage());
+            throw new GlobalException("发送[异步]消息失败");
+        }
+    }
+
+
+    public SendResult sendSyncProducer(String messageBody) {
+        return sendSyncProducer(RocketMQConstants.TOPIC_EXAMPLE, messageBody);
+    }
+
+    public SendResult sendSyncProducer(String topic, String messageBody) {
+        return sendSyncProducer(topic, "", messageBody);
+    }
+
+    public SendResult sendSyncProducer(String topic, String tags, String messageBody) {
+        return sendSyncProducer(topic, tags, "", messageBody);
+    }
+
+    /**
+     * 发送同步消息
+     *
+     * @param topic       主题
+     * @param tags        标签
+     * @param keys        消息key值，建议设置全局唯一，比如订单号，用户id这种，可不传，不影响消息投递
+     * @param messageBody 消息
+     * @return
+     */
+    public SendResult sendSyncProducer(String topic, String tags, String keys, String messageBody) {
+        // 创建消息，并指定Topic，Tag和消息体 (RemotingHelper.DEFAULT_CHARSET)
+        Message msg = new Message(topic, tags, keys, messageBody.getBytes());
+        // 发送消息到Broker
+        SendResult sendResult = null;
+        try {
+            sendResult = this.getProducer().send(msg);
+        } catch (MQClientException | RemotingException | MQBrokerException | InterruptedException e) {
+            log.error("-- 发送[同步]消息失败:{}", e.getMessage());
+            throw new GlobalException("发送[同步]消息失败");
+        }
+        log.info("-- 发送[同步]消息成功: {}", sendResult.getMsgId());
+        return sendResult;
+    }
+
+    public DefaultMQProducer getProducer() {
+        DefaultMQProducer producer = rocketMQTemplate.getProducer();
+        if (producer == null) {
+            System.out.println("---- new DefaultMQProducer()");
+            rocketMQTemplate.setProducer(new DefaultMQProducer(RocketMQConstants.PRODUCER_GROUP_TEST));
+            return rocketMQTemplate.getProducer();
+        }
+        return producer;
+    }
+
+    /**
+     * 一般在应用上下文，使用上下文监听器，进行关闭
+     */
+    public void destroy() {
+        this.rocketMQTemplate.destroy();
+    }
+
+    public void shutdown() {
+        this.getProducer().shutdown();
+    }
+
+}
+
+```
+
+### 7.4 监听普通主题消息
+
+```java
+package cn.jf.system.example.rocketmq.listener;
+
+import cn.jf.system.constant.RocketMQConstants;
+import cn.jf.system.example.rocketmq.order.OrderStep;
+import lombok.extern.slf4j.Slf4j;
+import org.apache.rocketmq.client.consumer.listener.ConsumeOrderlyContext;
+import org.apache.rocketmq.client.consumer.listener.ConsumeOrderlyStatus;
+import org.apache.rocketmq.common.message.MessageExt;
+import org.apache.rocketmq.spring.annotation.ConsumeMode;
+import org.apache.rocketmq.spring.annotation.MessageModel;
+import org.apache.rocketmq.spring.annotation.RocketMQMessageListener;
+import org.apache.rocketmq.spring.core.RocketMQListener;
+import org.springframework.stereotype.Component;
+
+import java.util.List;
+
+/**
+ * 监听普通主题消息
+ * MessageListenerOrderly 消息监听器有序
+ *
+ * @author jf
+ * @version 1.0
+ * @date 2022/07/12 18:19
+ */
+@Slf4j
+@Component
+@RocketMQMessageListener(topic = RocketMQConstants.TOPIC_EXAMPLE,
+        consumerGroup = RocketMQConstants.CONSUMER_GROUP_EXAMPLE,
+        consumeMode = ConsumeMode.ORDERLY,
+        messageModel = MessageModel.CLUSTERING
+)
+public class MqMessageListener implements RocketMQListener<List<OrderStep>> {
+
+    public ConsumeOrderlyStatus consumeMessage(List<MessageExt> msgs, ConsumeOrderlyContext context) {
+        context.setAutoCommit(true);
+        for (MessageExt msg : msgs) {
+            log.info("===> 接收到普通主题消息 consumeThread= {}, queueId= {}, content: {}", Thread.currentThread().getName(), msg.getQueueId(), new String(msg.getBody()));
+        }
+        return ConsumeOrderlyStatus.SUCCESS;
+    }
+
+    @Override
+    public void onMessage(List<OrderStep> message) {
+        log.info("===> 接收到普通主题消息 message: {}", message);
+    }
+}
+
+```
+
+### 7.5 监听延时、定时主题消息
+
+```java
+package cn.jf.system.example.rocketmq.listener;
+
+import cn.jf.system.constant.RocketMQConstants;
+import lombok.extern.slf4j.Slf4j;
+import org.apache.rocketmq.client.consumer.listener.ConsumeConcurrentlyContext;
+import org.apache.rocketmq.client.consumer.listener.ConsumeConcurrentlyStatus;
+import org.apache.rocketmq.common.message.MessageExt;
+import org.apache.rocketmq.spring.annotation.ConsumeMode;
+import org.apache.rocketmq.spring.annotation.MessageModel;
+import org.apache.rocketmq.spring.annotation.RocketMQMessageListener;
+import org.apache.rocketmq.spring.core.RocketMQListener;
+import org.springframework.stereotype.Component;
+
+import java.util.List;
+
+/**
+ * 监听延时、定时主题消息
+ * MessageListenerConcurrently 并发消息监听器
+ *
+ * @author jf
+ * @version 1.0
+ * @date 2022/07/05 19:32
+ */
+@Slf4j
+@Component
+@RocketMQMessageListener(topic = RocketMQConstants.TOPIC_DELAY,
+        consumerGroup = RocketMQConstants.CONSUMER_GROUP_EXAMPLE_DELAY,
+        consumeMode = ConsumeMode.CONCURRENTLY,
+        messageModel = MessageModel.CLUSTERING
+)
+public class MqTimeMessageListener implements RocketMQListener<String> {
+//public class MqTimeMessageListener implements MessageListenerConcurrently   {
+
+    public ConsumeConcurrentlyStatus consumeMessage(List<MessageExt> msgs, ConsumeConcurrentlyContext context) {
+        for (MessageExt msg : msgs) {
+            log.info("===> 接收到超时主题 queueId= {}, content: {}", msg.getQueueId(), new String(msg.getBody()));
+        }
+        return ConsumeConcurrentlyStatus.CONSUME_SUCCESS;
+    }
+
+    @Override
+    public void onMessage(String message) {
+        log.info("===> 接收到超时主题 message: {}", message);
+    }
+}
+
+```
+
+### 7.6 测试
+
+```java
+package cn.jf.system.example.rocketmq.controller;
+
+import cn.jf.common.core.utils.R;
+import cn.jf.common.core.utils.time.DateUtils;
+import cn.jf.common.core.web.controller.BaseController;
+import cn.jf.system.example.rocketmq.order.OrderStep;
+import cn.jf.system.example.rocketmq.producer.SendProducer;
+import com.alibaba.fastjson2.JSON;
+import lombok.extern.slf4j.Slf4j;
+import org.apache.rocketmq.client.producer.SendResult;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import javax.annotation.Resource;
+import java.util.ArrayList;
+import java.util.List;
+
+
+/**
+ * 使用封装类示例
+ *
+ * @author jf
+ * @version 1.0
+ * @date 2022/07/05 15:20
+ */
+@RestController
+@RequestMapping("/mq2")
+@Slf4j
+public class RocketMqDemo2 extends BaseController {
+
+    @Resource
+    private SendProducer sendProducer;
+
+    /**
+     * 单向发送消息-测试
+     */
+    @GetMapping("/sendOnewayProducer")
+    public R sendOnewayProducer() {
+        List<OrderStep> messages = new ArrayList<>();
+        for (int i = 120; i < 350; i++) {
+            OrderStep orderStep = new OrderStep();
+            orderStep.setOrderId(i);
+            orderStep.setDesc("单向发送消息-测试");
+            orderStep.setTime(DateUtils.getTime());
+            messages.add(orderStep);
+        }
+        sendProducer.sendOnewayProducer(JSON.toJSONString(messages));
+        return success("单向发送消息-测试");
+    }
+
+    /**
+     * 发送延迟消息-测试
+     */
+    @GetMapping("/sendDelayedProducer")
+    public R sendDelayedProducer() {
+        List<OrderStep> messages = new ArrayList<>();
+        for (int i = 400; i < 600; i++) {
+            OrderStep orderStep = new OrderStep();
+            orderStep.setOrderId(i);
+            orderStep.setDesc("发送延迟消息-测试");
+            orderStep.setTime(DateUtils.getTime());
+            messages.add(orderStep);
+        }
+        sendProducer.sendDelayedProducer(JSON.toJSONString(messages));
+        return success();
+    }
+
+    /**
+     * 发送异步消息-测试
+     */
+    @GetMapping("/sendAsyncProducer")
+    public R sendAsyncProducer() {
+        List<OrderStep> messages = new ArrayList<>();
+        for (int i = 700; i < 800; i++) {
+            OrderStep orderStep = new OrderStep();
+            orderStep.setOrderId(i);
+            orderStep.setDesc("发送异步消息-测试");
+            orderStep.setTime(DateUtils.getTime());
+            messages.add(orderStep);
+        }
+        sendProducer.sendAsyncProducer(JSON.toJSONString(messages));
+        return success("发送异步消息-测试");
+    }
+
+    /**
+     * 发送同步消息-测试
+     */
+    @GetMapping("/sendSyncProducer")
+    public R sendSyncProducer() {
+        List<OrderStep> messages = new ArrayList<>();
+        for (int i = 900; i < 1000; i++) {
+            OrderStep orderStep = new OrderStep();
+            orderStep.setOrderId(i);
+            orderStep.setDesc("发送同步消息-测试");
+            orderStep.setTime(DateUtils.getTime());
+            messages.add(orderStep);
+        }
+        SendResult sendResult = sendProducer.sendSyncProducer(JSON.toJSONString(messages));
+        return success().put("data", sendResult);
+    }
+
+}
+```
+
+http://127.0.0.1:9210/jf-system-dev/mq2/sendOnewayProducer
+
+http://127.0.0.1:9210/jf-system-dev/mq2/sendSyncProducer

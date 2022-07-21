@@ -27,7 +27,7 @@ export default hopeTheme({
     sidebar: sidebarConfig,
     pageInfo: ["Author", "Category", "Tag", "Date", "Original", "Word", "PageView", "ReadingTime"],
     blog: {
-        intro: "/about-the-author",
+        intro: "/about-the-author/about-the-author.md",
         sidebarDisplay: "mobile",
         medias: {
             Zhihu: "https://www.zhihu.com/people/tops6",
@@ -39,8 +39,7 @@ export default hopeTheme({
     displayFooter: true,
     plugins: {
         mdEnhance: {
-            //增强语法
-            enableAll: true,
+            mark: true,
             // @ts-ignore
             include: true,
             //流程图

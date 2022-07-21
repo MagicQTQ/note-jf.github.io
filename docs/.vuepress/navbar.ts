@@ -2,6 +2,7 @@ import {navbar} from "vuepress-theme-hope";
 
 export const navbarConfig = navbar([
     {text: "笔记", icon: "edit", link: "/home.md"},
+    {text: "面试宝典", icon: "book", link: "/all/interview.md"},
     {text: "架构专区", icon: "edit", link: "/architecture/architecture.md"},
     {text: "开源专区", icon: "github", link: "/open-source/open-source.md"},
     {text: "技术书籍", icon: "book", link: "/books/books.md"},

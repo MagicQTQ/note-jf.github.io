@@ -1,6 +1,7 @@
 // @ts-ignore
 import {sidebar} from "vuepress-theme-hope";
 import {
+    allSources,
     aboutTheAuthor,
     architectures,
     books,
@@ -23,6 +24,7 @@ export const sidebarConfig = sidebar({
     "/architecture/": architectures,
     "/books/": books,
     "/open-source/": openSources,
+    "/all/": allSources,
     "/": [
         javaJson,
         databaseJson,
