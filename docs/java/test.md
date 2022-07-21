@@ -31,29 +31,32 @@ console.log('你好，VuePress！')
 > 
 > 哪 ==些特== 哪`些特哪些特哪些`特哪些特
 
+重中之重`走着走着`自作主张自增
 
 1. 简单易学；
 2. 面向对象（*封装*，*继承*，**多态**）；
 3. 平台无关性（ ==Java== 虚拟机实现平台无关性）；
 
-| 参数 | 说明 |
-| ---- | ---- |
-| name | *xxx*22 |
-| age | `22` |
-| xx | xx **xx** xx实现==平台无关==性x<br/>\<code>sdfsdf\</code> |
-| xx | xx **xx** xx实现平台无关性x |
-| xx | xx **xx** xx实现平台无关性x |
+- aaa
+- 手动阀手动阀
+- - 了了离开了
+
+| 参数   | 说明                                               |
+|------|--------------------------------------------------|
+| name | *xxx*22                                          |
+| age  | `22`                                             |
+| xx   | xx **xx** xx实现==平台无关==性x<br/><code>sdfsdf</code> |
+| xx   | xx **xx** xx实现平台无关性x                             |
+| xx   | xx **xx** xx实现平台无关性x                             |
 
 ![true-image-20220707221104478](./test.assets/true-image-20220707221104478.png)
 
 ![true-image-20210601002120191](./spring-cloud-alibaba-note-basis.assets/true-image-20210601002120191.png)
 
-![](https://my-blog-to-use.oss-cn-beijing.aliyuncs.com/2019-7/container.png)
-
 ```yaml
 spring:
   profiles:
-    # prod、 dev、test
+    # prod、 `dev`、test
     active: dev
   cloud:
     nacos:
