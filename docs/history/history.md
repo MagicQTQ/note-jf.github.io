@@ -8,6 +8,12 @@ icon: time
 
 在线访问地址：<a href="https://note-jf.github.io/" target="_blank">note-jf.github.io</a>
 
+## [2.1.2]() (2022-07-21)
+
+添加面试宝典
+
+![img.png](img-2.png)
+
 ## [2.1.1]() (2022-07-16)
 
 发布 2.1.1 版本
