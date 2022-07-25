@@ -40,6 +40,7 @@ export default hopeTheme({
     plugins: {
         mdEnhance: {
             mark: true,
+            mermaid: true,
             // @ts-ignore
             include: true,
             //流程图
