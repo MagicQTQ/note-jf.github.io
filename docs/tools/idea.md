@@ -1,8 +1,8 @@
 ---
 icon: edit
-title: idea操作
+title: idea
 category: tools
-date: 2020-01-01
+date: 2020-05-12
 tag:
 - idea
 ---

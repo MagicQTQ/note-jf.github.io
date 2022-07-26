@@ -1,7 +1,7 @@
 ---
 icon: edit
 title: RabbitMQ
-category: MQ
+category: MQ中间件
 date: 2022-06-06
 tag:
 - RabbitMQ
@@ -16,7 +16,8 @@ https://www.rabbitmq.com/
 ### 1.1、简介
 
 2.消息服务中两个重要概念:
-		**消息代理(message broker)和目的地(destination)**：当消息发送者发送消息以后，将由消息代理接管，消息代理保证消息传递到指定目的地。
+
+**消息代理(message broker)和目的地(destination)**：当消息发送者发送消息以后，将由消息代理接管，消息代理保证消息传递到指定目的地。
 
 3.消息队列主要有两种形式的目的地: 
 
@@ -25,20 +26,24 @@ https://www.rabbitmq.com/
 **主题(topic)** : 发布(publish)  / 订阅(subscribe) 消息通信
 
 4.点对点式
-			：消息发送者发送消息，消息代理将其放入1个队列中，消息接收者从队列中获取消息内容,消息读取后被移出队列。
 
-​	：消息只有唯一的发送者和接受者,但并不是说只能有一个接收者
+：消息发送者发送消息，消息代理将其放入1个队列中，消息接收者从队列中获取消息内容,消息读取后被移出队列。
+
+：消息只有唯一的发送者和接受者,但并不是说只能有一个接收者
 
 5.发布订阅式
-			：发送者(发布者)发送消息到主题，多个接收者(订阅者)监听(订阅)这个主题，那么就会在消息到达时同时收到消息
+
+：发送者(发布者)发送消息到主题，多个接收者(订阅者)监听(订阅)这个主题，那么就会在消息到达时同时收到消息
 
 6.JMS (Java Message Service) JAVA消息服务
-			：基于JVM消息代理的规范。ActiveMQ、 HornetMQ是JMS实现
+
+：基于JVM消息代理的规范。ActiveMQ、 HornetMQ是JMS实现
 
 7.AMQP (Advanced Message Queuing Protocol)
-			：高级消息队列协议，也是一个消息代理的规范，兼容JMS
 
-​	：RabbitMQ是AMQP的实现
+：高级消息队列协议，也是一个消息代理的规范，兼容JMS
+
+：RabbitMQ是AMQP的实现
 
 8.Spring 支持
 

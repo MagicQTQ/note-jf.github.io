@@ -11,6 +11,7 @@ export const toolsJson =
             "maven",
             "gradle",
             "idea",
+            "eclipse",
             "nodejs-setting",
             "vagrant-vmware",
             {

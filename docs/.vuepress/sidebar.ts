@@ -7,7 +7,7 @@ import {
     books,
     databaseJson,
     javaJson,
-    mqJson,
+    middlewareJson,
     linuxJson,
     openSources,
     toolsJson,
@@ -29,7 +29,7 @@ export const sidebarConfig = sidebar({
         javaJson,
         databaseJson,
         webJson,
-        mqJson,
+        middlewareJson,
         linuxJson,
         toolsJson
     ],
