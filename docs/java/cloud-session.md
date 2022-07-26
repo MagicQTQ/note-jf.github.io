@@ -14,17 +14,17 @@ tag:
 
 ### 7.1 分析
 
-![image-20210926162217627](./cloud-session.assets/true-image-20210926162217627.png)
+![](./cloud-session.assets/true-image-20210926162217627.png)
 
 ### 7.2 解决session已知弊端：
 
-![image-20210926163452492](./cloud-session.assets/true-image-20210926163452492.png)
+![](./cloud-session.assets/true-image-20210926163452492.png)
 
-![image-20210926163659508](./cloud-session.assets/true-image-20210926163659508.png)
+![](./cloud-session.assets/true-image-20210926163659508.png)
 
 使用第一种，但是存在子域名问题，所以使用SpringSession
 
-![image-20210926165049222](./cloud-session.assets/true-image-20210926165049222.png)
+![](./cloud-session.assets/true-image-20210926165049222.png)
 
 ### 7.3 开始
 

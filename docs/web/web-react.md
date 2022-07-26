@@ -521,7 +521,7 @@ https://berrydashboard.io/free/#
 
 https://gitee.com/kong19/react-admin-template
 
-![image-20220414220511243](./web-react.assets/true-image-20220414220511243.png)
+![](./web-react.assets/true-image-20220414220511243.png)
 
 02：
 

@@ -50,7 +50,7 @@ tag:
 
 ## 1.2 使用流程：
 
-![image-20210913133901438](./cloud-lock-cache.assets/true-image-20210913133901438.png)
+![](./cloud-lock-cache.assets/true-image-20210913133901438.png)
 
 ## 1.3 简单实例格式：
 
@@ -67,7 +67,7 @@ retum data;
 
 Map<String,Object>：在多分布式部署实例时会存在：各自使用自己的本地缓存
 
-![image-20210913134831345](./cloud-lock-cache.assets/true-image-20210913134831345.png)
+![](./cloud-lock-cache.assets/true-image-20210913134831345.png)
 
 ​	解决办法：分布式缓存
 
@@ -75,21 +75,21 @@ Map<String,Object>：在多分布式部署实例时会存在：各自使用自�
 
 ### 1.5.1 缓存穿透 <a name="缓存穿透"/>
 
-![image-20210604132105875](./cloud-lock-cache.assets/true-image-20210604132105875.png)
+![](./cloud-lock-cache.assets/true-image-20210604132105875.png)
 
-![image-20210913181008801](./cloud-lock-cache.assets/true-image-20210913181008801.png)
+![](./cloud-lock-cache.assets/true-image-20210913181008801.png)
 
 > （[缓存、DB]都不存在数据）1000万条并发请求，缓存为null，全部跑到db查询，db可能直接宕机。
 
 ### 1.5.2 缓存雪崩 <a name="缓存雪崩"/>
 
-![image-20210604132116450](./cloud-lock-cache.assets/true-image-20210604132116450.png)
+![](./cloud-lock-cache.assets/true-image-20210604132116450.png)
 
 > 存在的数据，大面积数据同时失效)已经有很多数据存在，但有一些设置了同样的过期时间，导致了很多没命中。
 
 ### 1.5.3 缓存击穿 <a name="缓存击穿"/>
 
-![image-20210604132125942](./cloud-lock-cache.assets/true-image-20210604132125942.png)
+![](./cloud-lock-cache.assets/true-image-20210604132125942.png)
 
 > （存在的数据，某一个数据热点失效）1000万条并发，，会全部跑到db查询，db可能直接宕机。
 
@@ -117,11 +117,11 @@ Map<String,Object>：在多分布式部署实例时会存在：各自使用自�
 
 > 通过redis ...
 
-![image-20210913135023032](./cloud-lock-cache.assets/true-image-20210913135023032.png)
+![](./cloud-lock-cache.assets/true-image-20210913135023032.png)
 
 # 2、分布式锁+redis 配置
 
-![image-20210913140426623](./cloud-lock-cache.assets/true-image-20210913140426623.png)
+![](./cloud-lock-cache.assets/true-image-20210913140426623.png)
 
 博客地址：https://blog.csdn.net/qq_42476834/article/details/125108089
 
@@ -246,11 +246,11 @@ synchronized---查询了数据库
 
 ## 2.5 分布式锁原理&使用
 
-![image-20210914111013514](./cloud-lock-cache.assets/true-image-20210914111013514.png)
+![](./cloud-lock-cache.assets/true-image-20210914111013514.png)
 
 
 
-![image-20210914121035642](./cloud-lock-cache.assets/true-image-20210914121035642.png)
+![](./cloud-lock-cache.assets/true-image-20210914121035642.png)
 
 ### 2.5.1 redis锁
 
@@ -275,7 +275,7 @@ set lock haha XX
 
 #### A、测试问题1：setnx占好了位，业务代码异常或者程序在页面过程中宕机。没有执行删除锁逻辑，这就造成了死锁。
 
-![image-20210916165158731](./cloud-lock-cache.assets/true-image-20210916165158731.png)
+![](./cloud-lock-cache.assets/true-image-20210916165158731.png)
 
 <img src="./cloud-lock-cache.assets/true-image-20210914143530694.png" alt="image-20210914143530694" style="zoom:100%;" />
 
@@ -285,9 +285,9 @@ set lock haha XX
 
 #### B、测试问题2：setnx设置好， 正要去设置过期时间，宕机。又死锁了。
 
-![image-20210916170348140](./cloud-lock-cache.assets/true-image-20210916170348140.png)
+![](./cloud-lock-cache.assets/true-image-20210916170348140.png)
 
-![image-20210916165641334](./cloud-lock-cache.assets/true-image-20210916165641334.png)
+![](./cloud-lock-cache.assets/true-image-20210916165641334.png)
 
 ##### - - 解决: 设置过期时间和占位必须是原子的。redis支持使用setnx ex命令
 
@@ -295,9 +295,9 @@ set lock haha XX
 
 #### C、测试问题3（加锁原子型）：删除锁直接删除？？? 如果由于业务时间很长（*超时*），锁自己过期了，我们直接删除，有可能把别人正在持有的锁删除了。
 
-![image-20210916180627709](./cloud-lock-cache.assets/true-image-20210916180627709.png)
+![](./cloud-lock-cache.assets/true-image-20210916180627709.png)
 
-![image-20210916171603888](./cloud-lock-cache.assets/true-image-20210916171603888.png)
+![](./cloud-lock-cache.assets/true-image-20210916171603888.png)
 
 ##### - - 解决: 占锁的时候，值指定为uuid,每个人匹配是自己的锁才删除。
 
@@ -305,9 +305,9 @@ set lock haha XX
 
 #### D、 测试问题4：占锁时指定为uuid,每个人匹配是自己的锁才删除。如果正好判断是当前值，正要删除锁的时候，锁已经过期了，别人已经设置到了新的值，那么我们删除的就是别人的锁了
 
-![image-20210916180857200](./cloud-lock-cache.assets/true-image-20210916180857200.png)
+![](./cloud-lock-cache.assets/true-image-20210916180857200.png)
 
-![image-20210916173657735](./cloud-lock-cache.assets/true-image-20210916173657735.png)
+![](./cloud-lock-cache.assets/true-image-20210916173657735.png)
 
 ##### - - 解决: lua脚本解锁
 
@@ -315,7 +315,7 @@ set lock haha XX
 
 #### E、 测试问题5：lua脚本解锁（最终形态）
 
-![image-20210916173725146](./cloud-lock-cache.assets/true-image-20210916173725146.png)
+![](./cloud-lock-cache.assets/true-image-20210916173725146.png)
 
 ## 2.6 完整业务实例
 
@@ -512,7 +512,7 @@ public String readValue() {
 * 只要有写的存在，都必须等待.
 ```
 
-![image-20210918141244867](./cloud-lock-cache.assets/true-image-20210918141244867.png)
+![](./cloud-lock-cache.assets/true-image-20210918141244867.png)
 
 ## 3.5. RedisSon 闭锁CountDownLatch 测试
 
@@ -591,9 +591,9 @@ public String go() throws InterruptedException {
 
 ### - - 原理：双写模式、失效模式
 
-![image-20210918150228793](./cloud-lock-cache.assets/true-image-20210918150228793.png)
+![](./cloud-lock-cache.assets/true-image-20210918150228793.png)
 
-![image-20210918150700034](./cloud-lock-cache.assets/true-image-20210918150700034.png)
+![](./cloud-lock-cache.assets/true-image-20210918150700034.png)
 
 ### - - 解决方案
 
@@ -612,7 +612,7 @@ public String go() throws InterruptedException {
 
 ### - - Canal
 
-![image-20210918151901864](./cloud-lock-cache.assets/true-image-20210918151901864.png)
+![](./cloud-lock-cache.assets/true-image-20210918151901864.png)
 
 ### - - 使用失效模式
 
@@ -657,7 +657,7 @@ public Map<String, List<Catalog2Vo>> getCataLogJsonFromRedissonLock() {
 
 # 4、SpringCache
 
-![image-20210918152351597](./cloud-lock-cache.assets/true-image-20210918152351597.png)
+![](./cloud-lock-cache.assets/true-image-20210918152351597.png)
 
 ## 4.1. 整合
 

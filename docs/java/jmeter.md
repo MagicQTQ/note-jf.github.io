@@ -10,8 +10,8 @@ tag:
 
 ## -- 指标：
 
-![image-20210912164842416](./jmeter.assets/true-image-20210912164842416.png)
-![image-20210912165122290](./jmeter.assets/true-image-20210912165122290.png)
+![](./jmeter.assets/true-image-20210912164842416.png)
+![](./jmeter.assets/true-image-20210912165122290.png)
 
 ## -- Jmeter
 
@@ -19,17 +19,17 @@ tag:
 
 https://dlcdn.apache.org//jmeter/binaries/apache-jmeter-5.4.3.zip
 
-![image-20210912170227440](./jmeter.assets/true-image-20210912170227440.png)
+![](./jmeter.assets/true-image-20210912170227440.png)
 
-![image-20210912170316913](./jmeter.assets/true-image-20210912170316913.png)
+![](./jmeter.assets/true-image-20210912170316913.png)
 
 常用：
 
-![image-20210912170626005](./jmeter.assets/true-image-20210912170626005.png)
+![](./jmeter.assets/true-image-20210912170626005.png)
 
-![image-20210912172411783](./jmeter.assets/true-image-20210912172411783.png)
+![](./jmeter.assets/true-image-20210912172411783.png)
 
-![image-20210912172525710](./jmeter.assets/true-image-20210912172525710.png)
+![](./jmeter.assets/true-image-20210912172525710.png)
 
 受【cpu,jvm,数据库，网络IO，中间件】分配等影响
 
@@ -37,21 +37,25 @@ https://dlcdn.apache.org//jmeter/binaries/apache-jmeter-5.4.3.zip
 
 jvm
 
-![image-20210912180525701](./jmeter.assets/true-image-20210912180525701.png)
+![](./jmeter.assets/true-image-20210912180525701.png)
 
 ------------
 
 堆空间
 
-![image-20210912184827240](./jmeter.assets/true-image-20210912184827240.png)
+![](./jmeter.assets/true-image-20210912184827240.png)
 
 -------
 
 堆：
 
-新生代![image-20210912180352133](./jmeter.assets/true-image-20210912180352133.png)
+新生代
 
-老年代![image-20210912180334354](./jmeter.assets/true-image-20210912180334354.png)
+![](./jmeter.assets/true-image-20210912180352133.png)
+
+老年代
+
+![](./jmeter.assets/true-image-20210912180334354.png)
 
 
 
@@ -61,9 +65,9 @@ jvm
 
 jconsole& jvisualvm
 
-![20210912190103](./jmeter.assets/true-20210912190103.png)
+![](./jmeter.assets/true-20210912190103.png)
 
-![image-20210912190440872](./jmeter.assets/true-image-20210912190440872.png)
+![](./jmeter.assets/true-image-20210912190440872.png)
 
 安装插件报错地址：https://visualvm.github.io/pluginscenters.html
 
@@ -116,12 +120,12 @@ getLevel1Categorys-》db有索引，开缓存，去log：
 
 ## -- Nginx动静分离
 
-![image-20210912223900240](./jmeter.assets/true-image-20210912223900240.png)
+![](./jmeter.assets/true-image-20210912223900240.png)
 
 1、以后将所有项目的静态资源都应该放在nginx里面
 2、规则: /static/**所有请求都由nginx直接返回
 
-![image-20210912224327322](./jmeter.assets/true-image-20210912224327322.png)
+![](./jmeter.assets/true-image-20210912224327322.png)
 
 配置
 

@@ -45,7 +45,7 @@ Swagger 使用的注解及其说明：
 > > @ApiOperation(value = "获取学生by ID")
 > > ```
 >
-> ![image-20220608183319165](./swagger.assets/true-image-20220608183319165.png)
+> ![](./swagger.assets/true-image-20220608183319165.png)
 
 
 
@@ -170,9 +170,9 @@ public void addUser(@RequestBody User user) {
 
 Swagger 文档: 	http://192.168.56.1:51156/dev/swagger-ui.html
 
-![image-20220608200204670](./swagger.assets/true-image-20220608200204670.png)
+![](./swagger.assets/true-image-20220608200204670.png)
 
-![image-20210707130748978](./swagger.assets/true-image-20210707130748978.png)
+![](./swagger.assets/true-image-20210707130748978.png)
 
 
 
@@ -344,7 +344,7 @@ public class SwaggerConfig implements WebMvcConfigurer {
 
 Swagger 文档: 	http://192.168.56.1:51156/dev/swagger-ui.html
 
-![image-20220607141201387](./swagger.assets/true-image-20220607141201387.png)
+![](./swagger.assets/true-image-20220607141201387.png)
 
 ```xml
 <!-- Swagger3依赖 -->
@@ -513,4 +513,4 @@ Swagger 文档: 	http://192.168.56.1:51156/dev/doc.html
 
 
 
-![image-20220608201316565](./swagger.assets/true-image-20220608201316565.png)
+![](./swagger.assets/true-image-20220608201316565.png)

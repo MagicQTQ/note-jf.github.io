@@ -175,5 +175,5 @@ private Integer showStatus;
 public @interface ListValue {
 ```
 
-![image-20210602143120066](./java-jsr303.assets/true-image-20210602143120066.png)
+![](./java-jsr303.assets/true-image-20210602143120066.png)
 

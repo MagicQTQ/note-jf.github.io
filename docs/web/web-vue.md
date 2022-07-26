@@ -322,9 +322,9 @@ export function myMsgAuto(message, type, duration = 1.5) {
 </body>
 ```
 
-![image-20210512174537729](./web-vue.assets/true-image-20210512174537729.png)
+![](./web-vue.assets/true-image-20210512174537729.png)
 
-![image-20210512174602224](./web-vue.assets/true-image-20210512174602224.png)
+![](./web-vue.assets/true-image-20210512174602224.png)
 
 
 
@@ -352,9 +352,9 @@ export function myMsgAuto(message, type, duration = 1.5) {
 </body>
 ```
 
-![image-20210512173521558](./web-vue.assets/true-image-20210512173521558.png)
+![](./web-vue.assets/true-image-20210512173521558.png)
 
-![image-20210512174921957](./web-vue.assets/true-image-20210512174921957.png)
+![](./web-vue.assets/true-image-20210512174921957.png)
 
 ## 指令：v-no、v-for、v-if、v-show
 
@@ -406,7 +406,7 @@ v-no：用来绑定事件
 </script>
 ~~~
 
-![image-20210512175906550](./web-vue.assets/true-image-20210512175906550.png)
+![](./web-vue.assets/true-image-20210512175906550.png)
 
 ### v-for
 
@@ -447,7 +447,7 @@ v-no：用来绑定事件
 </script>
 ```
 
-![image-20210512180050258](./web-vue.assets/true-image-20210512180050258.png)
+![](./web-vue.assets/true-image-20210512180050258.png)
 
 ### v-if、v-show
 
@@ -476,7 +476,7 @@ v-no：用来绑定事件
 </script>
 ```
 
-![image-20210512180358008](./web-vue.assets/true-image-20210512180358008.png)
+![](./web-vue.assets/true-image-20210512180358008.png)
 
 ## 计算属性
 
@@ -523,7 +523,7 @@ v-no：用来绑定事件
 </script>
 ~~~
 
-![image-20210512180908376](./web-vue.assets/true-image-20210512180908376.png)
+![](./web-vue.assets/true-image-20210512180908376.png)
 
 ### 过滤器filter
 
@@ -552,7 +552,7 @@ v-no：用来绑定事件
 </script>
 ```
 
-![image-20210512181738935](./web-vue.assets/true-image-20210512181738935.png)
+![](./web-vue.assets/true-image-20210512181738935.png)
 
 ## 组件化
 
@@ -600,7 +600,7 @@ v-no：用来绑定事件
 </script>
 ~~~
 
-![image-20210512182142594](./web-vue.assets/true-image-20210512182142594.png)
+![](./web-vue.assets/true-image-20210512182142594.png)
 
 ## 生命周期
 
@@ -663,7 +663,7 @@ v-no：用来绑定事件
 </script>
 ~~~
 
-![image-20210512182402196](./web-vue.assets/true-image-20210512182402196.png)
+![](./web-vue.assets/true-image-20210512182402196.png)
 
 <img src="./web-vue.assets/true-image-20210512182509172.png" alt="image-20210512182509172"  />
 

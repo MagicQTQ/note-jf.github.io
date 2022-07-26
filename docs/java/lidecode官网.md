@@ -13,17 +13,17 @@ tag:
 
 ## 首页
 
-![image-20220113112141262](./lidecode官网.assets/true-image-20220113112141262.png)
+![](./lidecode官网.assets/true-image-20220113112141262.png)
 
 ## 后端部分：java基础
 
-![image-20220113112128730](./lidecode官网.assets/true-image-20220113112128730.png)
+![](./lidecode官网.assets/true-image-20220113112128730.png)
 
 ## 后端部分：java基础：面向对象（内容阅读）
 
-![image-20220113112117792](./lidecode官网.assets/true-image-20220113112117792.png)
+![](./lidecode官网.assets/true-image-20220113112117792.png)
 
-![image-20220112074638564](./lidecode官网.assets/true-image-20220112074638564.png)
+![](./lidecode官网.assets/true-image-20220112074638564.png)
 
 # 各个模块内容
 

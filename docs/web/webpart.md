@@ -10,9 +10,9 @@ tag:
 
 ## CSS 模型盒
 
-![image-20220108191716270](./webpart.assets/true-image-20220108191716270.png)
+![](./webpart.assets/true-image-20220108191716270.png)
 
-![img](./webpart.assets/true-191935495578126.jpg)
+![](./webpart.assets/true-191935495578126.jpg)
 
 1、margin: 包括margin-top、margin-right、margin-bottom、margin-left，**控制块级元素之间的距离**，它们是透明不可见的。
 

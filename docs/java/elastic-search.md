@@ -809,7 +809,7 @@ POST _analyze
 }
 ```
 
-![image-20210908231400256](./elastic-search.assets/true-image-20210908231400256.png)
+![](./elastic-search.assets/true-image-20210908231400256.png)
 
 ### 1.6.3 自定义分词
 

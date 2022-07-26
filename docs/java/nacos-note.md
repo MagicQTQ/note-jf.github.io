@@ -63,7 +63,7 @@ tag:
 
 一图看懂 Nacos，下面架构部分会详细介绍。 
 
-![Nacos_map](./nacos-note.assets/true-nacosMap.jpg)
+![](./nacos-note.assets/true-nacosMap.jpg)
 
 - 特性大图：要从功能特性，非功能特性，全面介绍我们要解的问题域的特性诉求
 - 架构大图：通过清晰架构，让您快速进入 Nacos 世界
@@ -74,7 +74,7 @@ tag:
 
 #### Nacos 生态图
 
-![nacos_landscape.png](./nacos-note.assets/true-1533045871534-e64b8031-008c-4dfc-b6e8-12a597a003fb.png)
+![](./nacos-note.assets/true-1533045871534-e64b8031-008c-4dfc-b6e8-12a597a003fb.png)
 
 ```bash
 如 Nacos 全景图所示，Nacos 无缝支持一些主流的开源生态，例如
@@ -222,7 +222,7 @@ Nacos数据（如配置和服务）描述信息，如服务版本、权重、容
 
 #### 基本架构及概念
 
-![nacos_arch.jpg](./nacos-note.assets/true-1561217892717-1418fb9b-7faa-4324-87b9-f1740329f564.jpeg)
+![](./nacos-note.assets/true-1561217892717-1418fb9b-7faa-4324-87b9-f1740329f564.jpeg)
 
 #### 服务 (Service)
 
@@ -262,7 +262,7 @@ Nacos数据（如配置和服务）描述信息，如服务版本、权重、容
 
 #### 逻辑架构及其组件介绍
 
-![nacos-logic.jpg](./nacos-note.assets/true-1561217775318-6e408805-18bb-4242-b4e9-83c5b929b469.png)
+![](./nacos-note.assets/true-1561217775318-6e408805-18bb-4242-b4e9-83c5b929b469.png)
 
 - 服务管理：实现服务CRUD，域名CRUD，服务健康状态检查，服务权重管理等功能
 - 配置管理：实现配置管CRUD，版本管理，灰度管理，监听管理，推送轨迹，聚合数据等功能

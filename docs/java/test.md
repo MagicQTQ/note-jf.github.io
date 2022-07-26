@@ -49,9 +49,9 @@ console.log('你好，VuePress！')
 | xx   | xx **xx** xx实现平台无关性x                             |
 | xx   | xx **xx** xx实现平台无关性x                             |
 
-![true-image-20220707221104478](./test.assets/true-image-20220707221104478.png)
+![true-image](./test.assets/true-image-20220707221104478.png)
 
-![true-image-20210601002120191](./spring-cloud-alibaba-note-basis.assets/true-image-20210601002120191.png)
+![true-image](./spring-cloud-alibaba-note-basis.assets/true-image-20210601002120191.png)
 
 ```yaml
 spring:

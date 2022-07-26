@@ -11,7 +11,7 @@ tag:
 
 ## 1.1 线程
 
-![image-20210923185039543](./asynchronous.assets/true-image-20210923185039543.png)
+![](./asynchronous.assets/true-image-20210923185039543.png)
 
 前3种不用。
 

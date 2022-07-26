@@ -195,6 +195,62 @@ server {
 
 ### 负载均衡配置
 
+| server标签           | 参数说明                                                                                                                                                                                                |
+|--------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| server 10.0.0.6:80 | 负载均衡后面的RS配置，可以是IP或域名，如果不写端口，默认是80端口。高并发场景下，IP可换成域名，通过DNS做负载均衡。                                                                                                                                      |
+| weight=1           | 代表服务器的权重，默认值是1。权重数字越大表示接受的请求比例越大。                                                                                                                                                                   |
+| max_fails=1        | Nginx尝试连接后端主机失败的次数，这个数值是配置proxy_next_upstream、fastcgi_next_upstream和memcached_next_upstream三个参数来使用的，<br/>当Nginx接受后端服务器返回这三个参数定义的状态码时，会将这个请求转发给正常工作的后端服务器，例如404、502、503。max_fails的默认值是1；企业场景：建议2-3次。 |
+| backup             | 热备配置（RS）节点的高可用，当期面激活的RS都失败后会自动启用热备RS。这标志着这个服务器作为备份服务器，若主服务器全部宕机了，就会向他转发请求；<br/>注意：当负载调度算法为ip_hash时，后端服务器在负载均衡调度中的状态不能是weight和backup。                                                                |
+| fail_timeout=10s   | 在max_fails定义的失败次数后，距离下次检查的间隔时间，默认是10s；如果max_fails是5，他就检测5次。如果5次都是502，那么他就会根据fail_timeout的值，<br/>等待10s再去检查，还是只检查一次，如果持续502，在不重新加载nginx配置的情况下，每隔10s都只检测一次。常规业务：2-3秒比较合理。                              |
+| down               | 这标识着服务器永远不可用，这个参数可配合ip_hash使用                                                                                                                                                                       |
+
+```yaml
+upstream www_server_pool {
+    server 10.0.0.7 weight=5;
+    server 10.0.0.16 weight=10;
+}
+```
+
+```yaml
+upstream www_server {
+    server 10.0.0.5;   #这一行标签和下一行是等价的
+    server 10.0.0.6：80 weight=1 max_fails=1 fails_timeout=10s; #此行标签为默认配置
+    server 10.0.0.7：80 weight=1 max_fails=2  fails_timeout=10s backup;
+    server 10.0.0.8：80 weight=1 max_fails=3 fails_timeout=20s backup;
+}
+```
+
+```yaml
+upstream www_server_pool {
+    server www.test.com:8080;
+    server www.example.com weight=10;
+}
+```
+
+#### 常规配置
+```yaml
+upstream www_server_pools {
+    server  172.16.1.16:80 ;
+    server  172.16.1.17:80 ;
+}
+ server {
+    listen 80;
+    server_name www_server_pools;
+        location / {
+            access_log logs/access.log main;
+            proxy_pass http://www_server_pools;
+            proxy_set_header Host $host;
+            proxy_set_header X-Forwarded-For $remote_addr;
+            proxy_redirect default;
+            proxy_buffer_size 512k;
+            proxy_buffers 6 512k;
+            proxy_busy_buffers_size 512k;
+            proxy_temp_file_write_size 512k;
+            client_max_body_size 100m;
+        }
+}
+```
+
 ## 部署项目
 
 ### 静态资源

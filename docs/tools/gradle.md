@@ -95,7 +95,7 @@ allprojects {
 
 ## 与maven比较
 
-![图片](./gradle.assets/true-640.png)
+![](./gradle.assets/true-640.png)
 
 `图中是大型多模块项目Maven和Gradle编译时间的对比，来自gradle官网`
 

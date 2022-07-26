@@ -66,7 +66,7 @@ chown -R root:kong xxx.txt 文件所属组
 
 ### 文件权限 chmod
 
-![img.png](./basis.assets/img2.png)
+![](./basis.assets/img2.png)
 
 chmod -R 777 demo.txt 文件权限【读r--[4]、写-w-[2]、执行--x[1]、无---[ 0] 】
 
