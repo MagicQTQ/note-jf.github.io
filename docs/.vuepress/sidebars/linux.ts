@@ -9,6 +9,7 @@ export const linuxJson =
         collapsable: true,
         children: [
             "basis",
+            "ansible",
         ],
     }
 
