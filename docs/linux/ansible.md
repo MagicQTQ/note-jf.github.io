@@ -12,6 +12,8 @@ tag:
 
 [ansible 中文指南](http://ansible.com.cn/docs/intro.html)
 
+[本节示例文件 提取码：do11](https://pan.baidu.com/s/1caV7Qv_ICAYxprFyEba7sg)
+
 虚拟机主机分配
 
 8+2+200G
