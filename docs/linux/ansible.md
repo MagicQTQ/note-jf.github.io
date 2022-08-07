@@ -12,7 +12,7 @@ tag:
 
 [ansible 中文指南](http://ansible.com.cn/docs/intro.html)
 
-[本节示例文件 提取码：do11](https://pan.baidu.com/s/1caV7Qv_ICAYxprFyEba7sg)
+[本节示例文件 提取码：1234](https://pan.baidu.com/s/1fkosURl4HaYZALtSjKvcKg)
 
 虚拟机主机分配
 
@@ -49,6 +49,10 @@ yum -y clean all && yum -y makecache && yum -y update && yum -y repolist all
 ```
 
 只需要在主控制端安装：`yum install -y ansible`   yum remove -y ansible
+
+ansible --version ： 2.9.27
+
+
 
 ### 目录结构
 
@@ -1338,12 +1342,13 @@ playbook 是 ansible 用于配置，部署，和管理被控节点的剧本。
 > ansible-playbook <filename.yml> ... [options]
 >
 > - options: 
-> - - --check -C        #只检测可能会发生的改变，但不真正执行操作
+> - - --check，-C        #只检测可能会发生的改变，但不真正执行操作
 >   - --list-hosts      #列出运行任务的主机
 >   - --list-tags       #列出tag
 >   - --list-tasks      #列出task
 >   - --limit 主机列表   #只针对主机列表中的主机执行
 >   - -v -vv -vvv       #显示过程
+>   - -t，--tags  #仅运行标记有这些值的 tags 和 tasks
 
 vim mysql.yml
 
@@ -2039,45 +2044,20 @@ roles 用于层次性、结构化地组织playbook。roles 能够根据层次型
 | ......
 ```
 
-#### ③ 在roles目录下生成对应的目录结构
+#### ③ 在`roles`目录下生成对应的目录结构
 
 ```shell
 [root@admin ansible]# cd roles/
 [root@admin roles]# ls
+
 [root@admin roles]# mkdir -pv ./{nginx,mysql,httpd}/{files,templates,vars,tasks,handlers,meta,default}
+
 [root@admin roles]# touch ./{nginx,mysql,httpd}/{files,templates,vars,tasks,handlers,meta,default}/main.yml
+
 [root@admin roles]# tree
 .
 ├── httpd
-│   ├── default
-│   │   └── main.yml
-│   ├── files
-│   │   └── main.yml
-│   ├── handlers
-│   │   └── main.yml
-│   ├── meta
-│   │   └── main.yml
-│   ├── tasks
-│   │   └── main.yml
-│   ├── templates
-│   │   └── main.yml
-│   └── vars
-│       └── main.yml
-├── mysql
-│   ├── default
-│   │   └── main.yml
-│   ├── files
-│   │   └── main.yml
-│   ├── handlers
-│   │   └── main.yml
-│   ├── meta
-│   │   └── main.yml
-│   ├── tasks
-│   │   └── main.yml
-│   ├── templates
-│   │   └── main.yml
-│   └── vars
-│       └── main.yml
+|   ...
 └── nginx
     ├── default
     │   └── main.yml
@@ -2095,18 +2075,9 @@ roles 用于层次性、结构化地组织playbook。roles 能够根据层次型
         └── main.yml
 ```
 
-#### ④ 定义 tasks 任务文件
-
-rpm包下载：
-
-> wget http://nginx.org/packages/centos/7/x86_64/RPMS/nginx-1.22.0-1.el7.ngx.x86_64.rpm
->
-> chmod -R 777 nginx-1.22.0-1.el7.ngx.x86_64.rpm
-
-#### nginx.conf
+#### 准备 nginx.conf.j2 配置文件
 
 ```yaml
-
 user nginx;
 
 worker_processes {{ ansible_processor_vcpus }};
@@ -2156,24 +2127,37 @@ http {
 }
 ```
 
-vim /etc/ansible/roles/nginx/tasks/main.yml
+
+
+#### ④ 定义 tasks 任务文件
+
+rpm包下载：
+
+> wget http://nginx.org/packages/centos/7/x86_64/RPMS/nginx-1.22.0-1.el7.ngx.x86_64.rpm
+>
+> chmod -R 777 nginx-1.22.0-1.el7.ngx.x86_64.rpm
+
+**vim /etc/ansible/roles/nginx/tasks/main.yml**
 
 ```yaml
+---
 - include: install.yml
 - include: copy.yml
 - include: start.yml
 ```
 
-install.yml
+**install.yml**
 
 ```yaml
+---
 - name: install nginx
   yum: name=nginx state=present
 ```
 
-copy.yml
+**copy.yml**
 
 ```yaml
+---
 - name: copy config
   template: src=/etc/ansible/roles/nginx/templates/nginx.conf.j2 dest=/etc/nginx/nginx.conf mode=0777
   # notify: restarted、reloaded 这里对应的触发是 handlers 处理器
@@ -2182,13 +2166,46 @@ copy.yml
   tags: restartnginx
 ```
 
-start.yml
+**start.yml**
 
 ```yaml
+---
 - name: start nginx service
   service: name=nginx state=started enabled=true
   tags: startnginx
 ```
+
+**stop.yml**
+
+```yaml
+---
+- hosts: web
+  remote_user: root
+  tasks:
+    - name: stop nginx service
+      service: name=nginx state=stopped
+      tags: stopnginx
+```
+
+> ansible-playbook ./nginx/tasks/stop.yml
+>
+> ansible-playbook nginx.yml -t startnginx
+
+
+
+**uninstall.yml**
+
+```yaml
+---
+- hosts: web
+  remote_user: root
+  tasks:
+    - name: uninstall nginx
+      shell: yum remove -y nginx && rm -rf /etc/nginx && ls /usr/sbin/nginx && ls /etc/nginx
+      tags: uninstallnginx
+```
+
+> ansible-playbook ./nginx/tasks/uninstall.yml
 
 
 
@@ -2211,6 +2228,8 @@ start.yml
 │   ├── copy.yml
 │   ├── install.yml
 │   ├── main.yml
+│   ├── stop.yml
+│   ├── uninstall.yml
 │   └── start.yml
 ├── templates
 │   ├── default.conf.j2
@@ -2231,7 +2250,7 @@ start.yml
 
 ```shell
 [root@admin nginx]# vim ./vars/main.yml
-
+---
 nginxprot: 5120
 ansible_processor_vcpus: 1
 ```
@@ -2241,7 +2260,7 @@ ansible_processor_vcpus: 1
 
 ```shell
 [root@admin nginx]# vim ./handlers/main.yml
-
+---
 - name: restarted nginx service
   service: name=nginx state=restarted
 - name: reloaded nginx service
@@ -2249,11 +2268,12 @@ ansible_processor_vcpus: 1
 
 ```
 
-#### ⑧ 定义 roles 剧本文件
+#### ⑧ 定义 nginx 剧本文件
 接下来，我们就来定义剧本文件，由于大部分设置我们都单独配置在了roles里面，所以，接下来剧本就只需要写一点点内容即可：
 
 ```yaml
-[root@admin roles]# vim ./roles.yml
+[root@admin roles]# vim ./nginx.yml
+---
 - hosts: web
   remote_user: root
   roles:
@@ -2265,7 +2285,7 @@ ansible_processor_vcpus: 1
 剧本定义完成以后，我们就可以来启动服务了：
 
 ```shell
-[root@admin roles]# ansible-playbook roles.yml
+[root@admin roles]# ansible-playbook mysql.yml
 ```
 
 ![](./ansible.assets/image-20220729211246699.png)
@@ -2293,7 +2313,7 @@ nginxprot: 5133
   notify: restarted nginx service
   tags: restartnginx
 
-[root@admin roles]# ansible-playbook roles.yml -t restartnginx
+[root@admin roles]# ansible-playbook mysql.yml -t restartnginx
 ```
 
 ![](./ansible.assets/image-20220729212349643.png)
@@ -2313,7 +2333,7 @@ nginxprot: 5166
   notify: reloaded nginx service
   tags: reloadnginx
 
-[root@admin roles]# ansible-playbook roles.yml -t reloadnginx
+[root@admin roles]# ansible-playbook mysql.yml -t reloadnginx
 ```
 
 ![](./ansible.assets/image-20220729214251417.png)
@@ -2321,6 +2341,273 @@ nginxprot: 5166
 
 
 ## 八、ansible-galaxy
+
+[ansible-galaxy](https://galaxy.ansible.com/) ：是一个免费的用于查找，下载，评论各种社区开发的 Ansible 角色
+
+[ansible-galax语法](https://docs.ansible.com/ansible/latest/cli/ansible-galaxy.html)
+
+```
+usage: ansible-galaxy [-h] [--version] [-v] TYPE ...
+
+执行各种与角色和集合相关的操作。
+
+positional arguments:
+  TYPE
+    collection   管理Ansible Galaxy收藏。
+    role         管理Ansible Galaxy角色。
+
+optional arguments:
+  -v, --verbose  详细模式（-vvv了解更多信息，-vvv启用连接调试）
+```
+
+### 创建 mysql 为例子
+
+#### ①创建 role 角色
+
+```shell
+[root@admin roles]# ansible-galaxy role init mysql
+[root@admin roles]# tree mysql/
+mysql/
+├── defaults
+│   └── main.yml
+├── files
+├── handlers
+│   └── main.yml
+├── meta
+│   └── main.yml
+├── tasks
+│   └── main.yml
+├── templates
+├── tests
+│   ├── inventory
+│   └── test.yml
+└── vars
+    └── main.yml
+
+8 directories, 7 files    
+```
+
+#### ②配置 mysql 主机集
+
+```
+[mysql_server]
+192.168.0.[8:10]
+```
+
+#### ③role目录下创建 mysq.yml
+
+```yaml
+---
+- hosts: mysql_server
+  remote_user: root
+  roles:
+    - mysql
+```
+
+#### ④创建tasks任务
+
+rpm包下载：
+
+> cd /etc/ansible/roles/mysql/files
+>
+> wget https://downloads.mysql.com/archives/get/p/23/file/mysql-5.7.38-el7-x86_64.tar
+>
+> wget https://downloads.mysql.com/archives/get/p/23/file/mysql-community-server-5.7.38-1.el7.x86_64.rpm
+>
+> chmod -R 750 mysql-5.7.38-el7-x86_64.tar
+
+**vim /etc/ansible/roles/mysql/tasks/main.yml**
+
+```yaml
+---
+- include: install.yml
+```
+
+**install.yml**
+
+```yaml
+---
+- name: 1. 创建 MySQL 用户组
+  group: name={{ MYSQL_USER }} state=present
+ 
+- name: 2. 创建 MySQL 用户
+  user: name={{ MYSQL_USER }} group={{ MYSQL_USER }} state=present create_home=False shell=/sbin/nologin
+ 
+- name: 3. 创建所需目录及权限
+  file: name={{ item }} state=directory owner={{ MYSQL_USER }} group={{ MYSQL_USER }} mode=0750 recurse=yes
+  with_items:
+  - "{{ SOURCE_DIR }}"
+  - "{{ DATA_BASE }}"
+  - "{{ DATA_BASE }}/data"
+  - "{{ DATA_BASE }}/tmp"
+  - "{{ DATA_BASE }}/logs"
+  - "/opt/mysql"
+ 
+- name: 4. 部署 MySQL
+  stat: path={{ BASE_DIR }}
+  register: base_ok
+ 
+- name: 4. 部署 MySQL Server 相关软件
+  unarchive: src=../files/mysql-{{ MYSQL_VERSION }}-el7-x86_64.tar dest=/opt/mysql owner={{ MYSQL_USER }} group={{ MYSQL_USER }}
+  when: not base_ok.stat.exists
+ 
+- name: 5. 创建 basedir 的软链
+  file:
+   src: /opt/mysql/mysql-{{ MYSQL_VERSION }}-el7-x86_64
+   dest: "{{ BASE_DIR }}"
+   owner: "{{ MYSQL_USER }}"
+   group: "{{ MYSQL_USER }}"
+   state: link
+ 
+# 复制 MySQL 配置文件
+- name: 6. 拷贝 mysql 配置文件
+  template: src=../templates/my.cnf.j2 dest={{ DATA_BASE }}/my{{ MYSQL_PORT }}.cnf owner=root group=root
+ 
+- name: 7. 把 mysql 命令加入 PATH 中
+  shell: " if [ `grep {{ BASE_DIR }}/bin /etc/profile |wc -l` -eq 0 ]; then echo export PATH=$PATH:{{ BASE_DIR }}/bin >> /etc/profile && source /etc/profile; else source /etc/profile; fi"
+ 
+- name: 8. mysql 初始化
+  shell: "{{ BASE_DIR }}/bin/mysqld --defaults-file={{ DATA_BASE }}/my{{ MYSQL_PORT }}.cnf --initialize-insecure --user={{ MYSQL_USER }}"
+ 
+- name: 9. 启动 mysql 并开机启动
+  shell: "{{ BASE_DIR }}/bin/mysqld_safe --defaults-file={{ DATA_BASE }}/my{{ MYSQL_PORT }}.cnf &"
+ 
+- name: 10. 生成初始化脚本
+  template: src=../templates/after_start.sh dest=/root/ owner=root group=root
+ 
+- name: 11. 执行生成的脚本
+  shell: bash /root/after_start.sh 
+```
+
+**stop.yml**
+
+```yaml
+---
+- hosts: mysql_server
+  remote_user: root
+  tasks:
+    - name: stop mysql service
+      service: name=mysql state=stopped
+      tags: stopmysql
+```
+
+> ansible-playbook ./mysql/tasks/stop.yml
+>
+> ansible-playbook mysql.yml -t startmysql
+
+
+
+**uninstall.yml**
+
+```yaml
+---
+- hosts: msyql_server
+  remote_user: root
+  tasks:
+    - name: uninstall mysql
+      shell: yum remove -y mysql 
+      tags: uninstallmysql
+```
+
+> ansible-playbook ./mysql/tasks/uninstall.yml
+
+
+
+#### ⑤定义 vars 变量文件
+
+```yaml
+# #定义 mysql 安装中的变量
+MYSQL_VERSION: 5.7.38
+MYSQL_PORT: 3306
+MYSQL_USER: mysql
+MYSQL_PASSWD: jf12345
+SOURCE_DIR: /data/soft
+BASE_DIR: /usr/local/mysql
+DATA_BASE: /data/mysql/mysql{{ MYSQL_PORT }}
+DATA_DIR: /data/mysql/mysql{{ MYSQL_PORT }}/data
+```
+
+
+
+#### ⑥创建 after_start.sh 初始化脚本
+
+```yaml
+#!/bin/bash
+echo "安装的 mysql 版本 {{ MYSQL_VER }}"
+echo "DATA_DIR {{ DATA_DIR }}"
+ 
+echo "指定你需要的初始化相关内容"
+echo "create user 'test'@'%' identified by 'jf123454';grant replication slave on *.* to 'test'@'%';"|mysql -S /tmp/mysql{{ MYSQL_PORT}}.sock -uroot 
+```
+
+
+
+#### ⑦my.cnf.j2
+
+```
+[mysqld]
+port={{ MYSQL_PORT }}
+basedir={{ DATA_BASE }}
+datadir={{ DATA_DIR }}
+socket=/tmp/mysql.sock
+user={{ MYSQL_USER }}
+tmpdir=/tmp
+bind-address = 0.0.0.0
+max_connections=500
+character-set-server=utf8mb4
+collation-server=utf8mb4_general_ci
+default-storage-engine=INNODB
+innodb_buffer_pool_size=64MB
+max_allowed_packet=16M
+skip-name-resolve
+lower_case_table_names=1
+sql_mode=STRICT_TRANS_TABLES,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION
+ 
+[mysqld_safe]
+log-error={{ DATA_DIR }}/error.log
+pid-file={{ DATA_DIR }}/mysql.pid
+ 
+[mysql]
+default-character-set=utf8mb4
+ 
+[client]
+socket=/tmp/mysql.sock
+default-character-set=utf8mb4
+```
+
+
+
+```
+[root@admin mysql]# tree
+.
+├── defaults
+│   └── main.yml
+├── files
+│   ├── mysql-5.7.38-el7-x86_64.tar
+│   └── mysql-5.7.38-el7-x86_64.tar.gz
+├── handlers
+│   └── main.yml
+├── meta
+│   └── main.yml
+├── tasks
+│   ├── install.yml
+│   └── main.yml
+├── templates
+│   ├── after_start.sh
+│   └── my.cnf.j2
+└── vars
+    └── main.yml
+```
+
+
+
+#### ⑧
+
+
+
+
+
+
 
 
 

@@ -7,9 +7,9 @@ tag:
 - ElasticSearch
 ---
 
-![image-20210604131952296](./elastic-search.assets/true-image-20210604131952296.png)
+![](./elastic-search.assets/true-image-20210604131952296.png)
 
-![image-20210604132012980](./elastic-search.assets/true-image-20210604132012980.png)
+![](./elastic-search.assets/true-image-20210604132012980.png)
 
 # 1. ElasticSearch 基本操作
 
@@ -75,11 +75,11 @@ docker pull kibana:7.14.0 可视化数据
 
 #### 1,elasticsearch
 
-![image-20210908125845385](./elastic-search.assets/true-image-20210908125845385.png)
+![](./elastic-search.assets/true-image-20210908125845385.png)
 
 #### 2,kibana
 
-![image-20210908134637817](./elastic-search.assets/true-image-20210908134637817.png)
+![](./elastic-search.assets/true-image-20210908134637817.png)
 
 
 
@@ -146,17 +146,17 @@ es 中会默认存在一个名为.kibana和.kibana_task_manager的索引
 
 #### --- PUT
 
-![image-20210908140454119](./elastic-search.assets/true-image-20210908140454119.png)
+![](./elastic-search.assets/true-image-20210908140454119.png)
 
-![image-20210908140642855](./elastic-search.assets/true-image-20210908140642855.png)
+![](./elastic-search.assets/true-image-20210908140642855.png)
 
 不指定ID报错
 
-![image-20210908140522448](./elastic-search.assets/true-image-20210908140522448.png)
+![](./elastic-search.assets/true-image-20210908140522448.png)
 
 #### --- POST
 
-![image-20210908141401665](./elastic-search.assets/true-image-20210908141401665.png)
+![](./elastic-search.assets/true-image-20210908141401665.png)
 
 ### 1.2.3.    get 查询文档&乐观锁
 
@@ -182,13 +182,13 @@ get http://192.168.101.5:9200/customer/demo/1
 
 #### 并发修改测试:多个人同时修改一个数据
 
-![image-20210908144225635](./elastic-search.assets/true-image-20210908144225635.png)
+![](./elastic-search.assets/true-image-20210908144225635.png)
 
-![image-20210908144344775](./elastic-search.assets/true-image-20210908144344775.png)
+![](./elastic-search.assets/true-image-20210908144344775.png)
 
 读取
 
-![image-20210908144359490](./elastic-search.assets/true-image-20210908144359490.png)
+![](./elastic-search.assets/true-image-20210908144359490.png)
 
 如果想要修改成功,就需要获取最新的_seq_no
 
@@ -196,15 +196,15 @@ get http://192.168.101.5:9200/customer/demo/1
 
 更新1
 
-![image-20210908145026804](./elastic-search.assets/true-image-20210908145026804.png)
+![](./elastic-search.assets/true-image-20210908145026804.png)
 
 读取
 
-![image-20210908145037058](./elastic-search.assets/true-image-20210908145037058.png)
+![](./elastic-search.assets/true-image-20210908145037058.png)
 
 更新2
 
-![image-20210908145215817](./elastic-search.assets/true-image-20210908145215817.png)
+![](./elastic-search.assets/true-image-20210908145215817.png)
 
 ### 1.2.5.    删除文档&索引
 
@@ -296,7 +296,7 @@ http://192.168.101.5:9200/customer/demo/1
 
 #### --- 可视化操作
 
-![image-20210908152409088](./elastic-search.assets/true-image-20210908152409088.png)
+![](./elastic-search.assets/true-image-20210908152409088.png)
 
 ```json
 POST /_bulk
@@ -309,13 +309,13 @@ POST /_bulk
 { "doc" : {"title" : "My updated blog post"} }
 ```
 
-![image-20210908153043492](./elastic-search.assets/true-image-20210908153043492.png)
+![](./elastic-search.assets/true-image-20210908153043492.png)
 
 #### -- 样本测试数据
 
 https://download.elastic.co/demos/kibana/gettingstarted/accounts.zip
 
-![image-20210908155510529](./elastic-search.assets/true-image-20210908155510529.png)
+![](./elastic-search.assets/true-image-20210908155510529.png)
 
 
 
@@ -402,7 +402,7 @@ PUT /my_index
 
 ```
 
-![image-20210908215920528](./elastic-search.assets/true-image-20210908215920528.png)
+![](./elastic-search.assets/true-image-20210908215920528.png)
 
 ### 1.3.2.    GET 查看映射关系
 
@@ -1370,9 +1370,9 @@ GET bank/_search
 
 注意：filter 最好是放在最后过滤，这样不会影响查询条件和相关性得分。`filter`中还可以再次进行`bool`组合条件过滤。
 
-![image-20210908173825031](./elastic-search.assets/true-image-20210908173825031.png)
+![](./elastic-search.assets/true-image-20210908173825031.png)
 
-![image-20210908173957845](./elastic-search.assets/true-image-20210908173957845.png)
+![](./elastic-search.assets/true-image-20210908173957845.png)
 
 ## 2.7.   排序（sort）
 
@@ -2166,7 +2166,7 @@ public void serachData() throws IOException {
     }
 ```
 
-![image-20210909151150060](./elastic-search.assets/true-image-20210909151150060.png)
+![](./elastic-search.assets/true-image-20210909151150060.png)
 
 
 
