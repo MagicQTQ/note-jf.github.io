@@ -9,7 +9,19 @@ export const linuxJson =
         collapsable: true,
         children: [
             "basis",
-            "ansible",
+            {
+                text: "ansible运维管理工具",
+                icon: "tool",
+                prefix: "ansible/",
+                collapsable: true,
+                children: [
+                    "ansible-basis",
+                    "ansible",
+                    "ansible-doc",
+                    "ansible-playbook",
+                    "ansible-galaxy",
+                ]
+            },
         ],
     }
 
