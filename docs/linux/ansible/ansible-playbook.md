@@ -716,7 +716,9 @@ tasks:
     when: ansible_distribution_major_version == "6"
 ```
 
-循环：迭代，需要重复执行的任务；
+### 循环
+
+迭代，需要重复执行的任务；
 
 对迭代项的引用，固定变量名为"item"，而后，要在task中使用with_items给定要迭代的元素列表；
  举例如下：
