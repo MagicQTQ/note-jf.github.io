@@ -3,7 +3,7 @@
 npm vuepress-vite build docs
 
 #推送到发布仓库
-cd ./dist2
+cd ./dist
 git init
 git add -A
 git commit -m 'deploy 2.1.2'
