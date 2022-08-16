@@ -1,0 +1,14 @@
+.idea/
+/node_modules
+/package-lock.json
+.DS_Store
+# VS Code Config file
+.vscode/
+# Vuepress Cache
+docs/.vuepress/**.cache/
+# Vuepress Temp
+docs/.vuepress/**.temp/
+# Vuepress Output
+dist/
+# Build files
+packages/*/lib/

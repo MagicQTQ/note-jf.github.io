@@ -1,0 +1,24 @@
+{
+  "name": "note-jf",
+  "version": "2.2.0",
+  "private": "true",
+  "description": "笔记",
+  "license": "MIT",
+  "author": {
+    "name": "note-jf",
+    "url": "https://gitee.com/cps007/note-jf",
+    "email": "iskong9@163.com"
+  },
+  "scripts": {
+    "docs:build": "vuepress-vite build docs",
+    "docs:clean-dev": "vuepress-vite dev docs --clean-cache",
+    "docs:dev": "vuepress-vite dev docs"
+  },
+  "devDependencies": {
+    "@vuepress/plugin-search": "^2.0.0-beta.49",
+    "@vuepress/client": "^2.0.0-beta.49",
+    "vue": "^3.2.36",
+    "vuepress": "^2.0.0-beta.49",
+    "vuepress-theme-hope": "^2.0.0-beta.91"
+  }
+}
