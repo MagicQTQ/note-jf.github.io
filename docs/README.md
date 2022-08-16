@@ -5,7 +5,7 @@ icon: home
 title: 首页
 heroImage: /logo.svg
 heroText: note-jf
-heroFullScreen: true
+heroFullScreen: false
 tagline: 学习笔记
 
 projects:

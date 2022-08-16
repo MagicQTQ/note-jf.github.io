@@ -49,7 +49,6 @@ export const javaJson =
             "permission-management",
             "jmeter",
             "template-engine-thymeleaf",
-            "elastic-search",
             {
                 text: "新特性",
                 prefix: "new-features/",

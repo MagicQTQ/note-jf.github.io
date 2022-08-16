@@ -21,6 +21,8 @@ export const middlewareJson =
                 ],
             },
             "nginx",
+            "elastic-search",
+
         ],
     }
 

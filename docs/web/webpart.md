@@ -19,21 +19,58 @@ tag:
 2、padding: 包括padding-top、padding-right、padding-bottom、padding-left，**控制块级元素内部**，content与border之间的距离。
 
 
-
-
-
 Vite 2.0 —— 超快的构建工具
 Vue 3.0 —— 更强大更灵活的 Vue
 SSG —— 服务端渲染方案，利于 SEO 进行内容收录
 PWA —— 构建离线应用
 
+## vuepress打包报错
+
+```bash
+TypeError: Invalid value used as weak map key
+    at WeakMap.set (<anonymous>)
+    at normalizePropsOptions (xxx\node_modules\@vue\runtime-core\dist\runtime-.prod.js:3179:15)
+    at createComponentInstance (xxx\node_modules\@vue\runtime-core\dist\runtimjs.prod.js:5695:23)
+    at renderComponentVNode (xxx\node_modules\@vue\server-renderer\dist\server-renderer.cjs.prod.js:168:22)
+    at Object.ssrRenderComponent (xxx\node_modules\@vue\server-renderer\dist\server-renderer.cjs.prod.js:605:12)
+    at _sfc_ssrRender$2G (xxx\docs\.vuepress\.temp\.server\app.js:29120:24)   
+    at renderComponentSubTree (xxx\node_modules\@vue\server-renderer\dist\server-renderer.cjs.prod.js:250:13)
+    at renderComponentVNode (xxx\node_modules\@vue\server-renderer\dist\server-renderer.cjs.prod.js:185:16)
+    at renderVNode (xxx\node_modules\@vue\server-renderer\dist\server-renderer.cjs.prod.js:292:22)
+    at renderComponentSubTree (xxx\node_modules\@vue\server-renderer\dist\server-renderer.cjs.prod.js:256:13)
+```
+
+查看`runtime-core\dist\runtime-.prod.js:3179:15`
+
+```text
+    if (!raw && !hasExtends) {
+        cache.set(comp, shared.EMPTY_ARR);
+        return shared.EMPTY_ARR;
+    }
+```
+
+查看信息输出
+
+> 由于在 md 文件中存在的标签 \<Hello />，不是 Vue 组件、或未经注册，Vue WeakMap 接收的 key 
+> 本应是组件对象，变成了 string 引发错误。 
+> 
+> 构建抛错程序会中止，把组件参数打印出来，最后的打印输出就是有问题的标签，将 md 中相应标签处理即可解决。
+
+```js
+    if (!raw && !hasExtends) {
+        console.log()
+        console.log('===> debug--1', comp)
+        cache.set(comp, shared.EMPTY_ARR);
+        return shared.EMPTY_ARR;
+    }
+```
 
 
 ## 一、ES6
 
 #### let & var & const
 
-```bash
+```text
 #var 
 	声明的变量往往会越域
 	可以声明多次

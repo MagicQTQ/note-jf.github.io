@@ -1610,7 +1610,7 @@ https://open.weibo.com/connect
 
 web
 
-```
+```text
 <a href="https://api.weibo.com/oauth2/authorize?client_id=2077705774&response_type=code&redirect_uri=http://auth.yumall.com/oauth2.0/weibo/success">
 ```
 

@@ -74,8 +74,8 @@ export default hopeTheme({
     },
     pwa: {
       maxSize: 1024 * 6,
-      cachePic: true,
       maxPicSize: 1024 * 4,
+      cachePic: true,
       cacheHTML: true,
     },
   },

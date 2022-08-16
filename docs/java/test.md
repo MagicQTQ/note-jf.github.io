@@ -23,9 +23,16 @@ console.log('你好，VuePress！')
 ```
 :::
 
-<PDF url="./pdf/日期.pdf" />
 
-@include(../readme.md)
+```text
+<PDF url="/docs/java/pdf/date.pdf" :height="420" />
+```
+
+----
+
+@include(./test-i.md)
+
+
 
 > 哪些特哪 *些特* 哪些特哪 **些特** 哪些特
 > 
@@ -49,9 +56,9 @@ console.log('你好，VuePress！')
 | xx   | xx **xx** xx实现平台无关性x                             |
 | xx   | xx **xx** xx实现平台无关性x                             |
 
-![true-image](./test.assets/true-image-20220707221104478.png)
+![](./test.assets/true-image-20220707221104478.png)
 
-![true-image](./spring-cloud-alibaba-note-basis.assets/true-image-20210601002120191.png)
+![](./spring-cloud-alibaba-note-basis.assets/true-image-20210601002120191.png)
 
 ```yaml
 spring:
