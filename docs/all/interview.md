@@ -1481,7 +1481,7 @@ springMvc和springBoot：
 当发起请求时被前置的控制器拦截到请求，根据请求参数生成代理请求，找到请求对应的实际控制器，控制器处理请求，创建数据模型，访问数据库，
 将模型响应给中心控制器，控制器使用模型与视图渲染视图结果，将结果返回给中心控制器，再将结果返回给请求者。
 
-![img.png](./interview.assets/img.png)
+![img.png](./interview.assets/true-img.png)
 
 1) DispatcherServlet表示前置控制器，是整个SpringMVC的控制中心。用户发出请求，DispatcherServlet接收请求并拦截请求。
 2) HandlerMapping为处理器映射。DispatcherServlet调用HandlerMapping,HandlerMapping根据请求url查找Handler。
@@ -5093,7 +5093,7 @@ redis除了提供了Value具备类型还为每种类型实现了一些操作命�
 缓存穿透是指查询一个一定不存在的数据，由于缓存是不命中时被动写的，并且出于容错考虑，如果从存储层查不到数据则不写入缓存，这将导致这个不存在的数据每次请求都要到存储层去查询，
 失去了缓存的意义。在流量大时，可能DB就挂掉了，要是有人利用不存在的key频繁攻击我们的应用，这就是漏洞。
 
-![img2.png](./interview.assets/img2.png)
+![img2.png](./interview.assets/true-img2.png)
 
 > （[缓存、DB]都不存在数据）1000万条并发请求，缓存为null，全部跑到db查询，db可能直接宕机。
 
@@ -5109,7 +5109,7 @@ redis除了提供了Value具备类型还为每种类型实现了一些操作命�
 
 缓存雪崩是指在我们设置缓存时采用了相同的过期时间，导致缓存在某一时刻同时失效，请求全部转发到DB，DB瞬时压力过重雪崩。
 
-![img3.png](./interview.assets/img3.png)
+![img3.png](./interview.assets/true-img3.png)
 
 > 存在的数据，大面积数据同时失效)已经有很多数据存在，但有一些设置了同样的过期时间，导致了很多没命中。
 
@@ -5129,7 +5129,7 @@ redis除了提供了Value具备类型还为每种类型实现了一些操作命�
 
 缓存在某个时间点过期的时候，恰好在这个时间点对这个Key有大量的并发请求过来，这些请求发现缓存过期一般都会从后端DB加载数据并回设到缓存，这个时候大并发的请求可能会瞬间把后端DB压垮。
 
-![img4.png](./interview.assets/img4.png)
+![img4.png](./interview.assets/true-img4.png)
 
 > （存在的数据，某一个数据热点失效）1000万条并发，，会全部跑到db查询，db可能直接宕机
 

@@ -23,7 +23,7 @@ ansible-doc -l				#获取全部模块的信息
 ansible-doc -s MOD_NAME		#获取指定模块的使用帮助
 ```
 
-![](./ansible-doc.assets/image-20220728125055375.png)
+![](./ansible-doc.assets/true-image-20220728125055375.png)
 
 
 

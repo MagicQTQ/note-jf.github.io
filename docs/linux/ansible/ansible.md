@@ -78,7 +78,7 @@ ansible <host-pattern> [-f forks] [-m module_name] [-a args]
 
 会出现ping不通
 
-![](./ansible.assets/image-20220728130527266.png)
+![](./ansible.assets/true-image-20220728130527266.png)
 
 ### SSH免密登录
 

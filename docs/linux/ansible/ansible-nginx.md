@@ -272,7 +272,7 @@ ansible_processor_vcpus: 1
 [root@admin roles]# ansible-playbook nginx.yml
 ```
 
-![](./ansible-nginx.assets/image-20220729211246699.png)
+![](./ansible-nginx.assets/true-image-20220729211246699.png)
 
 ## ⑩ 启动过后照例查看端口号：
 
@@ -282,7 +282,7 @@ ansible_processor_vcpus: 1
 [root@admin roles]# ansible web -m shell -a "ss -ntulp |grep nginx"
 ```
 
-![](./ansible-nginx.assets/image-20220729211332978.png)
+![](./ansible-nginx.assets/true-image-20220729211332978.png)
 
 ```shell
 [root@admin roles]# ansible web -m shell -a 'curl http://127.0.0.1:5120/'
@@ -322,7 +322,7 @@ nginxprot: 5133
 [root@admin roles]# ansible-playbook nginx.yml -t restartnginx
 ```
 
-![](./ansible-nginx.assets/image-20220729212349643.png)
+![](./ansible-nginx.assets/true-image-20220729212349643.png)
 
 ## 12 测试修改后重新加载配置文件 - reloadnginx
 
@@ -340,7 +340,7 @@ nginxprot: 5166
 [root@admin roles]# ansible-playbook nginx.yml -t reloadnginx
 ```
 
-![](./ansible-nginx.assets/image-20220729214251417.png)
+![](./ansible-nginx.assets/true-image-20220729214251417.png)
 
 
 

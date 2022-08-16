@@ -15,11 +15,11 @@ tag:
 
 ## 1,ES介绍
 
-\* 应用程序搜索	\* 网站搜索	\* 企业搜索	\* 日志处理和分析
+应用程序搜索	网站搜索	企业搜索	日志处理和分析
 
-\* 基础设施指标和容器监测	\* 应用程序性能监测
+基础设施指标和容器监测	应用程序性能监测
 
-\* 地理空间数据分析和可视化	\* 安全分析	\* 业务分析
+地理空间数据分析和可视化	安全分析	业务分析
 
 官方文档 : https://www.elastic.co/guide/en/elasticsearch/reference/current/index.html
 
@@ -51,7 +51,7 @@ type: 数据类型
 
 document
 
-```bash
+```text
 保存 在 某 个 索引 (Index) 下 ， 某 种 类 型 Type) 的 一 个 数据 (Document) ， 文 档 是 JSON 格
 式 的 ，Document 就 像 是 MySQL 中 的 某 个 Table 里 面 的 内 容 
 ```
@@ -100,18 +100,18 @@ es 中会默认存在一个名为.kibana和.kibana_task_manager的索引
 
 表头的含义
 
-|     字段名     | 含义说明                                                     |
-| :------------: | :----------------------------------------------------------- |
+|      字段名       | 含义说明                                      |
+|:--------------:|:------------------------------------------|
 |     health     | green(集群完整) yellow(单点正常、集群不完整) red(单点不正常) |
-|     status     | 是否能使用                                                   |
-|     index      | 索引名                                                       |
-|      uuid      | 索引统一编号                                                 |
-|      pri       | 主节点几个                                                   |
-|      rep       | 从节点几个                                                   |
-|   docs.count   | 文档数                                                       |
-|  docs.deleted  | 文档被删了多少                                               |
-|   store.size   | 整体占空间大小                                               |
-| pri.store.size | 主节点占                                                     |
+|     status     | 是否能使用                                     |
+|     index      | 索引名                                       |
+|      uuid      | 索引统一编号                                    |
+|      pri       | 主节点几个                                     |
+|      rep       | 从节点几个                                     |
+|   docs.count   | 文档数                                       |
+|  docs.deleted  | 文档被删了多少                                   |
+|   store.size   | 整体占空间大小                                   |
+| pri.store.size | 主节点占                                      |
 
 
 
@@ -119,7 +119,7 @@ es 中会默认存在一个名为.kibana和.kibana_task_manager的索引
 
 保存:	PUT /index/type/标识id	-- 如: PUT /customer/demo/1 json数据
 
-```bash
+```text
 # PUT 和 POST都可以.
 *POST* 新增。如果不指定id，会自动生成id。指定id就会修改这个数据，并新增版本号
 *PUT* 可以新增&修改。PUT必须指定id,由于PUT需要指定id，我们一般都用来做修改操作，不指定id会报错 。
@@ -127,7 +127,7 @@ es 中会默认存在一个名为.kibana和.kibana_task_manager的索引
 
 #### --- 响应结果 [json]  <a name='响应结果' />
 
-```json
+```text
 {
     "_index": "customer", #索引
     "_type": "demo", #类型
@@ -177,8 +177,9 @@ get http://192.168.101.5:9200/customer/demo/1
         "name": "小鱼666"
     }
 }
-# 更新携带 ?if_seq_no=14&if_primary_term=1
 ```
+
+> 更新携带 ?if_seq_no=14&if_primary_term=1
 
 #### 并发修改测试:多个人同时修改一个数据
 
@@ -233,14 +234,15 @@ get http://192.168.101.5:9200/customer/demo/1
 {
     "acknowledged": true
 }
-查看索引: http://192.168.101.5:9200/_cat/indices
 ```
+
+查看索引: http://192.168.101.5:9200/_cat/indices
 
 ### 1.2.6 post bulk批量导入 API
 
 #### --- postman
 
-```json
+```text
 {"index":{"_id":"1"}}
 {"name": "小霞"}
 {"index":{"_id": "2"}}
@@ -298,22 +300,33 @@ http://192.168.101.5:9200/customer/demo/1
 
 ![](./elastic-search.assets/true-image-20210908152409088.png)
 
-```json
 POST /_bulk
-{ "delete": { "_index": "website", "_type": "blog", "_id": "123" }}
-{ "create": { "_index": "website", "_type": "blog", "_id": "123" }}
-{ "title": "My first blog post" }
-{ "index": { "_index": "website", "_type": "blog" }}
-{ "title": "My second blog post" }
-{ "update": { "_index": "website", "_type": "blog", "_id": "123"} }
-{ "doc" : {"title" : "My updated blog post"} }
+
+```json
+{
+  "delete": {
+    "_index": "website",
+    "_type": "blog",
+    "_id": "123"
+  },
+  "create": {
+    "_index": "website",
+    "_type": "blog",
+    "_id": "123"
+  },
+  "title": "My first blog post",
+  "index": { "_index": "website", "_type": "blog"},
+  "title": "My second blog post",
+  "update": { "_index": "website", "_type": "blog", "_id": "123"},
+  "doc": {"title": "My updated blog post"}
+}
 ```
 
 ![](./elastic-search.assets/true-image-20210908153043492.png)
 
 #### -- 样本测试数据
 
-https://download.elastic.co/demos/kibana/gettingstarted/accounts.zip
+[accounts.zip](https://download.elastic.co/demos/kibana/gettingstarted/accounts.zip)
 
 ![](./elastic-search.assets/true-image-20210908155510529.png)
 
@@ -333,14 +346,15 @@ https://download.elastic.co/demos/kibana/gettingstarted/accounts.zip
 
 ### 1.3.1.    PUT 创建映射字段
 
-```bash
 PUT /索引库名/_mapping/类型名称
+
+```json
 {
   "properties": {
     "字段名": {
       "type": "类型",
-      "index": true，
-      "store": true，
+      "index": true,
+      "store": true,
       "analyzer": "分词器"
     }
   }
@@ -362,9 +376,11 @@ PUT /索引库名/_mapping/类型名称
 
 发起请求：
 
-```json
 示例1
+
 PUT atguigu/_mapping/goods
+
+```json
 {
   "properties": {
     "title": {
@@ -380,8 +396,13 @@ PUT atguigu/_mapping/goods
     }
   }
 }
+```
+
 示例2
+
 PUT /my_index
+
+```json
 {
   "mappings": {
     "properties": {
@@ -399,7 +420,6 @@ PUT /my_index
 {
   "acknowledged": true
 }
-
 ```
 
 ![](./elastic-search.assets/true-image-20210908215920528.png)
@@ -408,13 +428,13 @@ PUT /my_index
 
 > 语法：
 
-```json
+```text
 GET /索引库名/_mapping
 ```
 
 > 示例：
 
-```json
+```text
 GET /atguigu/_mapping
 ```
 
@@ -452,69 +472,76 @@ analyzer：分词器（ik_max_word）
 
 ### 1.3.3 PUT 添加索引字段
 
-```json
 PUT /my_index/_mapping
+
+```text
 {
   "properties": {
     "employee-id":{	#字段
-      "type":"keyword",#类型
-      "index":false #可检索
+      "type":"keyword",  #类型
+      "index":false   #可检索
     }
   }
 }
-#对于已经存在的映射字段，我们不能更新。更新必须创建新的索引进行数据迁移
 ```
+
+> 对于已经存在的映射字段，我们不能更新。更新必须创建新的索引进行数据迁移
 
 ### 1.3.4 映射：PUT 数据迁移
 
 _type="account" 变为> _type: "_doc",，取消了type，6.0之后取消了type
 
-```json
 GET /bank/_mapping
 
 PUT /newbank
+
+```json
 {
   "mappings": {
     "properties": {
-      "account_number" : {
-        "type" : "long"
+      "account_number": {
+        "type": "long"
       },
-      "address" : {
-         "type" : "text"
-       },
-      "age" : {
-        "type" : "integer"
+      "address": {
+        "type": "text"
       },
-      "balance" : {
-        "type" : "integer"
+      "age": {
+        "type": "integer"
       },
-      "city" : {
-        "type" : "keyword"
+      "balance": {
+        "type": "integer"
       },
-      "email" : {
-        "type" : "keyword"
+      "city": {
+        "type": "keyword"
       },
-      "employer" : {
-        "type" : "keyword"
+      "email": {
+        "type": "keyword"
       },
-      "firstname" : {
-        "type" : "text"
+      "employer": {
+        "type": "keyword"
       },
-      "gender" : {
-        "type" : "keyword"
+      "firstname": {
+        "type": "text"
       },
-      "lastname" : {
-        "type" : "text"
+      "gender": {
+        "type": "keyword"
       },
-      "state" : {
-        "type" : "keyword"
+      "lastname": {
+        "type": "text"
+      },
+      "state": {
+        "type": "keyword"
       }
     }
   }
 }
+```
+
 GET /newbank
 
 POST _reindex
+
+```json
 {
   "source":{
     "index":"bank",
@@ -524,8 +551,9 @@ POST _reindex
     "index":"newbank"
   }
 }
-GET /newbank/_search	#_type="account" 变为> _type: "_doc",，取消了type，6.0之后取消了type
 ```
+
+> GET /newbank/_search	#_type="account" 变为> _type: "_doc",，取消了type，6.0之后取消了type
 
 
 
@@ -537,7 +565,7 @@ GET /newbank/_search	#_type="account" 变为> _type: "_doc",，取消了type，6
 
 如果我们想要自己新增的时候指定id，可以这么做：
 
-```
+```text
 POST /索引库名/类型/id值
 {
     ...
@@ -559,8 +587,9 @@ POST /索引库名/类型/id值
 
 测试一下：
 
-```json
 POST /atguigu/goods/2
+
+```json
 {
     "title":"小米手机",
     "images":"http://image.jd.com/12479122.jpg",
@@ -578,8 +607,9 @@ POST /atguigu/goods/2
 
 来看结果：`GET /atguigu/_search`
 
-```json
 GET /atguigu/_search
+
+```json
 {
   "took" : 7,
   "timed_out" : false,
@@ -692,13 +722,13 @@ stock，saleable，attr都被成功映射了。
 
 > 语法
 
-```
+```text
 DELETE /索引库名/类型名/id值
 ```
 
 > 示例：
 
-```
+```text
 DELETE /atguigu/goods/3
 ```
 
@@ -725,13 +755,16 @@ DELETE /atguigu/goods/3
 
 ### 1.6.1 默认分词器，对中文不友好
 
-```json
 POST _analyze
+
+```text
 {
   "analyzer": "standard",
   "text": "Bucket aggregations don’t calculate metrics over fields like"
 }
+
 结果:
+
 	{
       "tokens" : [
         {
@@ -750,11 +783,14 @@ POST _analyze
         },
 --------------------
 POST _analyze
+
 {
   "analyzer": "standard",
   "text": "我爱你java"
 }
+
 结果：
+
     {
       "tokens" : [
         {
@@ -788,19 +824,21 @@ POST _analyze
 
 重启es
 
-```json
+```text
 # 分词失败
 POST _analyze
 {
   "analyzer": "standard",
   "text": "我爱你中国"
 }
+
 # 分词ok
 POST _analyze
 {
   "analyzer": "ik_smart",
   "text": "我爱你中国"
 }
+
 # 多词组合【如下图】
 POST _analyze
 {
@@ -827,20 +865,21 @@ ik/config/IKAnalyzer.cfg.xml:
 
 ## 2种查询  <a name="2种查询" />
 
-| took             | Elasticsearch执行搜索的时间(毫秒)                         |
-| ---------------- | --------------------------------------------------------- |
-| time_out         | 告诉我们搜索是否超时                                      |
-| _shards          | 告诉我们多少个分片被搜索了，以及统计了成功/失败的搜索分片 |
-| hits             | 搜索结果                                                  |
-| hits.total       | 搜索结果                                                  |
-| hits.hits        | 实际的搜索结果数组(默认为前10的文档)                      |
-| sort             | 结果的排序key (键) (没有则按score排序)                    |
-| score和max_score | 相关性得分和最高分                                        |
+| took            | Elasticsearch执行搜索的时间(毫秒)      |
+|-----------------|-------------------------------|
+| time_out        | 告诉我们搜索是否超时                    |
+| _shards         | 告诉我们多少个分片被搜索了，以及统计了成功/失败的搜索分片 |
+| hits            | 搜索结果                          |
+| hits.total      | 搜索结果                          |
+| hits.hits       | 实际的搜索结果数组(默认为前10的文档)          |
+| sort            | 结果的排序key (键) (没有则按score排序)    |
+| score和max_score | 相关性得分和最高分                     |
 
 GET bank/_search?q=*&sort=account_number:asc
 
-```json
 GET bank/_search
+
+```json
 {
   "query":{
     "match_all": {}
@@ -860,13 +899,13 @@ GET bank/_search
 
 查询所有：
 
-```
+```text
 GET /{index}/_search
 ```
 
 根据id查询：
 
-```
+```text
 GET /{index}/{type}/{id}
 ```
 
@@ -876,8 +915,9 @@ GET /{index}/{type}/{id}
 
 基本查询语法如下：
 
-```json
 GET /索引库名/_search
+
+```json
 {
     "query":{
         "查询类型":{
@@ -914,8 +954,9 @@ GET /索引库名/_search
 
 ## 2.1.   数据准备
 
-```json
 POST /atguigu/goods/_bulk
+
+```text
 {"index":{"_id":1}}
 { "title":"小米手机", "images":"http://image.jd.com/12479122.jpg", "price":1999, "stock": 200, "attr": { "category": "手机", "brand": "小米" } }
 {"index":{"_id":2}}
@@ -944,8 +985,9 @@ POST /atguigu/goods/_bulk
 
 ### 2.2.1 查询所有（match_all ）
 
-```json
 GET /atguigu/_search
+
+```text
 {
   "query":{ #查询规则
     "match_all": {}	#查询所有
@@ -968,8 +1010,9 @@ GET /atguigu/_search
 
 ### 2.2.2 条件匹配（match ）
 
-```json
 GET /atguigu/_search
+
+```json
 {
   "query": {
     "match": {
@@ -983,8 +1026,9 @@ GET /atguigu/_search
 
 某些情况下，我们需要更精确查找，我们希望这个关系变成`and`，可以这样做：
 
-```json
 GET /atguigu/_search
+
+```json
 {
   "query": {
     "match": {
@@ -1036,8 +1080,9 @@ GET /atguigu/_search
 
 ### 2.2.3 短语匹配 （match phrase） <a name="短语匹配" />
 
-```json
 GET bank/_search
+
+```json
 {
   "query": {
     "match_phrase": {
@@ -1045,15 +1090,17 @@ GET bank/_search
     }
   }
 }
-## 只会包含 address=mill lane 记录
 ```
+
+只会包含 address=mill lane 记录
 
 
 
 ### 2.2.4 子属性匹配（字段.xx） <a name="子属性匹配" />
 
-```json
 GET /atguigu/_search
+
+```json
 {
   "query": {
     "match": {
@@ -1067,8 +1114,9 @@ GET /atguigu/_search
 
 `match`只能根据一个字段匹配查询，如果要根据多个字段匹配查询可以使用`multi_match`
 
-```json
 GET /atguigu/_search
+
+```json
 {
     "query":{
         "multi_match": {
@@ -1077,7 +1125,12 @@ GET /atguigu/_search
         }
 	}
 }
+```
+
+
 GET /atguigu/_search
+
+```json
 {
   "query": {
     "multi_match": {
@@ -1086,8 +1139,9 @@ GET /atguigu/_search
     }
   }
 }
-# fields值匹配到query
 ```
+
+fields值匹配到query
 
 
 
@@ -1095,8 +1149,9 @@ GET /atguigu/_search
 
 `term` 查询被用于精确值 匹配，这些精确值可能是数字、时间、布尔或者那些**未分词**的字符串。
 
-```json
+```text
 GET /atguigu/_search
+
 {
     "query":{
         "term":{
@@ -1104,8 +1159,10 @@ GET /atguigu/_search
         }
     }
 }
+
 # 对非文本数据检索用trem，对文本|全文检索就用match
 GET bank/_search
+
 {
   "query": {
     "term": {
@@ -1113,7 +1170,9 @@ GET bank/_search
     }
   }
 }
+
 GET bank/_search
+
 {
   "query": {
     "term": {
@@ -1121,7 +1180,9 @@ GET bank/_search
     }
   }
 }
+
 GET bank/_search
+
 {
   "query": {
     "match": {
@@ -1129,7 +1190,9 @@ GET bank/_search
     }
   }
 }
+
 GET bank/_search
+
 {
   "query": {
     "match": {
@@ -1137,7 +1200,9 @@ GET bank/_search
     }
   }
 }
+
 GET bank/_search
+
 {
   "query": {
     "match_phrase": {
@@ -1153,8 +1218,9 @@ GET bank/_search
 
 `range` 查询找出那些落在指定区间内的数字或者时间
 
-```json
 GET /atguigu/_search
+
+```json
 {
     "query":{
         "range": {
@@ -1169,23 +1235,24 @@ GET /atguigu/_search
 
 ### range查询允许以下字符：gt、gte、lt、lte
 
-| 操作符 |   说明   |
-| :----: | :------: |
-|   gt   |   大于   |
-|  gte   | 大于等于 |
-|   lt   |   小于   |
-|  lte   | 小于等于 |
+| 操作符 |  说明  |
+|:---:|:----:|
+| gt  |  大于  |
+| gte | 大于等于 |
+| lt  |  小于  |
+| lte | 小于等于 |
 
 
 
 ## 2.5.   布尔组合（bool)
 
-布尔查询又叫**组合查询、复合查询 **
+布尔查询又叫 **组合查询、复合查询**
 
 `bool`把各种其它查询通过`must`（与）、`must_not`（非）、`should`（或）的方式进行组合
 
-```json
 GET /atguigu/_search
+
+```json
 {
     "query":{
         "bool":{
@@ -1210,11 +1277,15 @@ GET /atguigu/_search
         }
     }
 }
+```
+
 GET bank/_search
+
+```json
 {
   "query": {
     "bool": {
-      "must": [ #必须是什么
+      "must": [
         {
           "match": {
             "gender": "F"
@@ -1229,8 +1300,13 @@ GET bank/_search
     }
   }
 }
-# 查询gender=F并且address=Mill
+```            
+            
+查询gender=M并且address=Mill
+
 GET bank/_search
+
+```text
 {
   "query": {
     "bool": {
@@ -1263,8 +1339,9 @@ GET bank/_search
     }
   }
 }
-# 查询gender=F & address=Mill & age!=38 ，lastname能匹配到最好，没匹配到也不伤大雅
 ```
+
+> 查询gender=F & address=Mill & age!=38 ，lastname能匹配到最好，没匹配到也不伤大雅
 
 注意：一个组合查询里面只能出现一种组合，不能混用
 
@@ -1274,8 +1351,9 @@ GET bank/_search
 
 所有的查询都会影响到文档的评分及排名。如果我们需要在查询结果中进行过滤，并且不希望过滤条件影响评分，那么就不要把过滤条件作为查询条件来用。而是使用`filter`方式：
 
-```json
+```text
 GET /atguigu/_search
+
 {
   "query": {
     "bool": {
@@ -1290,8 +1368,11 @@ GET /atguigu/_search
     }
   }
 }
+
 # filter不会计算相关性得分_score，must反之
+
 GET bank/_search
+
 {
   "query": {
     "bool": {
@@ -1308,8 +1389,10 @@ GET bank/_search
     }
   }
 }
+
 --------------
 GET bank/_search
+
 {
   "query": {
     "bool": {
@@ -1324,8 +1407,10 @@ GET bank/_search
     }
   }
 }
+
 # filter 最好是放在最后过滤，这样不会影响查询条件和相关性得分
 GET bank/_search
+
 {
   "query": {
     "bool": {
@@ -1378,8 +1463,9 @@ GET bank/_search
 
 `sort` 可以让我们按照不同的字段进行排序，并且通过`order`指定排序的方式
 
-```json
 GET /atguigu/_search
+
+```json
 {
   "query": {
     "match": {
@@ -1401,8 +1487,9 @@ GET /atguigu/_search
 
 ## 2.8.   分页（from/size）
 
-```json
 GET /atguigu/_search
+
+```json
 {
   "query": {
     "match": {
@@ -1422,8 +1509,9 @@ size：取多少条
 
 发现：高亮的本质是给关键字添加了\<em>标签，在前端再给该标签添加样式即可。
 
-```
 GET /atguigu/_search
+
+```json
 {
   "query": {
     "match": {
@@ -1454,8 +1542,9 @@ post_tags：后置标签
 
 如果我们只想获取其中的部分字段，可以添加`_source`的过滤
 
-```json
 GET /atguigu/_search
+
+```json
 {
   "_source": ["title","price"],
   "query": {
@@ -1468,7 +1557,7 @@ GET /atguigu/_search
 
 返回结果，只有两个字段：
 
-```
+```json
 {
   "took" : 9,
   "timed_out" : false,
@@ -1501,7 +1590,7 @@ GET /atguigu/_search
 
 # 3. 聚合（aggregations）
 
-```json
+```text
 #搜索address中包含mill的所有人的年龄分布以及平均年龄，但不显示这些人的详情
 GET bank/_search
 {
@@ -1648,8 +1737,9 @@ bucket aggregations 只负责对数据进行分组，并不进行计算，因此
 
 首先，我们按照手机的品牌`attr.brand.keyword`来划分`桶`
 
-```json
 GET /atguigu/_search
+
+```json
 {
     "size" : 0,
     "aggs" : { 
@@ -1729,8 +1819,9 @@ GET /atguigu/_search
 
 现在，我们为刚刚的聚合结果添加 求价格平均值的度量：
 
-```json
 GET /atguigu/_search
+
+```json
 {
     "size" : 0,
     "aggs" : { 
@@ -1824,8 +1915,9 @@ GET /atguigu/_search
 
 比如：我们想统计每个品牌都生产了那些产品，按照`attr.category.keyword`字段再进行分桶
 
-```json
 GET /atguigu/_search
+
+```json
 {
     "size" : 0,
     "aggs" : { 
@@ -1994,10 +2086,11 @@ java-API选择：https://www.elastic.co/guide/en/elasticsearch/client/index.html
 
 创建单独项目yumall-search
 
-```xml
+```text
 <properties>
     <elasticsearch.version>7.14.0</elasticsearch.version>
-</properties> 		
+</properties> 	
+
 <dependency>
      <groupId>org.elasticsearch.client</groupId>
      <artifactId>elasticsearch-rest-high-level-client</artifactId>
@@ -2046,45 +2139,51 @@ spring:
 创建配置类
 
 ```java
-builder = RestClient.builder(new HttpHost("192.168.101.5", 9200, "http"));
-new RestHighLevelClient(builder);
+ //   RestClient builder = RestClient.builder(new HttpHost("192.168.101.5", 9200, "http"));
+ //   new RestHighLevelClient(builder);
 ```
 
 测试
 
 ```java
-@Autowired
-private RestHighLevelClient client;
+public class Demo {
+  @Autowired
+  private RestHighLevelClient client;
 
-@Test
-public void getClientBan() {
+  @Test
+  public void getClientBan() {
     System.out.println(client);//null
+  }
 }
-///测试类加上注解，在运行：org.elasticsearch.client.RestHighLevelClient@6f6f65a4
+
+///Junit4 测试类加上注解，在运行：org.elasticsearch.client.RestHighLevelClient@6f6f65a4
 @RunWith(SpringRunner.class)
 @SpringBootTest
-
+public class DemoTesst{}
 
 ```
 
 ## -- 测试保存
 
 ```java
-@Test
-    public void indexData() throws IOException {
-        IndexRequest indexRequest = new IndexRequest("users");
-        indexRequest.id("1");
+@SpringBootTest
+public class DemoTest {
+  @Test
+  public void indexData() throws IOException {
+    IndexRequest indexRequest = new IndexRequest("users");
+    indexRequest.id("1");
 //        indexRequest.source("name","xiaoyu","age","19");
-        User user = new User();
-        user.setName("小华");
-        user.setGender("男");
-        user.setAge(20);
-        String jsonString = JSON.toJSONString(user);
-        indexRequest.source(jsonString, XContentType.JSON);//要保存的数据json
-        //开始保存
-        IndexResponse indexResponse = client.index(indexRequest, ElasticSearchConfig.COMMON_OPTIONS);
-        System.out.println("indexResponse = " + indexResponse);
-    }
+    User user = new User();
+    user.setName("小华");
+    user.setGender("男");
+    user.setAge(20);
+    String jsonString = JSON.toJSONString(user);
+    indexRequest.source(jsonString, XContentType.JSON);//要保存的数据json
+    //开始保存
+    IndexResponse indexResponse = client.index(indexRequest, ElasticSearchConfig.COMMON_OPTIONS);
+    System.out.println("indexResponse = " + indexResponse);
+  }
+}    
 ```
 
 
@@ -2093,7 +2192,7 @@ public void getClientBan() {
 
 ### --- 结构：
 
-```bash
+```text
 //1、创建检索请求 SearchRequest > sourceBuilder[添加聚合？] > searchRequest.source(sourceBuilder);
 //2、执行结果 SearchResponse=client.search(searchRequest,自定义OPTIONS);
 //3、分析结果 searchResponse:getHits获取数据,getAggregations获取聚合
@@ -2102,44 +2201,45 @@ public void getClientBan() {
 ### --- 实例：
 
 ```java
-public void serachData() throws IOException {
-        //1、创建检索请求
-        SearchRequest searchRequest = new SearchRequest();
-        //指定索引
-        searchRequest.indices("bank");
-        //指定DSL，检索条件
-        //SearchSourceBuilder sourceBuilde 封装的条件
-        SearchSourceBuilder sourceBuilder = new SearchSourceBuilder();
-        //1.1)、构造检索条件
-        //sourceBuilder.query();
-        //sourceBuilder.from();
-        //sourceBuilder.size();
-        //sourceBuilder.aggregatipn()
-        sourceBuilder.query(QueryBuilders.matchQuery("address", "mill"));
-    
+public class Demo {
+  public void serachData() throws IOException {
+    //1、创建检索请求
+    SearchRequest searchRequest = new SearchRequest();
+    //指定索引
+    searchRequest.indices("bank");
+    //指定DSL，检索条件
+    //SearchSourceBuilder sourceBuilde 封装的条件
+    SearchSourceBuilder sourceBuilder = new SearchSourceBuilder();
+    //1.1)、构造检索条件
+    //sourceBuilder.query();
+    //sourceBuilder.from();
+    //sourceBuilder.size();
+    //sourceBuilder.aggregatipn()
+    sourceBuilder.query(QueryBuilders.matchQuery("address", "mill"));
+
 //1.2)、按照年龄的值分布进行聚合
-        TermsAggregationBuilder ageAgg = AggregationBuilders.terms("ageAgg").field("age").size(100);
-        sourceBuilder.aggregation(ageAgg);
-    
+    TermsAggregationBuilder ageAgg = AggregationBuilders.terms("ageAgg").field("age").size(100);
+    sourceBuilder.aggregation(ageAgg);
+
 //1.3)、平均薪资
-        AvgAggregationBuilder balanceAvg = AggregationBuilders.avg("balanceAvg").field("balance");
-        sourceBuilder.aggregation(balanceAvg);
+    AvgAggregationBuilder balanceAvg = AggregationBuilders.avg("balanceAvg").field("balance");
+    sourceBuilder.aggregation(balanceAvg);
 
-        System.out.println("检索条件：" + sourceBuilder.toString());
-    
-        //要检索内容
-        searchRequest.source(sourceBuilder);
+    System.out.println("检索条件：" + sourceBuilder.toString());
 
-        //2、执行结果        SearchResponse
-        SearchResponse searchResponse = client.search(searchRequest, ElasticSearchConfig.COMMON_OPTIONS);
+    //要检索内容
+    searchRequest.source(sourceBuilder);
 
-        //3、分析结果
+    //2、执行结果        SearchResponse
+    SearchResponse searchResponse = client.search(searchRequest, ElasticSearchConfig.COMMON_OPTIONS);
+
+    //3、分析结果
 //        System.out.println("检索结果：" + searchResponse.toString());
 //        Map map = JSON.parseObject(searchResponse.toString(), Map.class);
-        //3.1)、获取所有数据;
-        SearchHits hits = searchResponse.getHits();
-        SearchHit[] searchHits = hits.getHits();
-        for (SearchHit hit : searchHits) {
+    //3.1)、获取所有数据;
+    SearchHits hits = searchResponse.getHits();
+    SearchHit[] searchHits = hits.getHits();
+    for (SearchHit hit : searchHits) {
             /*
                 "_index":"bank",
                 "_type":"account",
@@ -2148,22 +2248,23 @@ public void serachData() throws IOException {
                 "_source":{数据
              */
 //            hit.getIndex();hit.getType();hit.getId();
-            String string = hit.getSourceAsString();
-            Account account = JSON.parseObject(string, Account.class);
-            System.out.println("account = " + account);
-        }
-    
-        //3.2)、获取这次检索到的分析信息;
-        Aggregations aggregations = searchResponse.getAggregations();
-        for (Aggregation aggregation : aggregations.asList()) {
-            System.out.println("当前聚合" + aggregation.getName());
-        }
-        Terms ageAgg1 = aggregations.get("ageAgg");
-        for (Terms.Bucket bucket : ageAgg1.getBuckets()) {
-            String keyAsString = bucket.getKeyAsString();
-            System.out.println("年龄: " + keyAsString + "==>" + bucket.getDocCount());
-        }
+      String string = hit.getSourceAsString();
+      Account account = JSON.parseObject(string, Account.class);
+      System.out.println("account = " + account);
     }
+
+    //3.2)、获取这次检索到的分析信息;
+    Aggregations aggregations = searchResponse.getAggregations();
+    for (Aggregation aggregation : aggregations.asList()) {
+      System.out.println("当前聚合" + aggregation.getName());
+    }
+    Terms ageAgg1 = aggregations.get("ageAgg");
+    for (Terms.Bucket bucket : ageAgg1.getBuckets()) {
+      String keyAsString = bucket.getKeyAsString();
+      System.out.println("年龄: " + keyAsString + "==>" + bucket.getDocCount());
+    }
+  }
+}
 ```
 
 ![](./elastic-search.assets/true-image-20210909151150060.png)
@@ -2255,12 +2356,14 @@ Spring Data 的强大之处，就在于你不用写任何DAO处理，自动根�
 ### 4.4.1.   新增
 
 ```java
-@Autowired
-UserRepository userRepository;
+public class Demo {
+  @Autowired
+  UserRepository userRepository;
 
-@Test
-void testAdd(){
+  @Test
+  void testAdd() {
     this.userRepository.save(new User(1l, "zhang3", 20, "123456"));
+  }
 }
 ```
 
@@ -2271,9 +2374,11 @@ void testAdd(){
 ### 4.4.2.   删除
 
 ```java
-@Test
-void testDelete(){
+public class Demo {
+  @Test
+  void testDelete() {
     this.userRepository.deleteById(1l);
+  }
 }
 ```
 
@@ -2288,9 +2393,11 @@ void testDelete(){
 查询一个：
 
 ```java
-@Test
-void testFind(){
+public class Demo {
+  @Test
+  void testFind() {
     System.out.println(this.userRepository.findById(1l).get());
+  }
 }
 ```
 
@@ -2304,33 +2411,34 @@ Spring Data 的另一个强大功能，是根据方法名称自动实现功能�
 
 当然，方法名称要符合一定的约定：
 
-| Keyword               | Sample                                     | Elasticsearch Query String                                   |
-| --------------------- | ------------------------------------------ | ------------------------------------------------------------ |
-| `And`                 | `findByNameAndPrice`                       | `{"bool" : {"must" : [ {"field" : {"name" : "?"}}, {"field" : {"price" : "?"}} ]}}` |
-| `Or`                  | `findByNameOrPrice`                        | `{"bool" : {"should" : [ {"field" : {"name" : "?"}}, {"field" : {"price" : "?"}} ]}}` |
-| `Is`                  | `findByName`                               | `{"bool" : {"must" : {"field" : {"name" : "?"}}}}`           |
-| `Not`                 | `findByNameNot`                            | `{"bool" : {"must_not" : {"field" : {"name" : "?"}}}}`       |
-| `Between`             | `findByPriceBetween`                       | `{"bool" : {"must" : {"range" : {"price" : {"from" : ?,"to" : ?,"include_lower" : true,"include_upper" : true}}}}}` |
+| Keyword               | Sample                                     | Elasticsearch Query String                                                                                             |
+|-----------------------|--------------------------------------------|------------------------------------------------------------------------------------------------------------------------|
+| `And`                 | `findByNameAndPrice`                       | `{"bool" : {"must" : [ {"field" : {"name" : "?"}}, {"field" : {"price" : "?"}} ]}}`                                    |
+| `Or`                  | `findByNameOrPrice`                        | `{"bool" : {"should" : [ {"field" : {"name" : "?"}}, {"field" : {"price" : "?"}} ]}}`                                  |
+| `Is`                  | `findByName`                               | `{"bool" : {"must" : {"field" : {"name" : "?"}}}}`                                                                     |
+| `Not`                 | `findByNameNot`                            | `{"bool" : {"must_not" : {"field" : {"name" : "?"}}}}`                                                                 |
+| `Between`             | `findByPriceBetween`                       | `{"bool" : {"must" : {"range" : {"price" : {"from" : ?,"to" : ?,"include_lower" : true,"include_upper" : true}}}}}`    |
 | `LessThanEqual`       | `findByPriceLessThan`                      | `{"bool" : {"must" : {"range" : {"price" : {"from" : null,"to" : ?,"include_lower" : true,"include_upper" : true}}}}}` |
 | `GreaterThanEqual`    | `findByPriceGreaterThan`                   | `{"bool" : {"must" : {"range" : {"price" : {"from" : ?,"to" : null,"include_lower" : true,"include_upper" : true}}}}}` |
 | `Before`              | `findByPriceBefore`                        | `{"bool" : {"must" : {"range" : {"price" : {"from" : null,"to" : ?,"include_lower" : true,"include_upper" : true}}}}}` |
 | `After`               | `findByPriceAfter`                         | `{"bool" : {"must" : {"range" : {"price" : {"from" : ?,"to" : null,"include_lower" : true,"include_upper" : true}}}}}` |
-| `Like`                | `findByNameLike`                           | `{"bool" : {"must" : {"field" : {"name" : {"query" : "?*","analyze_wildcard" : true}}}}}` |
-| `StartingWith`        | `findByNameStartingWith`                   | `{"bool" : {"must" : {"field" : {"name" : {"query" : "?*","analyze_wildcard" : true}}}}}` |
-| `EndingWith`          | `findByNameEndingWith`                     | `{"bool" : {"must" : {"field" : {"name" : {"query" : "*?","analyze_wildcard" : true}}}}}` |
-| `Contains/Containing` | `findByNameContaining`                     | `{"bool" : {"must" : {"field" : {"name" : {"query" : "**?**","analyze_wildcard" : true}}}}}` |
-| `In`                  | `findByNameIn(Collection<String>names)`    | `{"bool" : {"must" : {"bool" : {"should" : [ {"field" : {"name" : "?"}}, {"field" : {"name" : "?"}} ]}}}}` |
-| `NotIn`               | `findByNameNotIn(Collection<String>names)` | `{"bool" : {"must_not" : {"bool" : {"should" : {"field" : {"name" : "?"}}}}}}` |
-| `Near`                | `findByStoreNear`                          | `Not Supported Yet !`                                        |
-| `True`                | `findByAvailableTrue`                      | `{"bool" : {"must" : {"field" : {"available" : true}}}}`     |
-| `False`               | `findByAvailableFalse`                     | `{"bool" : {"must" : {"field" : {"available" : false}}}}`    |
-| `OrderBy`             | `findByAvailableTrueOrderByNameDesc`       | `{"sort" : [{ "name" : {"order" : "desc"} }],"bool" : {"must" : {"field" : {"available" : true}}}}` |
+| `Like`                | `findByNameLike`                           | `{"bool" : {"must" : {"field" : {"name" : {"query" : "?*","analyze_wildcard" : true}}}}}`                              |
+| `StartingWith`        | `findByNameStartingWith`                   | `{"bool" : {"must" : {"field" : {"name" : {"query" : "?*","analyze_wildcard" : true}}}}}`                              |
+| `EndingWith`          | `findByNameEndingWith`                     | `{"bool" : {"must" : {"field" : {"name" : {"query" : "*?","analyze_wildcard" : true}}}}}`                              |
+| `Contains/Containing` | `findByNameContaining`                     | `{"bool" : {"must" : {"field" : {"name" : {"query" : "**?**","analyze_wildcard" : true}}}}}`                           |
+| `In`                  | `findByNameIn(Collection<String>names)`    | `{"bool" : {"must" : {"bool" : {"should" : [ {"field" : {"name" : "?"}}, {"field" : {"name" : "?"}} ]}}}}`             |
+| `NotIn`               | `findByNameNotIn(Collection<String>names)` | `{"bool" : {"must_not" : {"bool" : {"should" : {"field" : {"name" : "?"}}}}}}`                                         |
+| `Near`                | `findByStoreNear`                          | `Not Supported Yet !`                                                                                                  |
+| `True`                | `findByAvailableTrue`                      | `{"bool" : {"must" : {"field" : {"available" : true}}}}`                                                               |
+| `False`               | `findByAvailableFalse`                     | `{"bool" : {"must" : {"field" : {"available" : false}}}}`                                                              |
+| `OrderBy`             | `findByAvailableTrueOrderByNameDesc`       | `{"sort" : [{ "name" : {"order" : "desc"} }],"bool" : {"must" : {"field" : {"available" : true}}}}`                    |
 
 准备一组数据：
 
 ```java
-@Test
-void testAddAll(){
+public class Demo {
+  @Test
+  void testAddAll() {
     List<User> users = new ArrayList<>();
     users.add(new User(1l, "柳岩", 18, "123456"));
     users.add(new User(2l, "范冰冰", 19, "123456"));
@@ -2339,6 +2447,7 @@ void testAddAll(){
     users.add(new User(5l, "小鹿", 22, "123456"));
     users.add(new User(6l, "韩红", 23, "123456"));
     this.userRepository.saveAll(users);
+  }
 }
 ```
 
@@ -2364,9 +2473,11 @@ public interface UserRepository extends ElasticsearchRepository<User, Long> {
 测试：
 
 ```java
-@Test
-void testFindByAgeBetween(){
+public class Demo {
+  @Test
+  void testFindByAgeBetween() {
     System.out.println(this.userRepository.findByAgeBetween(20, 30));
+  }
 }
 ```
 
@@ -2375,23 +2486,27 @@ void testFindByAgeBetween(){
 第二种写法：
 
 ```java
-@Query("{\n" +
-       "    \"range\": {\n" +
-       "      \"age\": {\n" +
-       "        \"gte\": \"?0\",\n" +
-       "        \"lte\": \"?1\"\n" +
-       "      }\n" +
-       "    }\n" +
-       "  }")
-List<User> findByQuery(Integer age1, Integer age2);
+public interface Demo {
+  @Query("{\n" +
+          "    \"range\": {\n" +
+          "      \"age\": {\n" +
+          "        \"gte\": \"?0\",\n" +
+          "        \"lte\": \"?1\"\n" +
+          "      }\n" +
+          "    }\n" +
+          "  }")
+  List<User> findByQuery(Integer age1, Integer age2);
+}
 ```
 
 测试：
 
 ```java
-@Test
-void testFindByQuery(){
-	System.out.println(this.userRepository.findByQuery(20, 30));
+public class Demo {
+  @Test
+  void testFindByQuery() {
+    System.out.println(this.userRepository.findByQuery(20, 30));
+  }
 }
 ```
 
@@ -2400,8 +2515,9 @@ void testFindByQuery(){
 ### 4.5.3.   自定义查询
 
 ```java
-@Test
-void testNative(){
+public class Demo {
+  @Test
+  public void testNative() {
     // 初始化自定义查询对象
     NativeSearchQueryBuilder queryBuilder = new NativeSearchQueryBuilder();
     // 构建查询
@@ -2420,6 +2536,7 @@ void testNative(){
     System.out.println(userPage.getTotalElements());
     // 当前页数据
     System.out.println(userPage.getContent());
+  }
 }
 ```
 

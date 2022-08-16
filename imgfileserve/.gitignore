@@ -1,4 +1,5 @@
-target/classes
+.idea/
+target/
 imgfileserve.iml
 .mvn
 file/

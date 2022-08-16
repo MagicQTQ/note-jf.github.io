@@ -126,7 +126,7 @@ ansible-playbook 运行playbook文件
 
 3、报告结果
 
- ![](./ansible-playbook.assets/1204916-20171208112235999-1825222840.png)
+ ![](./ansible-playbook.assets/true-1204916-20171208112235999-1825222840.png)
 
 
 ### 核心元素
@@ -347,11 +347,11 @@ http {
 
 > ansible-playbook -C i-nginx.yml
 
-![](./ansible-playbook.assets/image-20220729140706857.png)
+![](./ansible-playbook.assets/true-image-20220729140706857.png)
 
 > ansible-playbook i-nginx.yml
 
-![](./ansible-playbook.assets/image-20220729141300986.png)
+![](./ansible-playbook.assets/true-image-20220729141300986.png)
 
 
 看看两台机器的端口是否开启：
@@ -380,7 +380,7 @@ ansible-playbook i-nginx.yml -t startnginx
 ansible web -m shell -a 'ss -nutlp |grep nginx'
 ```
 
-![](./ansible-playbook.assets/image-20220729141702897.png)
+![](./ansible-playbook.assets/true-image-20220729141702897.png)
 
 
 ####  ④ 测试 restarted
@@ -398,7 +398,7 @@ ansible-playbook i-nginx.yml -t restartnginx
 
 　　然后我们重新加载一下这个剧本：
 
-![](./ansible-playbook.assets/image-20220729141854324.png)
+![](./ansible-playbook.assets/true-image-20220729141854324.png)
 
 
 发现我们执行的就是 restart 段以及我们定义的`notify`部分。
@@ -407,7 +407,7 @@ ansible-playbook i-nginx.yml -t restartnginx
 
 > ansible web -m shell -a 'ss -ntlp | grep nginx'
 
-![](./ansible-playbook.assets/image-20220729142232724.png)
+![](./ansible-playbook.assets/true-image-20220729142232724.png)
 
 可以看出，我们的nginx端口已经变成了8080。
  　#### ⑤ 测试 reloaded
@@ -442,11 +442,11 @@ vim /etc/ansible/nginx/conf.d/ry.conf
 ansible-playbook i-nginx.yml -t reloadednginx
 ```
 
-![](./ansible-playbook.assets/image-20220729143142605.png)
+![](./ansible-playbook.assets/true-image-20220729143142605.png)
 
 >ansible web -m shell -a 'ss -ntlp | grep nginx'
 
-![](./ansible-playbook.assets/image-20220729143155466.png)
+![](./ansible-playbook.assets/true-image-20220729143155466.png)
 
 
 
@@ -547,7 +547,7 @@ vim uni-nginx.yml
 [root@admin ansible]# ansible-playbook i-nginx.yml -e rpmname=keepalived
 ```
 
-![](./ansible-playbook.assets/image-20220729145916358.png)
+![](./ansible-playbook.assets/true-image-20220729145916358.png)
 
 
 ####  ④ 修改剧本，直接定义变量
@@ -593,7 +593,7 @@ vim uni-nginx.yml
 [root@admin ansible]# ansible-playbook i-nginx.yml
 ```
 
-![](./ansible-playbook.assets/image-20220729150326860.png)
+![](./ansible-playbook.assets/true-image-20220729150326860.png)
 
 
 发现这样也是可以的
@@ -1060,7 +1060,7 @@ ansible_processor_vcpus: 1
 [root@admin roles]# ansible-playbook nginx.yml
 ```
 
-![](./ansible-playbook.assets/image-20220729211246699.png)
+![](./ansible-playbook.assets/true-image-20220729211246699.png)
 
 #### ⑩ 启动过后照例查看端口号：
 
@@ -1070,7 +1070,7 @@ ansible_processor_vcpus: 1
 [root@admin roles]# ansible web -m shell -a "ss -ntulp |grep nginx"
 ```
 
-![](./ansible-playbook.assets/image-20220729211332978.png)
+![](./ansible-playbook.assets/true-image-20220729211332978.png)
 
 ```shell
 [root@admin roles]# ansible web -m shell -a 'curl http://127.0.0.1:5120/'
@@ -1114,7 +1114,7 @@ nginxprot: 5133
 [root@admin roles]# ansible-playbook nginx.yml -t restartnginx
 ```
 
-![](./ansible-playbook.assets/image-20220729212349643.png)
+![](./ansible-playbook.assets/true-image-20220729212349643.png)
 
 
 
@@ -1134,7 +1134,7 @@ nginxprot: 5166
 [root@admin roles]# ansible-playbook nginx.yml -t reloadnginx
 ```
 
-![](./ansible-playbook.assets/image-20220729214251417.png)
+![](./ansible-playbook.assets/true-image-20220729214251417.png)
 
 
 

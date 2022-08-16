@@ -28,11 +28,24 @@ import java.util.Objects;
 @Slf4j
 public class ImageUtil {
     /**
-     * 获取当前项目的目录：note-jf
+     * 获取当前项目处在的目录
+     * <p>
+     * 亦可自定义
      */
     private final static String PROJECT_PATH = System.getProperty("user.dir");
-    private final static String PROJECT_NAME = "\\imgfileserve";
+//    private final static String PROJECT_PATH = "E:\\code\\idea\\imgfileserve";
+    /**
+     * 需要自动批量处理的md文件目录，与 PROJECT_PATH 配合
+     */
     private final static String MD_PATH = "\\docs";
+    /**
+     * 本项目名称，用于测试时使用
+     */
+    private final static String PROJECT_NAME = "\\imgfileserve";
+    /**
+     * 测试使用，md文件处于本项目内：md2 为原始数据源，需要复制到 md，
+     * 有便于多次测试
+     */
     private final static String TEST_MD_PATH = "\\md";
     private final static String SPLICING = "\\";
     /**
@@ -57,8 +70,6 @@ public class ImageUtil {
     private static String Image_ParentFileName = null;
 
     public static void main(String[] args) throws Exception {
-        //获取当前md-notes项目的window路径 getCanonicalPath\\
-        // targetFile=（E:\java高级项目学习资料\md-notes）
         File formal = new File(PROJECT_PATH + MD_PATH);
         File bate = new File(PROJECT_PATH + PROJECT_NAME + TEST_MD_PATH);
         log.info("bate-Path = {}", formal.toString());

@@ -25,7 +25,7 @@ tag:
 
 ### 符号含义
 
-![](./basis.assets/img.png)
+![](./basis.assets/true-img.png)
 
 echo
 
@@ -66,7 +66,7 @@ chown -R root:kong xxx.txt 文件所属组
 
 ### 文件权限 chmod
 
-![](./basis.assets/img2.png)
+![](./basis.assets/true-img2.png)
 
 chmod -R 777 demo.txt 文件权限【读r--[4]、写-w-[2]、执行--x[1]、无---[ 0] 】
 
