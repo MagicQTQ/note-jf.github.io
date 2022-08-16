@@ -9,6 +9,6 @@ docs/.vuepress/**.cache/
 # Vuepress Temp
 docs/.vuepress/**.temp/
 # Vuepress Output
-dist/
+!dist/
 # Build files
 packages/*/lib/
