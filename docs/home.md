@@ -31,32 +31,32 @@ features:
 
 - title: Java
   icon: java
-  details: 新增文字对齐、上下角标、脚注、标记、任务列表、数学公式、流程图、图表与幻灯片支持
+  details: 新增
   link: /java/test
 
 - title: 数据库
   icon: mysql
-  details: 新增文字对齐、上下角标、脚注、标记、任务列表、数学公式、流程图、图表与幻灯片支持
+  details: 新增
   link: /database/mysql/MySQL
 
 - title: 前端
   icon: html
-  details: 新增文字对齐、上下角标、脚注、标记、任务列表、数学公式、流程图、图表与幻灯片支持
+  details: 新增
   link: /web/webpart
 
 - title: 中间件
   icon: tool
-  details: 新增文字对齐、上下角标、脚注、标记、任务列表、数学公式、流程图、图表与幻灯片支持
+  details: 新增
   link: /middleware/nginx
 
 - title: Linux
   icon: linux
-  details: 新增文字对齐、上下角标、脚注、标记、任务列表、数学公式、流程图、图表与幻灯片支持
+  details: 新增
   link: /linux/basis
 
 - title: 开发工具
   icon: tool
-  details: 新增文字对齐、上下角标、脚注、标记、任务列表、数学公式、流程图、图表与幻灯片支持
+  details: 新增
   link: /tools/tools
 
 ---
