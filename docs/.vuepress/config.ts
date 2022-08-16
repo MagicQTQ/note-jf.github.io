@@ -2,7 +2,6 @@
 import themeConfig from "./themeConfig";
 import search from "./plugins/search";
 import {defineUserConfig, viteBundler} from "vuepress-vite";
-import {build} from "@vuepress/bundler-vite/lib/build";
 
 export default defineUserConfig({
     theme: themeConfig,
@@ -18,10 +17,19 @@ export default defineUserConfig({
         //搜索
         search,
     ],
-    // bundler: viteBundler({
-    //     viteOptions: {},
-    //     vuePluginOptions: {},
-    // }),
+    bundler: viteBundler({
+        viteOptions: {
+            build: {
+                chunkSizeWarningLimit: 12040,
+                rollupOptions: {
+                    output: {
+
+                    }
+                }
+            }
+        },
+        vuePluginOptions: {},
+    }),
     markdown: {
         toc: {
             level: [2, 3, 4],
