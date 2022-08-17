@@ -51,7 +51,7 @@ features:
 
 - title: Linux
   icon: linux
-  details: 新增
+  details: 新增【ansible管理工具、jenkins自动部署】
   link: /linux/basis
 
 - title: 开发工具
