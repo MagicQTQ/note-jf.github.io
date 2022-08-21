@@ -26,7 +26,12 @@ export const toolsJson =
                 icon: "git",
                 prefix: "git/",
                 collapsable: true,
-                children: ["git-setting", "git-intro", "github-tips"],
+                children: [
+                    "git-setting",
+                    "git-intro",
+                    "github-tips",
+                    "deploy-gh-pages"
+                ],
             },
             {
                 text: "Docker",
