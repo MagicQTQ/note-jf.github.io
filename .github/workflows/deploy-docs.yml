@@ -19,14 +19,14 @@ jobs:
           # submodules: true
 
 
+      - name: 安装 Node.js
+        run: npm install
+
       - name: 设置 Node.js
         uses: actions/setup-node@v3
         with:
           node-version: 16
           cache: npm
-
-      - name: 安装 Node.js
-        run: npm install
 
       - name: 构建文档
         env:
