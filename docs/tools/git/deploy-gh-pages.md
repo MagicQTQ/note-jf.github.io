@@ -1,12 +1,12 @@
 ---
 icon: edit
-title:  Github部署自动部署WEB项目
+title:  Github 自动部署WEB项目
 category: 开发工具
 tag:
 - GiiHub
 ---
 
-# Github部署自动部署WEB项目
+# Github 自动部署WEB项目
 
 ## 创建仓库
 
