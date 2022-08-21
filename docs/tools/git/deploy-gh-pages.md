@@ -16,21 +16,18 @@ tag:
 
 [创建token地址](https://github.com/settings/tokens)，记得保存好token，等一下需要用到
 
-![](./deploy-gh-pages.assets/image-20220821183537378.png)
+![](./deploy-gh-pages.assets/true-image-20220821183537378.png)
 
 设置好权限
 
-![](./deploy-gh-pages.assets/image-20220821183700208.png)
-
+![](./deploy-gh-pages.assets/true-image-20220821183700208.png)
 
 
 开始配置：nane为 ACCESS_TOKEN，值为刚才的 token
 
-![](./deploy-gh-pages.assets/image-20220821183425533.png)
+![](./deploy-gh-pages.assets/true-image-20220821183425533.png)
 
 快捷地址，在仓库地址后面加上：/settings/secrets/actions
-
-
 
 
 ## 创建 vuepress-theme-hope 项目
@@ -63,7 +60,7 @@ added 595 packages in 22s
 提示: 请使用 "npm run docs:dev" 命令启动开发服务器
 ```
 
-## 编辑`deploy-docs.yml`
+## 编辑`.github/workflows/deploy-docs.yml`
 
 `main`分支为触发`CI/CD`，完整项目分支代码
 
@@ -106,27 +103,25 @@ jobs:
 
 /settings/pages
 
-![](./deploy-gh-pages.assets/image-20220821184250742.png)
+![](./deploy-gh-pages.assets/true-image-20220821184250742.png)
 
 
 
 ## 提交项目后，查看触发效果
 
-![](./deploy-gh-pages.assets/image-20220821184418884.png)
+![](./deploy-gh-pages.assets/true-image-20220821184418884.png)
 
 查看具体执行过程
 
-![](./deploy-gh-pages.assets/image-20220821184447307.png)
-
-
+![](./deploy-gh-pages.assets/true-image-20220821184447307.png)
 
 
 
 ## 根据page配置，自动部署代码
 
-![](./deploy-gh-pages.assets/image-20220821184611359.png)
+![](./deploy-gh-pages.assets/true-image-20220821184611359.png)
 
-## 效果
+## 访问
 
 https://自己的仓库.github.io/
 
