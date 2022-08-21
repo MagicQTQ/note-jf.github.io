@@ -1,4 +1,4 @@
 export const allSources = [
     "interview",
-    "ms",
+    "linux",
 ];

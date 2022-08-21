@@ -17,16 +17,6 @@ jobs:
 
       - name: 安装Npm
         run: npm install
-      #        uses: npm/action-setup@v2
-      #        with:
-      #          version: 7
-      #          run_install: true
-
-#      - name: Setup Node.js
-#        uses: actions/setup-node@v3
-#        with:
-#          node-version: 16
-#          cache: npm
 
       - name: 构建文档
         run: npm run docs:build

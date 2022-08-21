@@ -11,7 +11,7 @@ tag:
 
 # 运维面试题总结
 
-[查看地址](https://zhuanlan.zhihu.com/p/533165245?utm_id=0)
+[参考地址](https://zhuanlan.zhihu.com/p/533165245?utm_id=0)
 
 ## 一、linux
 
@@ -68,7 +68,7 @@ tag:
 - ③ *LV-逻辑卷*：逻辑卷建立在卷组之上，卷组中的未分配空间可以用于建立新的逻辑卷，逻辑卷建立后可以动态地扩展和缩小空间。
   系统中的多个逻辑卷可以属于同一个卷组，也可以属于不同的多个卷组。
 
-  ![](./ms.assets/true-image-20220817182237396.png)
+  ![](./linux.assets/true-image-20220817182237396.png)
 
 **给/分区扩容步骤：**
 
@@ -265,7 +265,7 @@ curl --tlsv1 'https://www.bitstamp.net/api/v2/transactions/btcusd/'
 
 ### sql语句左外连接 右外连接 内连接 全连接区别
 
-![](./ms.assets/true-image-sql-joins.png)
+![](./linux.assets/true-image-sql-joins.png)
 
 ### mysql数据备份方式，如何恢复？你们的备份策略是什么？
 
@@ -447,7 +447,7 @@ mongodump / mongorestore
 
 ### dockerfile有哪些关键字？用途是什么？
 
-![](./ms.assets/true-image-20220817182326432.png)
+![](./linux.assets/true-image-20220817182326432.png)
 
 ### 如何减小dockerfile生成镜像体积？
 
@@ -470,7 +470,7 @@ mongodump / mongorestore
 
 ### docker的cs架构组件有哪些？
 
-![](./ms.assets/true-image-20220817182401910.png)
+![](./linux.assets/true-image-20220817182401910.png)
 
 ### docker网络类型有哪些？
 
@@ -511,7 +511,7 @@ vim /lib/systemd/system/docker.service
 
 ### docker和vmware虚拟化区别？
 
-![](./ms.assets/true-image-20220817182423185.png)
+![](./linux.assets/true-image-20220817182423185.png)
 
 
 
@@ -519,7 +519,7 @@ vim /lib/systemd/system/docker.service
 
 ### k8s的集群组件有哪些？功能是什么？
 
-![](./ms.assets/true-image-20220817182457503.png)
+![](./linux.assets/true-image-20220817182457503.png)
 
 ### kubectl命令相关：如何修改副本数，如何滚动更新和回滚，如何查看pod的详细信息，如何进入pod交互？
 
@@ -593,7 +593,7 @@ snashot1.dbSnapshot saved at snashot1.db
 
 ### pod创建过程是什么？
 
-![](./ms.assets/true-image-20220817182534167.png)
+![](./linux.assets/true-image-20220817182534167.png)
 
 ### pod重启策略有哪些？
 
@@ -639,7 +639,7 @@ Pod的重启策略有3种，默认值为Always。
 StorageClass 的另一个重要作用，是指定 PV 的 Provisioner（存储插件）。这时候，如果你的存储插件支持 
 Dynamic Provisioning 的话，Kubernetes 就可以自动为你创建 PV 了。
 
-![](./ms.assets/true-image-20220817182601302.png)
+![](./linux.assets/true-image-20220817182601302.png)
 
 ### nginx ingress的原理本质是什么？
 
@@ -650,7 +650,7 @@ Dynamic Provisioning 的话，Kubernetes 就可以自动为你创建 PV 了。
 
 ### 描述不同node上的Pod之间的通信流程
 
-![](./ms.assets/true-image-20220817182620388.png)
+![](./linux.assets/true-image-20220817182620388.png)
 
 
 
@@ -678,7 +678,7 @@ Dynamic Provisioning 的话，Kubernetes 就可以自动为你创建 PV 了。
 
 ### prometheus组件有哪些，功能是什么？
 
-![](./ms.assets/true-image-20220817182637242.png)
+![](./linux.assets/true-image-20220817182637242.png)
 
 ### 指标类型有哪些？
 
@@ -730,7 +730,7 @@ Dynamic Provisioning 的话，Kubernetes 就可以自动为你创建 PV 了。
 
 ### 是否用到了filebeat的内置module？用了哪些？
 
-![](./ms.assets/true-image-20220817182702866.png)
+![](./linux.assets/true-image-20220817182702866.png)
 
 
 
@@ -759,7 +759,7 @@ Dynamic Provisioning 的话，Kubernetes 就可以自动为你创建 PV 了。
 
 ### django的mtv模式流程
 
-![](./ms.assets/true-image-20220817182724687.png)
+![](./linux.assets/true-image-20220817182724687.png)
 
 ### python如何导出、导入环境依赖包
 
