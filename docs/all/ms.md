@@ -11,6 +11,8 @@ tag:
 
 # 运维面试题总结
 
+[查看地址](https://zhuanlan.zhihu.com/p/533165245?utm_id=0)
+
 ## 一、linux
 
 ### linux系统启动流程

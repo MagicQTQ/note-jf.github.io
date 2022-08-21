@@ -1,4 +1,4 @@
-name: Deploy Docs
+name: 部署文档
 
 on:
   push:
@@ -7,7 +7,7 @@ on:
 
 jobs:
   deploy-gh-pages:
-    name: Deploy docs to gh-pages
+    name: 将文档部署到gh-pages
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -15,30 +15,26 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Install npm
+      - name: 安装Npm
         run: npm install
-#        uses: npm/action-setup@v2
+      #        uses: npm/action-setup@v2
+      #        with:
+      #          version: 7
+      #          run_install: true
+
+#      - name: Setup Node.js
+#        uses: actions/setup-node@v3
 #        with:
-#          version: 7
-#          run_install: true
+#          node-version: 16
+#          cache: npm
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: 16
-          cache: npm
-
-      - name: Docs build
-        env:
-          BASE: /
-          HOSTNAME: https://note-jf.github.io/
-          NODE_OPTIONS: --max_old_space_size=4096
+      - name: 构建文档
         run: npm run docs:build
 
-      - name: Deploy
+      - name: 部署
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           branch: gh-pages
           folder: dist
-         # token: ${{ secrets.ACCESS_TOKEN }}
-         # single-commit: true
+          token: ${{ secrets.ACCESS_TOKEN }}
+          #single-commit: true
