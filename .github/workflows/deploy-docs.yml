@@ -28,11 +28,6 @@ jobs:
           node-version: 16
           cache: pnpm
 
-      - name: Build project
-        env:
-          NODE_OPTIONS: --max_old_space_size=4096
-        run: pnpm run docs:build
-
       - name: Docs build
         env:
           BASE: /
