@@ -10,5 +10,6 @@ docs/.vuepress/**.cache/
 docs/.vuepress/**.temp/
 # Vuepress Output
 dist
+dd
 # Build files
 packages/*/lib/
