@@ -8,7 +8,7 @@ on:
 
 jobs:
   deploy-gh-pages:
-    name: Deploy docs to gh pages
+    name: Deploy docs to gh-pages
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -17,10 +17,11 @@ jobs:
           fetch-depth: 0
 
       - name: Install npm
-        uses: npm/action-setup@v2
-        with:
-          version: 7
-          run_install: true
+        run: npm install
+#        uses: npm/action-setup@v2
+#        with:
+#          version: 7
+#          run_install: true
 
       - name: Setup Node.js
         uses: actions/setup-node@v3
