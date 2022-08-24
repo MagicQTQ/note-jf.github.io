@@ -3,7 +3,9 @@ import theme from "./theme";
 import search from "./plugins/search";
 // @ts-ignore
 import {defineUserConfig, viteBundler} from "vuepress";
-
+/*
+* <a class="social-media" href="https://github.com/note-jf/note-jf.github.io" rel="noopener noreferrer" target="_blank" aria-label="Github"></a>
+* */
 export default defineUserConfig({
     theme: theme,
     base: "/",
