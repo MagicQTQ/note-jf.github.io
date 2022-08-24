@@ -111,6 +111,8 @@ jobs:
 
 ![](./deploy-gh-pages.assets/deplay.png)
 
+**目前使用的是 package-lock.json**
+
 [docs.npmjs.com/cli/v7/configuring-npm/npm-shrinkwrap-json](https://docs.npmjs.com/cli/v7/configuring-npm/npm-shrinkwrap-json)
 
 `npm-shrinkwrap.json` 级别大于 `package-lock.json` 大于 `yarn.lock`
