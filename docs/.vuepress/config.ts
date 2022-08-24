@@ -54,6 +54,12 @@ export default defineUserConfig({
             },
         ],
         ["meta", {name: "apple-mobile-web-app-capable", content: "yes"}],
+        //
+        ["script", {
+            type: 'text/javascript',
+            src: '/js/demo.js',
+        }
+        ],
         // 添加百度统计
         [
             "script",
@@ -78,11 +84,5 @@ export default defineUserConfig({
         "/": {
             lang: "zh-CN",
         },
-        // "/zh/": {
-        //     lang: "zh-TW",
-        // },
-        // "/en/": {
-        //     lang: "en-US",
-        // },
     },
 });
