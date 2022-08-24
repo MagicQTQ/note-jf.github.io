@@ -4,10 +4,11 @@ on:
   push:
     branches:
       - main
+      - gh-pages
 
 jobs:
   deploy-gh-pages:
-    name: 将文档部署到gh-pages
+    name: 将文档部署到 gh-pages
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -21,15 +22,15 @@ jobs:
           node-version: 16
           cache: npm
 
-      - name: 安装Npm
+      - name: 安装 npm
         run: npm install
 
-      - name: 构建文档
+      - name: build 构建文档
         env:
           NODE_OPTIONS: --max_old_space_size=4096
         run: npm run docs:build
 
-      - name: 部署
+      - name: deploy 部署
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           branch: gh-pages

@@ -84,10 +84,18 @@ jobs:
         with:
           fetch-depth: 0
 
+      - name: 设置 Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+          cache: npm
+
       - name: 安装Npm
         run: npm install
 
       - name: 构建文档
+        env:
+          NODE_OPTIONS: --max_old_space_size=4096
         run: npm run docs:build
 
       - name: 部署
@@ -98,6 +106,30 @@ jobs:
           token: ${{ secrets.ACCESS_TOKEN }}
           #single-commit: true
 ```
+
+## 保留需要的文件，没有就创建
+
+![](./deploy-gh-pages.assets/deplay.png)
+
+[docs.npmjs.com/cli/v7/configuring-npm/npm-shrinkwrap-json](https://docs.npmjs.com/cli/v7/configuring-npm/npm-shrinkwrap-json)
+
+`npm-shrinkwrap.json` 级别大于 `package-lock.json` 大于 `yarn.lock`
+
+npm-shrinkwrap.json
+
+```json
+
+```
+
+[pnpm-lock.yaml](https://gitee.com/MFork/vuepress-theme-hope/blob/main/pnpm-lock.yaml)
+
+pnpm-workspace.yaml
+
+```yaml
+packages:
+  - docs/*
+```
+
 
 ## 配置Pages
 
