@@ -1,7 +1,7 @@
 ---
 icon: edit
 title: eclipse
-category: tools
+category: Tools
 date: 2022-07-26
 tag:
 - eclipse

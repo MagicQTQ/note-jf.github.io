@@ -3,7 +3,7 @@
  */
 export const linuxJson =
     {
-        text: "Linux",
+        text: "Linux&集群管理",
         icon: "linux",
         prefix: "linux/",
         collapsable: true,
@@ -26,6 +26,21 @@ export const linuxJson =
                     "ansible-mysql",
                     "ansible-redis",
                     "ansible-nginx",
+                ]
+            },
+            {
+                text: "k8s",
+                icon: "tool",
+                prefix: "k8s/",
+                collapsable: true,
+                children: [
+                    "basis",
+                    "ingress",
+                    "kube-sphere",
+                    "pod-yaml",
+                    "nfs-pv-pvc-config-secret",
+                    "install-application",
+                    "deploys",
                 ]
             },
         ],

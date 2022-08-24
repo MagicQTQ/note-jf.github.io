@@ -1,7 +1,7 @@
 ---
 icon: edit
 title: git配置
-category: tools
+category: Tools
 date: 2020-01-01
 tag:
 - Git

@@ -1,7 +1,7 @@
 ---
 icon: edit
 title: screw一键生成数据库文档
-category: tools
+category: Tools
 date: 2022-06-22
 tag:
 - database-tool

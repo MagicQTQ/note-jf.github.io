@@ -1,7 +1,7 @@
 ---
 icon: edit
 title: nodejs配置
-category: tools
+category: Tools
 date: 2020-01-01
 tag:
 - nodejs

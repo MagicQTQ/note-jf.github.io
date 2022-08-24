@@ -1,7 +1,7 @@
 ---
 icon: edit
 title: ansible AD-Hoc命令执行工具
-category: linux
+category: Linux
 date: 2022-07-29
 tag:
 - ansible

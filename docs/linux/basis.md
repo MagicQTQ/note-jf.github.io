@@ -1,7 +1,7 @@
 ---
 icon: edit
 title: linux笔记
-category: linux
+category: Linux
 date: 2022-07-26
 tag:
 - linux

@@ -5,10 +5,11 @@ import {sidebarConfig} from "./sidebar";
 
 export default hopeTheme({
   logo: "/logo.png",
-  hostname: "https://note-jf.cn/",
+  hostname: "https://note-jf.github.io/",
   author: {
     name: "jf",
-    // url: "https://note-jf.cn/article/",
+    // 根据自己的域名设置
+    //url: "https://note-jf.cn/article/",
     url: "/article",
   },
   repo: "https://gitee.com/cps007/note-jf",
@@ -73,10 +74,10 @@ export default hopeTheme({
       json: true,
     },
     pwa: {
-      maxSize: 1024 * 6,
-      maxPicSize: 1024 * 4,
+      maxSize: 1024 * 20,
+      maxPicSize: 1024 * 10,
       cachePic: true,
-      cacheHTML: true,
+      cacheHTML: false,
     },
   },
 });

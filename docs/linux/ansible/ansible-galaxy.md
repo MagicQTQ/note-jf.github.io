@@ -1,7 +1,7 @@
 ---
 icon: edit
 title: ansible-galaxy
-category: linux
+category: Linux
 date: 2022-07-29
 tag:
 - ansible

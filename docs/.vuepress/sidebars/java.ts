@@ -36,7 +36,6 @@ export const javaJson =
             "oss",
             "spring-cloud-alibaba-note-basis",
             "spring-cloud-alibaba-note-high-level",
-            "spring-cloud-alibaba-note-cluster",
             "swagger",
             "spring-cloud-core-components",
             "cloud-session",

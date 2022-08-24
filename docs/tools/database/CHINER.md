@@ -1,7 +1,7 @@
 ---
 icon: edit
 title: CHINER数据库建模工具
-category: tools
+category: Tools
 date: 2020-01-01
 tag:
 - database-tool

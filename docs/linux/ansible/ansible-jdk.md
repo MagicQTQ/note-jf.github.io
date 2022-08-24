@@ -1,7 +1,7 @@
 ---
 icon: edit
 title: ansible安装jdk
-category: linux
+category: Linux
 date: 2022-07-30
 tag:
 - ansible

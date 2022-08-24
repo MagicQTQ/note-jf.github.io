@@ -1,7 +1,7 @@
 ---
 icon: edit
 title: datagrip数据库管理
-category: tools
+category: Tools
 date: 2020-01-01
 tag:
 - database-tool

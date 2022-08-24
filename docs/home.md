@@ -49,9 +49,9 @@ features:
   details: 新增
   link: /middleware/nginx
 
-- title: Linux
+- title: Linux&集群管理
   icon: linux
-  details: 新增【ansible管理工具、jenkins自动部署】
+  details: 新增【ansible管理工具、jenkins自动部署、k8s管理】
   link: /linux/basis
 
 - title: 开发工具

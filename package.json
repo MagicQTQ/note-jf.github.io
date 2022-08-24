@@ -1,6 +1,6 @@
 {
   "name": "note-jf",
-  "version": "2.2.0",
+  "version": "2.2.1",
   "private": "true",
   "description": "笔记",
   "license": "MIT",
@@ -14,9 +14,9 @@
     "url": "https://github.com/note-jf/note-jf.github.io.git"
   },
   "scripts": {
-    "docs:build": "vuepress-vite build docs",
+    "docs:dev": "vuepress-vite dev docs",
     "docs:clean-dev": "vuepress-vite dev docs --clean-cache",
-    "docs:dev": "vuepress-vite dev docs"
+    "docs:build": "vuepress-vite build docs"
   },
   "devDependencies": {
     "@vuepress/plugin-search": "^2.0.0-beta.49",

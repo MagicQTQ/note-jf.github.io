@@ -1,7 +1,7 @@
 ---
 icon: edit
 title: ansible-playbook任务编排工具（剧本）
-category: linux
+category: Linux
 date: 2022-07-29
 tag:
 - ansible

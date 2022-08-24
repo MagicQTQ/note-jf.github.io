@@ -1,7 +1,7 @@
 ---
 icon: edit
 title: ansible安装与基础概念
-category: linux
+category: Linux
 date: 2022-07-29
 tag:
 - ansible

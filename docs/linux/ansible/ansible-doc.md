@@ -1,7 +1,7 @@
 ---
 icon: edit
 title: ansible-doc模块功能查看工具
-category: linux
+category: Linux
 date: 2022-07-29
 tag:
 - ansible
