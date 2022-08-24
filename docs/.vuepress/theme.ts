@@ -33,7 +33,7 @@ export default hopeTheme({
     sidebarDisplay: "mobile",
     medias: {
       Zhihu: "https://www.zhihu.com/people/tops6",
-      Github: "https://github.com/note-jf",
+      Github: "https://github.com/note-jf/note-jf.github.io",
       Gitee: "https://gitee.com/cps007/note-jf",
     },
   },
