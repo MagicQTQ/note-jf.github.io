@@ -1,13 +1,11 @@
 // .vuepress/config.ts
 import theme from "./theme";
-// @ts-ignore
 import search from "./plugins/search";
+// @ts-ignore
 import {defineUserConfig, viteBundler} from "vuepress";
 
 export default defineUserConfig({
     theme: theme,
-    // @ts-ignore
-    port: "8888",
     base: "/",
     title: "note-jf",
     description: "「学习笔记！",
@@ -22,9 +20,9 @@ export default defineUserConfig({
         viteOptions: {
             build: {
                 chunkSizeWarningLimit: 12040,
-                rollupOptions: {
-                    output: {}
-                }
+                // rollupOptions: {
+                //     output: {}
+                // }
             }
         },
         vuePluginOptions: {},

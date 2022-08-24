@@ -1,6 +1,5 @@
 ---
 home: true
-icon: discover
 title: 快速导航
 heroImage: /logo.svg
 heroText: 分类

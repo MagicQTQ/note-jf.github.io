@@ -15,10 +15,18 @@ jobs:
         with:
           fetch-depth: 0
 
+      - name: 设置 Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+          cache: npm
+
       - name: 安装Npm
         run: npm install
 
       - name: 构建文档
+        env:
+          NODE_OPTIONS: --max_old_space_size=4096
         run: npm run docs:build
 
       - name: 部署
