@@ -13,7 +13,7 @@ jobs:
           src: 'note-jf/note-jf.github.io'
           dst: 'note-jf/note-jf.gitee.io'
           dst_key: ${{ secrets.GITEE_PRIVATE_KEY }}
-          dst_token:  ${{ secrets.GITEE_ACCESS_TOKEN }}
+          dst_token: ${{ secrets.GITEE_ACCESS_TOKEN }}
           static_list: "learn-typescript"
           force_update: true
           debug: true
