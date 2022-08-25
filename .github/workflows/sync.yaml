@@ -24,8 +24,8 @@ jobs:
       - name: 部署到 Gitee Pages
         uses: yanglbme/gitee-pages-action@v1.4.1
         with:
-          folder: dist
-          token: ${{ secrets.GITEE_ACCESS_TOKEN }}
+          #folder: dist
+          #token: ${{ secrets.GITEE_ACCESS_TOKEN }}
           # 注意替换为你的 Gitee 用户名
           gitee-username: ${{ secrets.GITEE_KEY }}
           # 注意在 Settings->Secrets 配置 GITEE_PASSWORD
