@@ -19,7 +19,6 @@ export default defineUserConfig({
     plugins: [
         //搜索
         search,
-        cp
     ],
     bundler: viteBundler({
         viteOptions: {
