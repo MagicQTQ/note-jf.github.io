@@ -1,8 +1,10 @@
 // .vuepress/config.ts
 import theme from "./theme";
-import search from "./plugins/search";
+// @ts-ignore
+import {cp, search} from "./plugins";
 // @ts-ignore
 import {defineUserConfig, viteBundler} from "vuepress";
+import {copyCode} from "vuepress-theme-hope";
 /*
 * <a class="social-media" href="https://github.com/note-jf/note-jf.github.io" rel="noopener noreferrer" target="_blank" aria-label="Github"></a>
 * */
@@ -17,6 +19,7 @@ export default defineUserConfig({
     plugins: [
         //搜索
         search,
+        cp
     ],
     bundler: viteBundler({
         viteOptions: {
@@ -59,7 +62,7 @@ export default defineUserConfig({
         //
         ["script", {
             type: 'text/javascript',
-            src: '/js/demo.js',
+            src: '/script/demo.js',
         }
         ],
         // 添加百度统计

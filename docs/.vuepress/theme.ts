@@ -63,7 +63,7 @@ export default hopeTheme({
       imageSize: true,
     },
     copyCode: {
-      showInMobile: true
+      showInMobile: true,
     },
     // @ts-ignore
     photoSwipe: true,
@@ -77,7 +77,7 @@ export default hopeTheme({
       maxSize: 1024 * 20,
       maxPicSize: 1024 * 10,
       cachePic: true,
-      cacheHTML: false,
+      cacheHTML: true,
     },
   },
 });
