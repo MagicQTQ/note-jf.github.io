@@ -6,12 +6,12 @@
   "license": "MIT",
   "author": {
     "name": "note-jf",
-    "url": "https://gitee.com/cps007/note-jf",
+    "url": "https://gitee.com/note-jf/note-jf.gitee.io",
     "email": "iskong9@163.com"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/note-jf/note-jf.github.io.git"
+    "url": "https://gitee.com/note-jf/note-jf.gitee.io.git"
   },
   "scripts": {
     "docs:build": "vuepress-vite build docs",
