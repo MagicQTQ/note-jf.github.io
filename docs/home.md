@@ -3,7 +3,7 @@ home: true
 title: 快速导航
 heroImage: /logo.svg
 heroText: 分类
-tagline: 快速导航。测试666
+tagline: 快速导航。测试
 actions:
 
 - text: 博客主页 🏠

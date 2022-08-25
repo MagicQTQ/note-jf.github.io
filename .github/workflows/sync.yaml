@@ -1,8 +1,7 @@
 name: syncToGitee
 on:
   push:
-    branches:
-      - gh-pages
+    branches: [main]
 jobs:
   repo-sync:
     runs-on: ubuntu-latest
@@ -10,8 +9,8 @@ jobs:
       - name: 将 Github 组织 repos 镜像到 Gitee.
         uses: Yikun/hub-mirror-action@master
         with:
-          src: 'note-jf/note-jf.github.io'
-          dst: 'note-jf/note-jf.gitee.io'
+          src: 'github/note-jf/note-jf.github.io'
+          dst: 'gitee/note-jf/note-jf.gitee.io'
           dst_key: ${{ secrets.GITEE_PRIVATE_KEY }}
           dst_token: ${{ secrets.GITEE_ACCESS_TOKEN }}
           static_list: "learn-typescript"
