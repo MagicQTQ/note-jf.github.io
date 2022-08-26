@@ -9,6 +9,7 @@ import {
     javaJson,
     middlewareJson,
     linuxJson,
+    kubernetesJson,
     openSources,
     toolsJson,
     webJson
@@ -31,6 +32,7 @@ export const sidebarConfig = sidebar({
         webJson,
         middlewareJson,
         linuxJson,
+        kubernetesJson,
         toolsJson
     ],
 });

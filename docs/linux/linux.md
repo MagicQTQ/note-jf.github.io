@@ -8,16 +8,6 @@ title: Linux笔记
 - [Linux 基础](./basis.md)
 - [Jenkins自动化部署](./jenkins.md)
 
-## kubernetes
-
-- [基础](./k8s/basis.md)
-- [流水线部署](./k8s/deploys.md)
-- [Ingress](./k8s/ingress.md)
-- [安装常用应用服务](./k8s/install-application.md)
-- [可视化管理工具-KubeSphere](./k8s/kube-sphere.md)
-- [安装文件|存储系统](./k8s/nfs-pv-pvc-config-secret.md)
-- [Pod-yaml篇](./k8s/pod-yaml.md)
-
 ## ansible
 
 - [AD-Hoc命令执行工具](./ansible/ansible.md)

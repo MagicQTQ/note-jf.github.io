@@ -8,4 +8,5 @@ export * from "./java";
 export * from "./database";
 export * from "./web";
 export * from "./middleware";
+export * from "./kubernetesJson";
 export * from "./linux";

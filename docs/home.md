@@ -48,10 +48,15 @@ features:
   details: ES检索服务、nginx、MQ
   link: /middleware/middleware
 
-- title: Linux&集群管理
+- title: Linux
   icon: linux
-  details: Linux知识、ansible管理工具、jenkins自动部署、k8s集群管理
+  details: Linux知识、ansible管理工具、jenkins自动部署
   link: /linux/linux
+
+- title: kubernetes集群管理
+  icon: linux
+  details: k8s集群管理、自动化部署CI|CD
+  link: /k8s/k8s
 
 - title: 开发工具
   icon: tool
