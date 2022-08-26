@@ -34,7 +34,26 @@ md内容体
 .theme-hope-content h1,
 .theme-hope-content h2,
 .theme-hope-content h3,
-.theme-hope-content h4 {
+.theme-hope-content h4,
+.theme-hope-content h5 {
   font-size: 24px;
-  color: #33a90f;
+}
+
+.theme-hope-content h1 {
+  color: #e20ea2;
+}
+
+.theme-hope-content h2 {
+  color: #03b203;
+}
+
+.theme-hope-content h3 {
+  color: #228B22;
+}
+
+.theme-hope-content h4 {
+  color: #9ACD32;
+}
+.theme-hope-content h5 {
+  color: #a4880b;
 }
