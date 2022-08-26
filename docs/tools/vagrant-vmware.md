@@ -1,6 +1,6 @@
 ---
 icon: edit
-title: 批量处理vagrant_vmware
+title: 虚拟机批量处理vagrant_vmware
 category: Tools
 date: 2020-01-01
 tag:

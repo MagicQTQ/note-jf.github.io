@@ -30,32 +30,32 @@ features:
 
 - title: Java
   icon: java
-  details: 新增
-  link: /java/test
+  details: 面向对象基础、数组、OOP核心、容器、IO、异常、servlet、日志、23设计模式、异步、分布式服务、JVM、swagger、OSS服务等。
+  link: /java/java
 
 - title: 数据库
   icon: mysql
-  details: 新增
-  link: /database/mysql/MySQL
+  details: MySQL、Oracle、Redis
+  link: /database/database
 
 - title: 前端
   icon: html
-  details: 新增
-  link: /web/webpart
+  details: 前端知识、vue框架、react框架
+  link: /web/web
 
 - title: 中间件
   icon: tool
-  details: 新增
-  link: /middleware/nginx
+  details: ES检索服务、nginx、MQ
+  link: /middleware/middleware
 
 - title: Linux&集群管理
   icon: linux
-  details: 新增【ansible管理工具、jenkins自动部署、k8s管理】
-  link: /linux/basis
+  details: Linux知识、ansible管理工具、jenkins自动部署、k8s集群管理
+  link: /linux/linux
 
 - title: 开发工具
   icon: tool
-  details: 新增
+  details: 常用开发管理工具idea|eclipse、数据库管理工具、Git知识、Docker知识
   link: /tools/tools
 
 ---

@@ -15,11 +15,11 @@ export const toolsJson =
             "nodejs-setting",
             "vagrant-vmware",
             {
-                text: "database工具",
+                text: "数据库管理工具",
                 icon: "database",
                 prefix: "database/",
                 collapsable: true,
-                children: ["CHINER", "datagrip", "DBeaver","screw"],
+                children: ["CHINER", "datagrip", "DBeaver", "screw"],
             },
             {
                 text: "Git",
@@ -38,7 +38,12 @@ export const toolsJson =
                 icon: "docker1",
                 prefix: "docker/",
                 collapsable: true,
-                children: ["docker-note", "docker-install-mysql-redis-nginx-nacos-mq-es", "docker-intro", "docker-in-action"],
+                children: [
+                    "docker-note",
+                    "docker-install-mysql-redis-nginx-nacos-mq-es",
+                    "docker-intro",
+                    "docker-in-action"
+                ],
             }
         ],
     }
